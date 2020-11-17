@@ -1,0 +1,23 @@
+html, body{
+    
+    height: 100%;
+}
+
+body{
+    
+    display: flex;
+    align-items: center;
+    background-color:#f5f5f5;
+}
+
+form{
+    width: 100%;
+    max-width: 330px;
+    margin: auto;
+}
+
+.icone{
+   font-size: 200px;
+}
+
+
