@@ -1,22 +1,23 @@
 
 
-function validerForm( )
+function validerForm()
 {
 	//GET FORM INPUTS
 	var motUm   = formCreate.MDP_membre.value;
 	var motDeux = formCreate.MDP_membreConfirm.value;
 	var nom     = formCreate.nom.value;
+	var courriel= formCreate.courriel.value;
 	var prenom  = formCreate.prenom.value;
-	var courriel  = formCreate.courriel.value;
 
-
-	//PASSWORD LIMITE 4
+	//PASSWORD LIMITE
 
 	if ( motUm.length != 4   &&  motUm != "" ) 
 	{
+		//Show message error
 		document.getElementById("erreurPassword").innerHTML="Le mot de passe doit contenir 4 chiffres!";
 		return false;
 	}else{
+		//Clean message error
 		document.getElementById("erreurPassword").innerHTML="";
 	}	
 
@@ -31,17 +32,6 @@ function validerForm( )
 		document.getElementById("erreurPasswordConfirm").innerHTML="";
 	}	
 
-	//INPUT NOM ET PRENOM
-	if (nom == "" ) 
-	{
-		document.getElementById("erreurNom").innerHTML="Required fild!";
-		return false;
-
-	}else{
-		document.getElementById("erreurNom").innerHTML="";
-	}	
 
 
-
-
-}//fin if
+}

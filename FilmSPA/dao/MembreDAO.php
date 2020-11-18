@@ -17,13 +17,10 @@ include_once'../includes/Connection.php';
 
 		function insert(Membre $m)
 		{
+			global $cn;
 			try {
 					$sql = 'insert into Membre 
-							(nom,
-							prenom,
-							profil,
-							courriel,							
-							MDP_membre)
+							(nom,prenom,profil,courriel,MDP_membre)
 							values(?,?,?,?,?)';
 
 					$stmt = $this->cn->prepare($sql);
@@ -33,8 +30,8 @@ include_once'../includes/Connection.php';
 					$stmt->bindValue(3, $m->getProfil() );
 					$stmt->bindValue(4, $m->getCourriel() );
 					$stmt->bindValue(5, $m->getMdpMembre() );
-
-					return $stmt->execute();//return 1
+					$stmt->execute();//return 1 si ok
+					return $LAST_ID  = $this->cn->lastInsertId(); 
 
 			} catch (PDOException $e) {
 				echo 'Erro: '. $e;
@@ -139,6 +136,29 @@ include_once'../includes/Connection.php';
 				//print_r($rs);
 
 				return $rs;	
+
+			} catch (Exception $e) {
+				echo 'Erro: '. $e;
+
+			}finally{
+				unset($cn);//close  connexion
+				unset($stmt);//clean memoire
+			}
+
+		}
+
+		function selectById($id)
+		{
+			global $cn;
+
+			try {
+				$sql="SELECT * FROM membre WHERE  MDP_membre = ? ";
+				$stmt = $this->cn->prepare($sql);
+				$stmt->bindValue(1, $id );
+				$stmt->execute();
+				$rs = $stmt->fetch(PDO::FETCH_OBJ);  
+				print_r($rs);
+				//return $rs;	
 
 			} catch (Exception $e) {
 				echo 'Erro: '. $e;

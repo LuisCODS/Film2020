@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once '../model/Membre.php';
 include_once '../dao/MembreDAO.php';
 // --------------------------------------------------------------
@@ -15,10 +16,20 @@ include_once '../dao/MembreDAO.php';
 	{
 		case 'insert':
 
-			$membre = new Membre(null,$nom,$prenom,$profil,$courriel,$MDP_membre);	
-			echo $membreDAO->insert($membre);//Si ok return 1
-			//unset($membre);//clean memoire
-			//header('Location: ../view/login/index.php');
+				$membre = new Membre(null,$nom,$prenom,$profil,$courriel,$MDP_membre);	
+				$lastID = $membreDAO->insert($membre);//Si ok return 1
+
+				//print_r($lastID);//test get last id
+				$membre = $membreDAO->selectById($lastID);
+
+				//CREE LA SESSION  
+				//$_SESSION["membre"] = serialize($membre);
+				print_r($membre);
+
+				
+				//unset($membre);//clean memoire
+				//header('Location: ../view/membre/index.php');
+
 		    break;
 
 		case 'update':
