@@ -1,4 +1,4 @@
-<!-- ______________________  INTERFACE VISITEUR   ______________________-->
+<!-- ______________________  INCLUDE INTERFACE VISITEUR   ______________________-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">        
 	<a class="navbar-brand" href="#">Films</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
@@ -29,7 +29,7 @@
 			</div>
 			</li>
 			<li class="nav-item">                                 
-				<a class="nav-link" href="../../view/login/index.php">Connection  <i class="fas fa-sign-in-alt"></i></a>
+				<a class="nav-link" href="../../view/login/login.php">Connection  <i class="fas fa-sign-in-alt"></i></a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="../../view/membre/create.php">Devenir membre <i class="far fa-user"></i></a>

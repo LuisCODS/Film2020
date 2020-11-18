@@ -1,47 +1,45 @@
 <?php
-include_once'../includes/Connection.class.php';
+include_once'../includes/Connection.php';
 
 	Class MembreDAO 
 	{
 
 		/*GLOBAL*/
-		private $connection;
+		private $cn;
 
 		function __Construct()
 		{
 			$pdo = new Connection();
-			$this->connection = $pdo->getConnection();
+			$this->cn = $pdo->getConnection();
 		}
 
 	// ______________________________ CDRUD ___________________________
 
-		function insert(Membre $membre)
+		function insert(Membre $m)
 		{
 			try {
 					$sql = 'insert into Membre 
 							(nom,
 							prenom,
 							profil,
-							courriel,
-							tel_membre,
+							courriel,							
 							MDP_membre)
-							values(?,?,?,?,?,?)';
+							values(?,?,?,?,?)';
 
-					$stmt = $this->connection->prepare($sql);
+					$stmt = $this->cn->prepare($sql);
 
 					$stmt->bindValue(1, $m->getNom() );
 					$stmt->bindValue(2, $m->getPrenom() );
 					$stmt->bindValue(3, $m->getProfil() );
 					$stmt->bindValue(4, $m->getCourriel() );
-					$stmt->bindValue(5, $m->getTelMembre() );
-					$stmt->bindValue(6, $m->getMdpMembre() );
+					$stmt->bindValue(5, $m->getMdpMembre() );
 
-					return $stmt->execute();
+					return $stmt->execute();//return 1
 
 			} catch (PDOException $e) {
 				echo 'Erro: '. $e;
 			}finally{
-				unset($connection);//close  connexion
+				unset($cn);//close  connexion
 				unset($stmt);//clean memoire
 			}
 		}
@@ -58,7 +56,7 @@ include_once'../includes/Connection.class.php';
 							MDP_membre = ?	
 							where PK_ID_Membre = ?';
 
-					$stmt = $this->connection->prepare($sql);
+					$stmt = $this->cn->prepare($sql);
 
 					$stmt->bindValue(1, $m->getNom() );
 					$stmt->bindValue(2, $m->getPrenom() );
@@ -73,7 +71,7 @@ include_once'../includes/Connection.class.php';
 			} catch (PDOException $e) {
 				echo "Erro: ". $e;
 			}finally{
-				unset($connection);
+				unset($cn);
 				unset($stmt);
 			}
 		}
@@ -83,29 +81,75 @@ include_once'../includes/Connection.class.php';
 			try {
 					$sql = 'delete from Membre 
 							where PK_ID_Membre = ? ';
-					$stmt = $this->connection->prepare($sql);
+					$stmt = $this->cn->prepare($sql);
 					$stmt->bindValue(1, $id);
 					return $stmt->execute();	
 
 			} catch (PDOException $e) {
 				echo "Erro: ". $e;
 			}finally{
-				unset($connection);
+				unset($cn);
 				unset($stmt);
 			}
 		}
 
-		function select($input)
+		function select_All()
 		{
-			$sql = "select * from Membre
-				    WHERE nom like '%$input%'  
-				    ORDER BY nom ASC  ";
+			//global $cn;
 
-			$stmt = $this->connection->prepare($sql);
-			$stmt->execute();
-			$rs = $stmt->fetchall(PDO::FETCH_ASSOC);  			
-			 return json_encode($rs);//Retourn un json
+			try {
+				$sql = "SELECT * FROM membre";
+				$stmt = $this->cn->prepare($sql);
+				$stmt->execute();
+				$rs = $stmt->fetchAll(PDO::FETCH_ASSOC);  
+				return $rs;		
+
+			} catch (Exception $e) {
+				echo 'Erro: '. $e;
+
+			}finally{
+				unset($cn);//close  connexion
+				unset($stmt);//clean memoire
+			}
 		}
+
+		// function select_One($input)
+		// {
+		// 	$sql = "select * from Membre
+		// 		    WHERE nom like '%$input%'  
+		// 		    ORDER BY nom ASC  ";
+
+		// 	$stmt = $this->cn->prepare($sql);
+		// 	$stmt->execute();
+		// 	$rs = $stmt->fetchall(PDO::FETCH_ASSOC);  			
+		// 	 return json_encode($rs);//Retourn un json
+		// }
+
+		function select_One($courriel, $MDP_membre)
+		{
+			global $cn;
+
+			try {
+				$sql="SELECT * FROM membre WHERE courriel=? AND MDP_membre=? ";
+				$stmt = $this->cn->prepare($sql);
+				$stmt->bindValue(1, $courriel );
+				$stmt->bindValue(2, $MDP_membre);
+				$stmt->execute();
+				$rs = $stmt->fetch(PDO::FETCH_OBJ);  
+				//print_r($rs);
+
+				return $rs;	
+
+			} catch (Exception $e) {
+				echo 'Erro: '. $e;
+
+			}finally{
+				unset($cn);//close  connexion
+				unset($stmt);//clean memoire
+			}
+
+		}
+
 		
 		
 	}//End class

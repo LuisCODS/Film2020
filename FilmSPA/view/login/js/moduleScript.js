@@ -7,12 +7,18 @@ $("#btnLogin").click(function(){
 
 	$.ajax({
 
-		method: 'POST',
-		url: '../../../controller/login.php',
+		method: "POST",
+		url: "../../controller/login.php",
 		data: inputs
 
 	}).done(function(callBach){
+		
 		alert(callBach);
+		// if (callBach == true) {
+		// 	console.log("Is membre");
+		// }else{
+		// 	console.log("Not membre");
+		// }
 
 	});	
 

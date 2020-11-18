@@ -1,4 +1,4 @@
-<!-- ________________________________  INTERFACE ADMIN ________________________________-->
+<!-- ________________________________  INCLUDE INTERFACE ADMIN ________________________________-->
 
 <nav class="navbar navbar-expand-lg navbar-light  bg-light  mb-5">        
 	<a class="navbar-brand" href="#">Films</a>

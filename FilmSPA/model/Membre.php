@@ -11,14 +11,13 @@
 		private $tel_membre;
 		private $MDP_membre;
 
-		function __Construct($PK_ID_Membre,$nom,$prenom,$profil,$courriel,$tel_membre,$MDP_membre)
+		function __Construct($PK_ID_Membre,$nom,$prenom,$profil,$courriel,$MDP_membre)
 		{
 			$this->PK_ID_Membre = $PK_ID_Membre;
             $this->nom 	      = $nom;
 			$this->prenom	  = $prenom;
 			$this->profil     = $profil;
 			$this->courriel	  = $courriel;
-            $this->tel_membre = $tel_membre;
 			$this->MDP_membre = $MDP_membre;
 		}
 
@@ -67,4 +66,5 @@
 			 $this->MDP_membre = $MDP_membre;
 		}
 
+	}//fin class
 ?>

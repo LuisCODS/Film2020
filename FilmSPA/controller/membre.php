@@ -6,7 +6,6 @@ include_once '../dao/MembreDAO.php';
  //--------------------------------------------------------------- 
 
 
-	// Get data(action/txtInput) from moduleFunction.js
 	extract($_POST);
 	//GLOBAL
 	$membreDAO = new MembreDAO();	
@@ -15,7 +14,8 @@ include_once '../dao/MembreDAO.php';
 	switch ($action) 
 	{
 		case 'insert':
-			$membre = new Membre(null,$nom,$prenom,$profil,$courriel,$tel_membre,$MDP_membre);	
+
+			$membre = new Membre(null,$nom,$prenom,$profil,$courriel,$MDP_membre);	
 			echo $membreDAO->insert($membre);//Si ok return 1
 			//unset($membre);//clean memoire
 			//header('Location: ../view/login/index.php');
@@ -38,6 +38,7 @@ include_once '../dao/MembreDAO.php';
 			echo "Aucun action trouvée";
 			break;
 	}
+
 
 ?>
 
