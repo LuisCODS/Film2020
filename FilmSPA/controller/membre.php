@@ -16,18 +16,22 @@ include_once '../dao/MembreDAO.php';
 	{
 		case 'insert':
 
+				//Cree un Objet bidon
 				$membre = new Membre(null,$nom,$prenom,$profil,$courriel,$MDP_membre);	
+				//L'ajoute dans la BD et retourne son ID
 				$lastID = $membreDAO->insert($membre);//Si ok return 1
-
 				//print_r($lastID);//test get last id
+				unset($membre);//clean memoire
+
+				//Recupere le dernier objet crée
 				$membre = $membreDAO->selectById($lastID);
+				//print_r($membre->PK_ID_Membre);//Test get objet id
 
-				//CREE LA SESSION  
-				//$_SESSION["membre"] = serialize($membre);
-				print_r($membre);
+				//CREE LA SESSION 
+				$_SESSION["membreID"] = $membre->PK_ID_Membre;
+				$_SESSION["membreCourriel"] = $membre->courriel;
+				print_r($_SESSION["membreCourriel"]);
 
-				
-				//unset($membre);//clean memoire
 				//header('Location: ../view/membre/index.php');
 
 		    break;

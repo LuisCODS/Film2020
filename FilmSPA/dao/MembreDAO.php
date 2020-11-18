@@ -15,6 +15,7 @@ include_once'../includes/Connection.php';
 
 	// ______________________________ CDRUD ___________________________
 
+		//Create a new objet and return son ID
 		function insert(Membre $m)
 		{
 			global $cn;
@@ -147,18 +148,19 @@ include_once'../includes/Connection.php';
 
 		}
 
+		//Retourn un objet par son ID
 		function selectById($id)
 		{
 			global $cn;
 
 			try {
-				$sql="SELECT * FROM membre WHERE  MDP_membre = ? ";
+				$sql="SELECT * FROM membre WHERE  PK_ID_Membre = ? ";
 				$stmt = $this->cn->prepare($sql);
 				$stmt->bindValue(1, $id );
 				$stmt->execute();
 				$rs = $stmt->fetch(PDO::FETCH_OBJ);  
-				print_r($rs);
-				//return $rs;	
+				//print_r($rs);
+				return $rs;	
 
 			} catch (Exception $e) {
 				echo 'Erro: '. $e;

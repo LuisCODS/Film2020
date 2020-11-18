@@ -1,6 +1,6 @@
 <?php
 session_start();
-session_destroy();
-
+session_destroy(); //Supprime la session
+session_unset(); //Décharge de la memoire
 header("location: login.php");
 ?>
