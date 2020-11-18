@@ -1,7 +1,29 @@
-
-<div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-4">PRINCIPAL-HOME</h1>
-    <p class="lead">Este é um jumbotron modificado que ocupa todo o espaço horizontal de seu elemento pai.</p>
-  </div>
+<?php
+include_once '../../includes/interfaceVisiteur.php';
+?>
+<!doctype html>
+<html lang="en">
+<head>
+    <?php include_once '../../includes/head.php'; ?>
+</head>
+<body class="text-center">
+<div class="container-fluid">
+	  <div class="row">
+		    <div class="col-sm col-md col-lg col-xl">
+      		  	<div class="jumbotron jumbotron-fluid">
+					  <div class="container">
+						    <h1 class="display-4">PAGE ACCUEIL</h1>
+						    <p class="lead">Este é um jumbotron mai.</p>
+					  </div>
+				</div>
+		    </div>
+	  </div>
 </div>
+ <?php include_once("../../includes/footer.php");?>
+</body>
+</html>
+
+
+
+
+

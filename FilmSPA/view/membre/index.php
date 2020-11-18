@@ -20,20 +20,19 @@ else {
     <?php include_once '../../includes/head.php'; ?>
 </head>
 <body class="text-center">
-	  <div class="container-fluid">
-	      <div class="row ">
-	          <div class="col-md-12">
-          			<div class="jumbotron">
-						  <h1 class="display-4"><?php if (isset ($_SESSION["membreCourriel"])){ echo $_SESSION["membreCourriel"]; }  ?></h1>
-						  <hr class="my-4">
-						  <h3>Bienvenue parmis nous !</h3>
-					</div>
-	          </div>
-	          <div class="col-md">               
-	   			
-	          </div>
-	     </div>
-	  </div>    
-  <?php include_once("../../includes/footer.php");?>
+    <div class="container-fluid">
+          <div class="row">
+              <div class="col-sm col-md col-lg col-xl">
+                    <div class="jumbotron jumbotron-fluid">
+                        <div class="container-fluid">
+                              <h2 class="display-4" ><?php if (isset ($_SESSION["membreCourriel"])){ echo $_SESSION["membreCourriel"]; }  ?></h2>
+                              <hr class="my-4">
+                              <h3>Bienvenue parmis nous !</h3>
+                        </div>
+                  </div>
+              </div>
+          </div>
+    </div>
+<?php include_once("../../includes/footer.php");?>
 </body>
 </html>
