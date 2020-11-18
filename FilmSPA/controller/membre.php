@@ -3,12 +3,11 @@ session_start();
 include_once '../model/Membre.php';
 include_once '../dao/MembreDAO.php';
 // --------------------------------------------------------------
- // 				CONTROLLEUR - Membre  
- //--------------------------------------------------------------- 
+// 				CONTROLLEUR - Membre  
+//--------------------------------------------------------------- 
 
-
-	extract($_POST);
 	//GLOBAL
+	extract($_POST);
 	$membreDAO = new MembreDAO();	
 
 
@@ -23,16 +22,7 @@ include_once '../dao/MembreDAO.php';
 				//print_r($lastID);//test get last id
 				unset($membre);//clean memoire
 
-				//Recupere le dernier objet crée
-				$membre = $membreDAO->selectById($lastID);
-				//print_r($membre->PK_ID_Membre);//Test get objet id
-
-				//CREE LA SESSION 
-				$_SESSION["membreID"] = $membre->PK_ID_Membre;
-				$_SESSION["membreCourriel"] = $membre->courriel;
-				print_r($_SESSION["membreCourriel"]);
-
-				//header('Location: ../view/membre/index.php');
+				creatSession($lastID);
 
 		    break;
 
@@ -52,6 +42,26 @@ include_once '../dao/MembreDAO.php';
 		default:
 			echo "Aucun action trouvée";
 			break;
+
+	}//fin switch
+
+	
+
+	//Recoit un objet recuperé par son ID et cree une session avec ses données 
+	function creatSession($lastID)
+	{
+		global $membreDAO;
+
+		//Recupere le dernier objet crée
+		$membre = $membreDAO->selectById($lastID);
+		//print_r($membre->PK_ID_Membre); //Test get objet id
+
+		//CREE LA SESSION 
+		$_SESSION["membreID"] = $membre->PK_ID_Membre;
+		$_SESSION["membreCourriel"] = $membre->courriel;
+		//print_r($_SESSION["membreID"]);
+		//Send to index page
+		header('Location: ../view/membre/index.php');		
 	}
 
 

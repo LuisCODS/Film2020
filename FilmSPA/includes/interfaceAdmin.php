@@ -28,11 +28,11 @@
 				<a id="emailShowUp" class="nav-link" href="#"></a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="../home/index.php">Deconnection <i class="fas fa-sign-in-alt"></i></a>
+				<a class="nav-link" href="../../view/login/logout.php">Quitter <i class="fas fa-sign-in-alt"></i></a>
 			</li>
-			<!--             <li class="nav-item">
-				<a class="nav-link" href="../admin/ajouterFilm.php">Creer Film </a>
-			</li> -->
+			<li class="nav-item" style="padding-left: 900px;">
+				<a class="nav-link" href="#"><?php if (isset ($_SESSION["membreCourriel"])){ echo $_SESSION["membreCourriel"]; }  ?></a>
+			</li>
 		</ul>
 	</div>
 </nav>

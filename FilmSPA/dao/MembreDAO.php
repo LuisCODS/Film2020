@@ -123,19 +123,16 @@ include_once'../includes/Connection.php';
 		// 	 return json_encode($rs);//Retourn un json
 		// }
 
-		function select_One($courriel, $MDP_membre)
+		function selectToLogin($courriel, $MDP_membre)
 		{
 			global $cn;
 
 			try {
 				$sql="SELECT * FROM membre WHERE courriel=? AND MDP_membre=? ";
 				$stmt = $this->cn->prepare($sql);
-				$stmt->bindValue(1, $courriel );
-				$stmt->bindValue(2, $MDP_membre);
-				$stmt->execute();
-				$rs = $stmt->fetch(PDO::FETCH_OBJ);  
+				$stmt->execute(array($courriel, $MDP_membre));
+				$rs = $stmt->fetch(PDO::FETCH_OBJ); //return true or false
 				//print_r($rs);
-
 				return $rs;	
 
 			} catch (Exception $e) {
