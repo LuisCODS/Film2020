@@ -30,7 +30,7 @@
 					</div>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="../../view/membre/editer.php">Profil <i class="far fa-user"></i></a>
+					<a class="nav-link" href="editer.php">Profil <i class="far fa-user"></i></a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="../../view/membre/panier.php">Panier  <i class="fas fa-shopping-cart"></i></a>
@@ -39,7 +39,7 @@
 					<a class="nav-link" href="../../view/login/logout.php">Quitter <i class="fas fa-sign-in-alt"></i></a>
 				</li>
 				<li class="nav-item" style="padding-left: 600px;">
-					<a class="nav-link" href="#"><?php if (isset ($_SESSION["membreCourriel"])){ echo $_SESSION["membreCourriel"]; }  ?></a>
+					<a class="nav-link" href="#"><?php if (isset ($_SESSION["membre"]) ){ echo $membre->courriel; }  ?></a>
 				</li>
 			</ul>
 		</div>

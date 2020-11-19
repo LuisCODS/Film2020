@@ -33,7 +33,8 @@ include_once'../includes/Connection.php';
 					$stmt->bindValue(4, $m->getCourriel() );
 					$stmt->bindValue(5, $m->getMdpMembre() );
 					$stmt->execute();//return 1 si ok
-					return $LAST_ID  = $this->cn->lastInsertId(); //get last ID
+					
+					return $LAST_ID  = $this->cn->lastInsertId(); 
 
 			} catch (PDOException $e) {
 				echo 'Erro: '. $e;
@@ -112,7 +113,11 @@ include_once'../includes/Connection.php';
 			}
 		}
 
-
+		/*
+			Cherche dans la BD un membre pour comparer les password.
+			Si ok, redirectionne le membre à sa page d'accueil avec 
+			une session. Si pas ok,  reste dans la page login.
+		*/
 		function login($courriel,$MDP_membre)
 		{
 			global $cn;
@@ -130,9 +135,8 @@ include_once'../includes/Connection.php';
 					//return TRUE if password and hash are equals, FALSE otherwise.
 					if(password_verify($MDP_membre, $rs->MDP_membre)) {    
 					
-						//CREATE A SESSION 
-						 $_SESSION["membreID"] = $rs->PK_ID_Membre;
-						 $_SESSION["membreCourriel"] = $rs->courriel;
+						//CREE LA SESSION 
+						$_SESSION["membre"] = serialize($rs);
 
 						//GESTION INTERFACE
 						if ($rs->profil == "admin"){
@@ -157,7 +161,7 @@ include_once'../includes/Connection.php';
 		}
 
 		//Retourn un objet par son ID
-		function selectById($id)
+		function getOneById($id)
 		{
 			global $cn;
 

@@ -1,23 +1,31 @@
 <?php
 session_start();
 include_once '../../model/Membre.php';
-include_once '../../includes/interfaceMembre.php'; 
+
 
 // SI LA SESSION EXISTE
-if (isset ($_SESSION["membreID"]) && isset ($_SESSION["membreCourriel"]) )
+if ( isset ($_SESSION["membre"]) )
  {
-	//print_r($_SESSION["membreCourriel"]); //Test get data	
-	//$("#emailMembre").val($_SESSION["membreCourriel"]);
+
+    // $membre = new Membre(null,null,null,null,null,null); 
+
+	   //print_r($_SESSION["membreCourriel"]); //Test get data	
+	   $membre = unserialize($_SESSION["membre"]);
  }
 else {
 	header("location: ../login/login.php");
 	exit();
  }
  ?>
+
+
 <!doctype html>
 <html lang="en">
 <head>
-    <?php include_once '../../includes/head.php'; ?>
+    <?php
+      include_once '../../includes/head.php'; 
+      include_once '../../includes/interfaceMembre.php';
+     ?>
 </head>
 <body class="text-center">
     <div class="container-fluid">
@@ -25,7 +33,9 @@ else {
               <div class="col-sm col-md col-lg col-xl">
                     <div class="jumbotron jumbotron-fluid">
                         <div class="container-fluid">
-                              <h2 class="display-4" ><?php if (isset ($_SESSION["membreCourriel"])){ echo $_SESSION["membreCourriel"]; }  ?></h2>
+                              <h2 class="display-4" >
+                                   <?php  echo $membre->courriel; ?>
+                                </h2>
                               <hr class="my-4">
                               <h3>Bienvenue parmis nous !</h3>
                         </div>

@@ -1,10 +1,10 @@
-<?php
-include_once '../../includes/interfaceVisiteur.php';
-?>
 <!doctype html>
 <html lang="en">
 <head>
-    <?php include_once '../../includes/head.php'; ?>
+    <?php
+    include_once '../../includes/head.php'; 
+    include_once '../../includes/interfaceVisiteur.php';
+    ?>
 </head>
 <body class="text-center">
 <div class="container-fluid">
