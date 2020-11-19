@@ -118,13 +118,13 @@ include_once'../includes/Connection.php';
 			global $cn;
 
 			try {
-				
+					
 					$sql="SELECT * FROM membre WHERE courriel=? ";
 					$stmt = $this->cn->prepare($sql);
 					$stmt->execute(array($courriel));
 					//Récupère la prochaine ligne et la retourne en tant qu'objet
 					$rs = $stmt->fetch(PDO::FETCH_OBJ); 
-					var_dump($rs);
+					//var_dump($rs);
 					//print_r($rs->MDP_membre);
 
 					//return TRUE if password and hash are equals, FALSE otherwise.
@@ -141,9 +141,8 @@ include_once'../includes/Connection.php';
 							header("location: ../view/membre/index.php");
 						}	
 					} 
-					else{
-						//$_SESSION['loginErreur'] = "Courriel ou mot de passe invalide!"
-						//header("location: ../view/login/login.php");
+					else{	
+					 	header("location: ../view/login/login.php");
 					}
 
 
