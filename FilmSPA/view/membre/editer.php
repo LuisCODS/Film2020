@@ -9,7 +9,7 @@ include_once '../../model/Membre.php';
     if (isset ($_SESSION["membre"]) ){
         
          $membre = unserialize($_SESSION["membre"]);
-        var_dump($membre);    
+        //var_dump($membre);    
      }
     else {
       header("location: ../login/login.php");

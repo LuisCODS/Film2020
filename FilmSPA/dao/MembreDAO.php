@@ -69,7 +69,7 @@ include_once '../model/Membre.php';
 					$stmt->bindValue(7, $m->getMembreID() );
 				    $stmt->execute(); // si ok return 1
 
-				//Send the updated Membre's ID to create a new session 
+				//Send the updated Membre's ID to update a new session aswell
 				$this->createSession($m->getMembreID());	
 
 
