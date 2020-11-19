@@ -1,6 +1,6 @@
 <!-- ________________________________  INCLUDE INTERFACE ADMIN ________________________________-->
 <div class="container-fluid">
-	<nav class="navbar navbar-expand-lg navbar-dark  bg-dark  mb-5">        
+	<nav class="navbar navbar-expand-lg navbar-light bg-light mb-5 ">        
 		<a class="navbar-brand" href="#">Films</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
 			aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Alterna navegação">
@@ -24,7 +24,7 @@
 				<li class="nav-item">
 					<a class="nav-link" href="../../view/login/logout.php">Quitter <i class="fas fa-sign-in-alt"></i></a>
 				</li>
-				<li class="nav-item" style="padding-left: 600px;">
+				<li class="nav-item" style="padding-left: 700px;">
 					<a class="nav-link" href="#"><?php echo $membre->getCourriel();  ?></a>
 				</li>
 			</ul>
