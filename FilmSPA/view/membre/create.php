@@ -11,6 +11,19 @@
 </head>
 <body class="text-center">
     <div class="container-fluid">
+        <!--  LIGNE 1 -->
+        <div class="row mb-3">
+             <div class="col-md-8">
+             </div>  
+             <div class="col-md-3">
+                  <a class="btn btn-primary" 
+                      href="../home/index.php" 
+                      role="button">
+                      <i class="fas fa-backward">     Retourner</i>
+                  </a>
+            </div> 
+        </div> 
+         <!--  LIGNE 2 -->
         <div class="row ">
             <div class="col-md">               
                  <form id="formCreate" action="../../controller/membre.php" method="POST">

@@ -1,20 +1,47 @@
+<?php
+session_start(); 
 
-<?php 
-include_once '../../includes/head.php'; 
+
+    // GESTION SESSION
+
+// SI LA SESSION EXISTE
+if (isset ($_SESSION["membreID"]) && isset ($_SESSION["membreCourriel"]) )
+ {
+  //print_r($_SESSION["membreCourriel"]); //Test get data 
+  //$("#emailMembre").val($_SESSION["membreCourriel"]);
+ }
+else {
+  header("location: ../login/login.php");
+  exit();
+ }
+ ?>
+
+
+    <?php
 include_once '../../includes/interfaceVisiteur.php';
-?> 
-
-
-
-<!-- _________________  FORM AJOUTER MEMBRE _________________ --> 
-<div class="container">
-
-<!-- onSubmit="return validerEmail('email'); -->
- <form id="formCreate" action="../../controller/membre.php" method="POST" >
-
-           <h2>Formulaire d'inscription</h2>
-
-          <div class="form-group">
+?>
+<!doctype html>
+<html lang="en">
+<head>
+    <?php include_once '../../includes/head.php'; ?>
+</head>
+<body class="text-center">
+<div class="container-fluid">
+    <div class="row">
+          <!-- _________________  FORM EDITER MEMBRE _________________ --> 
+ <form id="formCreate" action="../../controller/membre.php" method="POST" ">
+           <h2>Formulaire d'édition</h2>
+                <input
+                 type="hidden" 
+                 id="PK_ID_Membre" 
+                 value=""
+                 name="PK_ID_Membre" >
+                <input
+                 type="hidden" 
+                 id="profil" 
+                 value=""
+                 name="profil" >
+           <div class="form-group">
                 <label for="profil"></label>
                 <input
                  type="hidden" 
@@ -23,7 +50,6 @@ include_once '../../includes/interfaceVisiteur.php';
                  name="profil" 
                  value="membre">
           </div>
-
           <!-- FORNECE O TIPO DE ACAO AO CONTROLLER -->
           <div class="form-group">
                 <input 
@@ -32,13 +58,12 @@ include_once '../../includes/interfaceVisiteur.php';
                 readonly="true" 
                 id="action" 
                 name="action" 
-                value="insert" >
+                value="update" >
           </div>
-
           <div class="form-group">
                 <label for="nom">Nom</label>
                 <input
-                autofocus
+                 value=""
                  size="40"
                  type="text" 
                  class="form-control" 
@@ -47,29 +72,37 @@ include_once '../../includes/interfaceVisiteur.php';
                  required>
                 <p id="erreurNom"></p>
           </div>
-
           <div class="form-group">
                 <label for="prenom">Prenom</label>
                 <input 
+                value=""
                 size="40"
                 type="text" 
                 class="form-control" 
                 name="prenom" 
                 required>
           </div>
-
           <div class="form-group">
                 <label for="courriel">Courriel</label>
-                <input 
+                <input
+                value="" 
                 required
                 id="courriel"
                 size="40"
                 type="email" 
                 class="form-control" 
-                name="courriel"
-                >
+                name="courriel">
           </div>
-
+          <div class="form-group">
+                <label for="telephone">Telephone</label>
+                <input 
+                size=""
+                value=""
+                class="form-control" 
+                id="tel_membre" 
+                name="tel_membre">
+                <p id="erreurPassword" style='color:red'></p>
+          </div>
           <div class="form-group">
                 <label for="MDP_membre">Mot de passe</label>
                 <input 
@@ -81,7 +114,6 @@ include_once '../../includes/interfaceVisiteur.php';
                 required>
                 <p id="erreurPassword" style='color:red'></p>
           </div>
-
           <div class="form-group">
                 <label for="MDP_membreConfirm">Confirmation mot de passe</label>
                 <input 
@@ -93,16 +125,15 @@ include_once '../../includes/interfaceVisiteur.php';
                 required>
                  <p id="erreurPasswordConfirm" style='color:red'></p>
           </div> 
-
           <button             
               type="submit" 
               onclick="return validerForm( )" 
               class="btn btn-primary">
-              Enregistrer
+              Editer
           </button>
     </form> 
-</div>  
-
-
-<!--  FOOTER  --> 
-<?php include '../../includes/footer.php'; ?> 
+    </div>
+</div>
+ <?php include_once("../../includes/footer.php");?>
+</body>
+</html>

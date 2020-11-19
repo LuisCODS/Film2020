@@ -1,7 +1,6 @@
 <?php
 session_start();
 include_once '../../model/Membre.php';
-include_once '../../includes/interfaceAdmin.php'; 
 
 // SI LA SESSION EXISTE
 if (isset ($_SESSION["membreID"]) && isset ($_SESSION["membreCourriel"]) )
@@ -14,10 +13,15 @@ else {
 	exit();
  }
  ?>
+
+
 <!doctype html>
 <html lang="en">
 <head>
-    <?php include_once '../../includes/head.php'; ?>
+    <?php
+     include_once '../../includes/head.php';
+     include_once '../../includes/interfaceAdmin.php'; 
+     ?>
 </head>
 <body>
 <div class="container-fluid">

@@ -17,11 +17,20 @@ include_once '../dao/MembreDAO.php';
 
 				//hash the password extracted from form
 				$hashed_password = password_hash($MDP_membre, PASSWORD_DEFAULT);
-
 				//var_dump($hashed_password);
 
+				$trimmed = trim();
+				var_dump($trimmed);
+
+
 				//Cree un Objet bidon
-				$membre = new Membre(null,$nom,$prenom,$profil,$courriel,$hashed_password);	
+				$membre = new Membre(null,
+					          trim($nom),
+					          trim($prenom),
+					          trim($profil),					   
+					          trim($courriel),
+					          trim($hashed_password) );	
+
 				//L'ajoute dans la BD et retourne son ID
 				$lastID = $membreDAO->insert($membre);//Si ok return 1
 				//print_r($lastID);//test get last id
@@ -52,19 +61,23 @@ include_once '../dao/MembreDAO.php';
 
 	
 
-	//Recoit un objet recuperé par son ID et cree une session avec ses données 
+	/*
+	 Recoit un objet recuperé par son ID et cree une
+	 session en serializant l'objet dans la session
+	 */
 	function creatSession($lastID)
 	{
 		global $membreDAO;
 
-		//Recupere le dernier objet crée
-		$membre = $membreDAO->selectById($lastID);
-		//print_r($membre->PK_ID_Membre); //Test get objet id
+		//Last obj added into DB
+		$membre = $membreDAO->getOneById($lastID);
+		//print_r($membre->PK_ID_Membre); //Test get data of objet
+		
 
 		//CREE LA SESSION 
-		$_SESSION["membreID"] = $membre->PK_ID_Membre;
-		$_SESSION["membreCourriel"] = $membre->courriel;
-		//print_r($_SESSION["membreID"]);
+		$_SESSION["membre"] = serialize($membre);
+		//var_dump($_SESSION["membre"]);
+
 		//Send to index page
 		header('Location: ../view/membre/index.php');		
 	}
