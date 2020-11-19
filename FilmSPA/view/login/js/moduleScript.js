@@ -1,3 +1,12 @@
+//Au chargement de la page
+// $(document).ready(function(){
+
+// 	 validerFormLogin();
+
+
+// });
+
+
 
 // $("#btnLogin").click(function(){
 // 	//alert("Test call");
@@ -23,3 +32,4 @@
 // 	});	
 
 // });
+

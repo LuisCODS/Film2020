@@ -15,8 +15,13 @@ include_once '../dao/MembreDAO.php';
 	{
 		case 'insert':
 
+				//hash the password extracted from form
+				$hashed_password = password_hash($MDP_membre, PASSWORD_DEFAULT);
+
+				//var_dump($hashed_password);
+
 				//Cree un Objet bidon
-				$membre = new Membre(null,$nom,$prenom,$profil,$courriel,$MDP_membre);	
+				$membre = new Membre(null,$nom,$prenom,$profil,$courriel,$hashed_password);	
 				//L'ajoute dans la BD et retourne son ID
 				$lastID = $membreDAO->insert($membre);//Si ok return 1
 				//print_r($lastID);//test get last id

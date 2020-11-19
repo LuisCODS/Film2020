@@ -11,8 +11,7 @@
 
   <div class="container">
 
-      <form id="formLogin" method="POST" action="../../controller/login.php"  
-            onSubmit="validerFormLogin();"> 
+      <form id="formLogin" method="POST" action="../../controller/login.php"> 
 
             <div class="icone">  
                   <i class="fas fa-film"></i>
@@ -24,7 +23,11 @@
             <input type="hidden" readonly="true" id="action" name="action" value="login" > 
 
             <div class="form-group">   
-                <input type="text" placeholder="Courriel" name="courriel" id="courriel" class="form-control mb-4" required>
+                <input type="text" placeholder="Courriel" name="courriel" 
+                        id="courriel" class="form-control mb-4" 
+                        required 
+                        onkeydown="validerFormLogin()">
+                        <span id="msgErrorEmail" style="font-weight: bold"></span>
             </div>
 
             <div class="form-group">

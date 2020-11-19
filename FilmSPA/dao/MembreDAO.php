@@ -1,4 +1,5 @@
 <?php
+
 include_once'../includes/Connection.php';
 
 	Class MembreDAO 
@@ -32,7 +33,7 @@ include_once'../includes/Connection.php';
 					$stmt->bindValue(4, $m->getCourriel() );
 					$stmt->bindValue(5, $m->getMdpMembre() );
 					$stmt->execute();//return 1 si ok
-					return $LAST_ID  = $this->cn->lastInsertId(); 
+					return $LAST_ID  = $this->cn->lastInsertId(); //get last ID
 
 			} catch (PDOException $e) {
 				echo 'Erro: '. $e;
@@ -111,29 +112,40 @@ include_once'../includes/Connection.php';
 			}
 		}
 
-		// function select_One($input)
-		// {
-		// 	$sql = "select * from Membre
-		// 		    WHERE nom like '%$input%'  
-		// 		    ORDER BY nom ASC  ";
 
-		// 	$stmt = $this->cn->prepare($sql);
-		// 	$stmt->execute();
-		// 	$rs = $stmt->fetchall(PDO::FETCH_ASSOC);  			
-		// 	 return json_encode($rs);//Retourn un json
-		// }
-
-		function selectToLogin($courriel, $MDP_membre)
+		function login($courriel,$MDP_membre)
 		{
 			global $cn;
 
 			try {
-				$sql="SELECT * FROM membre WHERE courriel=? AND MDP_membre=? ";
-				$stmt = $this->cn->prepare($sql);
-				$stmt->execute(array($courriel, $MDP_membre));
-				$rs = $stmt->fetch(PDO::FETCH_OBJ); //return true or false
-				//print_r($rs);
-				return $rs;	
+				
+					$sql="SELECT * FROM membre WHERE courriel=? ";
+					$stmt = $this->cn->prepare($sql);
+					$stmt->execute(array($courriel));
+					//Récupère la prochaine ligne et la retourne en tant qu'objet
+					$rs = $stmt->fetch(PDO::FETCH_OBJ); 
+					var_dump($rs);
+					//print_r($rs->MDP_membre);
+
+					//return TRUE if password and hash are equals, FALSE otherwise.
+					if(password_verify($MDP_membre, $rs->MDP_membre)) {    
+					
+						//CREATE A SESSION 
+						 $_SESSION["membreID"] = $rs->PK_ID_Membre;
+						 $_SESSION["membreCourriel"] = $rs->courriel;
+
+						//GESTION INTERFACE
+						if ($rs->profil == "admin"){
+							header("location: ../view/admin/index.php");
+						}else{
+							header("location: ../view/membre/index.php");
+						}	
+					} 
+					else{
+						//$_SESSION['loginErreur'] = "Courriel ou mot de passe invalide!"
+						//header("location: ../view/login/login.php");
+					}
+
 
 			} catch (Exception $e) {
 				echo 'Erro: '. $e;
