@@ -1,6 +1,6 @@
 <?php
-
 include_once'../includes/Connection.php';
+include_once '../model/Membre.php';
 
 	Class MembreDAO 
 	{
@@ -22,18 +22,19 @@ include_once'../includes/Connection.php';
 			global $cn;
 			try {
 					$sql = 'insert into Membre 
-							(nom,prenom,profil,courriel,MDP_membre)
-							values(?,?,?,?,?)';
+							(nom,prenom,profil,courriel,MDP_membre,tel_membre)
+							values(?,?,?,?,?,?)';
 
 					$stmt = $this->cn->prepare($sql);
-
 					$stmt->bindValue(1, $m->getNom() );
 					$stmt->bindValue(2, $m->getPrenom() );
 					$stmt->bindValue(3, $m->getProfil() );
 					$stmt->bindValue(4, $m->getCourriel() );
-					$stmt->bindValue(5, $m->getMdpMembre() );
+					$stmt->bindValue(5, $m->getTelMembre() );
+					$stmt->bindValue(6, $m->getMdpMembre() );
 					$stmt->execute();//return 1 si ok
 					
+					//Return last ID added
 					return $LAST_ID  = $this->cn->lastInsertId(); 
 
 			} catch (PDOException $e) {
@@ -44,8 +45,9 @@ include_once'../includes/Connection.php';
 			}
 		}
 
-		function update(Membre $membre)
+		function update(Membre $m)
 		{
+			global $cn;
 			try {
 				   $sql =  'update Membre set
 							nom = ?,
@@ -65,8 +67,11 @@ include_once'../includes/Connection.php';
 					$stmt->bindValue(5, $m->getTelMembre() );
 					$stmt->bindValue(6, $m->getMdpMembre() );
 					$stmt->bindValue(7, $m->getMembreID() );
+				    $stmt->execute(); // si ok return 1
 
-					return $stmt->execute();
+				//Send the updated Membre's ID to update a new session aswell
+				$this->createSession($m->getMembreID());	
+
 
 			} catch (PDOException $e) {
 				echo "Erro: ". $e;
@@ -133,12 +138,21 @@ include_once'../includes/Connection.php';
 					//print_r($rs->MDP_membre);
 
 					//return TRUE if password and hash are equals, FALSE otherwise.
-					if(password_verify($MDP_membre, $rs->MDP_membre)) {    
-					
-						//CREE LA SESSION 
-						$_SESSION["membre"] = serialize($rs);
+					if(password_verify($MDP_membre, $rs->MDP_membre)) 
+					{    				
+					    //Create an objet with the result and add it as a session
+					    $membre = new Membre($rs->PK_ID_Membre,
+											 $rs->nom,
+											 $rs->prenom,
+											 $rs->profil,
+											 $rs->courriel,
+											 $rs->MDP_membre,
+											 $rs->tel_membre );	
 
-						//GESTION INTERFACE
+						// //Create a session
+						$_SESSION["membre"] = serialize($membre);
+
+						//Gestion d'interface
 						if ($rs->profil == "admin"){
 							header("location: ../view/admin/index.php");
 						}else{
@@ -160,8 +174,8 @@ include_once'../includes/Connection.php';
 
 		}
 
-		//Retourn un objet par son ID
-		function getOneById($id)
+		//Create a session with an objet serialize
+		function createSession($id)
 		{
 			global $cn;
 
@@ -172,7 +186,20 @@ include_once'../includes/Connection.php';
 				$stmt->execute();
 				$rs = $stmt->fetch(PDO::FETCH_OBJ);  
 				//print_r($rs);
-				return $rs;	
+				//return $rs;	
+
+				//Create an objet with the result and add it as a session
+				$membre = new Membre($rs->PK_ID_Membre,
+									 $rs->nom,
+									 $rs->prenom,
+									 $rs->profil,
+									 $rs->courriel,
+									 $rs->MDP_membre,
+									 $rs->tel_membre );	
+
+				//Create a session
+				$_SESSION["membre"] = serialize($membre);
+				header('Location: ../view/membre/index.php');	
 
 			} catch (Exception $e) {
 				echo 'Erro: '. $e;

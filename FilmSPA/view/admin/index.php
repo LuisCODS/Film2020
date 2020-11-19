@@ -3,10 +3,9 @@ session_start();
 include_once '../../model/Membre.php';
 
 // SI LA SESSION EXISTE
-if (isset ($_SESSION["membreID"]) && isset ($_SESSION["membreCourriel"]) )
+if (isset ($_SESSION["membre"]) )
  {
-	//print_r($_SESSION["membreCourriel"]); //Test get data	
-	//$("#emailMembre").val($_SESSION["membreCourriel"]);
+	 $membre = unserialize($_SESSION["membre"]);
  }
 else {
 	header("location: ../login/login.php");
