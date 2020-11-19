@@ -112,7 +112,11 @@ include_once'../includes/Connection.php';
 			}
 		}
 
-
+		/*
+		Cherche dans la BD un membre pour comparer les password.
+		Si ok, redirectionne le membre à sa page d'accueil avec 
+		une session. Si pas ok,  reste dans la page login.
+		*/
 		function login($courriel,$MDP_membre)
 		{
 			global $cn;
