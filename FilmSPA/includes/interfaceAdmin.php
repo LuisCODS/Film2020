@@ -24,8 +24,8 @@
 				<li class="nav-item">
 					<a class="nav-link" href="../../view/login/logout.php">Quitter <i class="fas fa-sign-in-alt"></i></a>
 				</li>
-				<li class="nav-item" style="padding-left: 700px;">
-					<a class="nav-link" href="#"><?php if (isset ($_SESSION["membre"]) ){ echo $membre->courriel; }  ?></a>
+				<li class="nav-item" style="padding-left: 400px;">
+					<a class="nav-link" href="#"><?php echo $membre->getCourriel();  ?></a>
 				</li>
 			</ul>
 		</div>

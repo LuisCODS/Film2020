@@ -8,10 +8,11 @@
 		private $prenom;
 		private $profil;
 		private $courriel;
-		private $tel_membre;
 		private $MDP_membre;
+		private $tel_membre;
 
-		function __Construct($PK_ID_Membre,$nom,$prenom,$profil,$courriel,$MDP_membre)
+		function __Construct($PK_ID_Membre,$nom,$prenom,
+							 $profil,$courriel,$MDP_membre,$tel_membre)
 		{
 			$this->PK_ID_Membre = $PK_ID_Membre;
             $this->nom 	      = $nom;
@@ -19,6 +20,7 @@
 			$this->profil     = $profil;
 			$this->courriel	  = $courriel;
 			$this->MDP_membre = $MDP_membre;
+			$this->tel_membre = $tel_membre;
 		}
 
 		

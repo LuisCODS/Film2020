@@ -2,20 +2,21 @@
 session_start();
 include_once '../../model/Membre.php';
 
+ /* =================== SESSION ===================*/
 
-// SI LA SESSION EXISTE
-if ( isset ($_SESSION["membre"]) )
- {
+   $membre = new Membre(null,null,null,null,null, null,null ); 
 
-    // $membre = new Membre(null,null,null,null,null,null); 
+    if ( isset ($_SESSION["membre"]) ) {
 
-	   //print_r($_SESSION["membreCourriel"]); //Test get data	
-	   $membre = unserialize($_SESSION["membre"]);
- }
-else {
-	header("location: ../login/login.php");
-	exit();
- }
+         $membre = unserialize($_SESSION["membre"]);
+         var_dump($membre);
+     }
+    else {
+      header("location: ../login/login.php");
+      exit();
+     }
+
+ /* ==============================================*/
  ?>
 
 
@@ -34,10 +35,10 @@ else {
                     <div class="jumbotron jumbotron-fluid">
                         <div class="container-fluid">
                               <h2 class="display-4" >
-                                   <?php  echo $membre->courriel; ?>
+                                  <?php echo $membre->getCourriel();  ?>
                                 </h2>
                               <hr class="my-4">
-                              <h3>Bienvenue parmis nous !</h3>
+                              <h3>Bienvenue !</h3>
                         </div>
                   </div>
               </div>
@@ -46,3 +47,4 @@ else {
 <?php include_once("../../includes/footer.php");?>
 </body>
 </html>
+
