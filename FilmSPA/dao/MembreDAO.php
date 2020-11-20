@@ -98,16 +98,19 @@ include_once '../model/Membre.php';
 			}
 		}
 
+		/*
+			Return a json list of Membre
+		*/
 		function select_All()
 		{
-			//global $cn;
+			global $cn;
 
 			try {
 				$sql = "SELECT * FROM membre";
 				$stmt = $this->cn->prepare($sql);
 				$stmt->execute();
-				$rs = $stmt->fetchAll(PDO::FETCH_ASSOC);  
-				return $rs;		
+				$rs = $stmt->fetchAll(PDO::FETCH_ASSOC); 
+				return json_encode($rs);		
 
 			} catch (Exception $e) {
 				echo 'Erro: '. $e;

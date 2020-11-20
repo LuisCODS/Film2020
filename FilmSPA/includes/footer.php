@@ -5,5 +5,4 @@
 	<script src="../../plugins/jquery/jquery-confirm-v3.3.4/dist/jquery-confirm.min.js"></script> <!-- MS de confirmation  -->  
 	<script type="text/javascript" src="js/moduleFunction.js"></script> <!-- JS DU MODULE--> 
 	<script type="text/javascript" src="js/moduleScript.js"></script><!-- JS DU MODULE--> 
-<!-- ___________________ FIN INCLUDE FOOTER   ___________________-->
 

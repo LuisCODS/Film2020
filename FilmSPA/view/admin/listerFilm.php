@@ -57,7 +57,8 @@ include_once '../../includes/interfaceAdmin.php';
                         <th>Prix</th>
                         <th>Categorie</th>
                         <th>Realisateur</th>
-                        <th>Action</th>                               
+                        <th>Action</th> 
+                        <th></th>                                
                     </tr>
                 </thead>
                     <tbody>  
@@ -67,7 +68,18 @@ include_once '../../includes/interfaceAdmin.php';
                           <td><?php echo "data 1"?></td>                      
                           <td><?php echo "data 1"?></td>                      
                           <td><?php echo "data 1"?></td>                      
-                          <td><?php echo "data 1"?></td>                      
+                          <td>
+                            <a 
+                              class="btn btn-outline-primary " 
+                              href="../film/editer.php?id=<?php  ?>"
+                              role="button">Editer
+                            </a> 
+                            <a 
+                              class="btn btn-outline-danger " 
+                              href="../../controller/film.php?delete=<?php  ?>"
+                              role="button">Supprimer
+                            </a>                        
+                          </td>                                                   
                       </tr>
                     </tbody>
             </table>

@@ -20,38 +20,28 @@ else {
 <?php
 include_once '../../includes/head.php'; 
 include_once '../../includes/interfaceAdmin.php';
+
 ?>
 </head>
 <body class="text-center">
 	<div class="container">
-		<!-- ROW 1 -->
-		<div class="row">
-		    <div class="col-sm col-md col-lg col-xl">      		  	
-				  	<h2> <i class="fas fa-film"></i>   Liste des membres </h2>
-		    </div>
-		</div>
+	    <!-- ROW 1 -->
+	    <div class="row mb-2">
+	        <!--  COL 1 -->
+	        <div class="col-md-4">
+	            <h2 > <i class="fas fa-film"></i>   Liste des Membres </h2> 
+	        </div>  
+	        <!--  COL 2 -->
+	        <div class="col-md-8">
+	        </div> 
+	    </div> 
 	    <!-- ROW 2 -->
 		<div class="row">
 			<!--COL 1-->
-			<div class="col-md-12">
-				<!-- TABLE -->
-			    <table class="table table-hover ">
-			        <thead class="thead-dark">
-			            <tr>
-			                <th>Nom</th>
-			                <th>Prenom</th>
-			                <th>Profil</th>
-			            </tr>
-			        </thead>
-	                <tbody>  
-		                <tr>
-		                    <td><?php echo "data 1"?></td>
-		                    <td><?php echo "data 1"?></td>
-		                    <td><?php echo "data 1"?></td>                       
-		                </tr>
-	                </tbody>
-			    </table>
-			    <!-- FIN TABLE -->
+			<div class="col-md-12" id="showTable">				
+			<!-- ========================================================================  
+								CHARGE TEMPLATE TABLE ICI 
+			======================================================================== -->
 			</div>
 			<!-- FIN COL 1 -->            	
 		</div>

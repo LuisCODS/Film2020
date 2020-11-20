@@ -1,6 +1,5 @@
 <!-- ________________________________  INCLUDE INTERFACE ADMIN ________________________________-->
-<div class="container-fluid">
-	<nav class="navbar navbar-expand-lg navbar-light bg-light mb-5 ">        
+ 	<nav class="navbar navbar-expand-lg navbar-light bg-light mb-5 ">        
 		<a class="navbar-brand" href="#">Films</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
 			aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Alterna navegação">
@@ -30,5 +29,3 @@
 			</ul>
 		</div>
 	</nav>
-</div>
-<!-- ______________________  FIN INTERFACE ADMIN   ______________________-->
