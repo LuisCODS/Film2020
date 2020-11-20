@@ -98,10 +98,8 @@ include_once '../model/Membre.php';
 			}
 		}
 
-		/*
-			Return a json list of Membre
-		*/
-		function select_All()
+		/*Return a select of all membres as a json string*/
+		function selectMembres()
 		{
 			global $cn;
 

@@ -4,10 +4,10 @@
 $(()=>{
 
 //alert("Test load page");
-	literMembres();
+	//literMembres();
 	//listerFilms();
+	showDashboard();
 });
-
 
 
 

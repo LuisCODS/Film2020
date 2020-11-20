@@ -2,22 +2,23 @@
 session_start();
 include_once '../model/Membre.php';
 include_once '../dao/MembreDAO.php';
+include_once '../dao/FilmDAO.php';
 
  /* =================== CONTROLLEUR - ADMIN  ===================*/
 
 extract($_POST);
 $membreDAO = new MembreDAO();	
-
+$filmDAO   = new FilmDAO();
 
 switch ($action) 
 {
 
-	case 'lister':
-		echo $membreDAO->select_All();//Si ok return 1
+	case 'literMembres':
+		echo $membreDAO->selectMembres();//Si ok return 1
 		break;
 
-	case '':
-		// $membreDAO->select();//Si ok return 1
+	case 'literFilms':
+		 echo $filmDAO->selectFilms();//Si ok return 1
 		break;
 		
 	default:
