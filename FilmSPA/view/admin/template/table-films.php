@@ -1,6 +1,6 @@
 
 
-<div class="container">
+<div class="container" id="templateTableFilm">
   <!-- ROW 1 -->
   <div class="row mb-3">
       <!--  COL 1 -->
@@ -13,8 +13,7 @@
       </div> 
       <!--  COL 3 -->
       <div class="col-md-3">
-            <a class="btn btn-outline-success" 
-               href="../film/create.php" 
+           <a class="btn btn-outline-success" href="#" onClick="openFormCreate('templateTableFilm')"; 
                role="button">Nouveau
             </a>
       </div> 

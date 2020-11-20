@@ -2,7 +2,6 @@
 session_start();
 include_once '../../model/Membre.php';
 
-
 // SI LA SESSION EXISTE
 if (isset ($_SESSION["membre"]) ) {
 	 $membre = unserialize($_SESSION["membre"]);
@@ -24,10 +23,11 @@ else {
      ?>
 </head>
 <body>
-	<div class="container-fluid" id="contenu" >
+	<div class="container" id="contenu" >
 	<!-- =======================================
 			CHARGE LES TEMPLATES ICI
-	======================================= -->	</div>
+	======================================= -->	
+	</div>
  <?php include_once("../../includes/footer.php");?>
 </body>
 </html>
