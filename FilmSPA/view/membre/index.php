@@ -29,7 +29,7 @@ include_once '../../model/Membre.php';
      ?>
 </head>
 <body class="text-center">
-    <div class="container-fluid">
+    <div class="container">
           <div class="row">
               <div class="col-sm col-md col-lg col-xl">
                     <div class="jumbotron jumbotron-fluid">

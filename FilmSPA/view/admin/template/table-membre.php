@@ -29,4 +29,5 @@
 ?>
     </tbody>
 </table>
+ <hr>
 <!-- FIN TABLE -->

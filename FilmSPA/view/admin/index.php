@@ -2,17 +2,18 @@
 session_start();
 include_once '../../model/Membre.php';
 
+
 // SI LA SESSION EXISTE
-if (isset ($_SESSION["membre"]) )
- {
+if (isset ($_SESSION["membre"]) ) {
 	 $membre = unserialize($_SESSION["membre"]);
- }
+}
 else {
 	header("location: ../login/login.php");
 	exit();
  }
  ?>
 
+<!-- ==================================================== -->
 
 <!doctype html>
 <html lang="en">
@@ -49,7 +50,7 @@ else {
 				                          <i class="fa fa-user fa-4x"></i>
 				                        </div>
 				                        <h6 class="text-uppercase">Membres</h6>
-				                        <h1 class="display-4"><?php   ?></h1>
+				                        <h1 class="display-4"><?php echo Membre:: $nbObje; ?></h1>
 				                      </div>
 				                    </div>
 				                  </div>

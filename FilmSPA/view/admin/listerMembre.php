@@ -13,14 +13,13 @@ else {
  }
 
  ?>
-
+<!-- ========================================================= -->
 <!doctype html>
 <html lang="en">
 <head>
 <?php
 include_once '../../includes/head.php'; 
 include_once '../../includes/interfaceAdmin.php';
-
 ?>
 </head>
 <body class="text-center">
