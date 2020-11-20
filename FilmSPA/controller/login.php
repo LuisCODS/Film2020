@@ -11,7 +11,7 @@ $membreDAO = new MembreDAO();
 //CAS LOGIN
 if ( isset($_POST["action"])  &&  $_POST["action"] == "login"){
 
-	print_r($MDP_membre);
+	 //print_r($MDP_membre);
 	 $membreDAO->login($courriel,$MDP_membre);
 }
 else{ 

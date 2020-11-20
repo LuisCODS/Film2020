@@ -3,8 +3,6 @@ session_start();
 include_once '../model/Membre.php';
 include_once '../dao/MembreDAO.php';
 
-
-
  /* =================== CONTROLLEUR - Membre ===================*/
 
 	//GLOBAL
@@ -56,7 +54,7 @@ include_once '../dao/MembreDAO.php';
 			break;
 
 		case 'delete':
-				echo $membreDAO->delete($id);//Si ok return 1
+				//echo $membreDAO->delete($id);//Si ok return 1
 			break;
 
 		case 'select':

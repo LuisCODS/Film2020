@@ -31,7 +31,7 @@ include_once '../../model/Membre.php';
 </head>
 <body class="text-center">
 <div class="container-fluid">
-            <!--  LIGNE 1 -->
+        <!--  LIGNE 1 -->
         <div class="row mb-3">
              <div class="col-md-8">
              </div>  

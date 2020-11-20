@@ -31,6 +31,8 @@
              </p>  
             <button type="submit" name="btnLogin" id="btnLogin" class="form-control btn btn-primary">Login</button>  
             <a href="../membre/create.php">Pas encore membre?</a> 
+            <hr>
+            <a href="../home/index.php" role="button"><i class="fas fa-backward"></i>   Retourner</a>
        </form> 
   </div>   
       <?php include_once("../../includes/footer.php");?>

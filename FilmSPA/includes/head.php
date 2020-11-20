@@ -11,4 +11,3 @@
 	<!-- CSS DU MODULE -->    
 	<link rel="stylesheet" type="text/css" href="css/moduleStyle.css">
 	<title>Filme 2020</title>
-<!-- ____________________________   FIN INCLUDE HEAD   ____________________________-->

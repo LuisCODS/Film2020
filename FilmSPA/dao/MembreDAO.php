@@ -98,16 +98,19 @@ include_once '../model/Membre.php';
 			}
 		}
 
+		/*
+			Return a json list of Membre
+		*/
 		function select_All()
 		{
-			//global $cn;
+			global $cn;
 
 			try {
 				$sql = "SELECT * FROM membre";
 				$stmt = $this->cn->prepare($sql);
 				$stmt->execute();
-				$rs = $stmt->fetchAll(PDO::FETCH_ASSOC);  
-				return $rs;		
+				$rs = $stmt->fetchAll(PDO::FETCH_ASSOC); 
+				return json_encode($rs);		
 
 			} catch (Exception $e) {
 				echo 'Erro: '. $e;
@@ -138,8 +141,8 @@ include_once '../model/Membre.php';
 					//print_r($rs->MDP_membre);
 
 					//return TRUE if password and hash are equals, FALSE otherwise.
-					if(password_verify($MDP_membre, $rs->MDP_membre)) 
-					{    				
+					 if(password_verify($MDP_membre, $rs->MDP_membre)) 
+					 {    				
 					    //Create an objet with the result and add it as a session
 					    $membre = new Membre($rs->PK_ID_Membre,
 											 $rs->nom,
@@ -149,8 +152,8 @@ include_once '../model/Membre.php';
 											 $rs->MDP_membre,
 											 $rs->tel_membre );	
 
-						// //Create a session
-						$_SESSION["membre"] = serialize($membre);
+						 //Create a session
+					 	$_SESSION["membre"] = serialize($membre);
 
 						//Gestion d'interface
 						if ($rs->profil == "admin"){
