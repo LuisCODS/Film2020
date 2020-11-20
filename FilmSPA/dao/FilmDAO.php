@@ -1,5 +1,5 @@
 <?php
-include_once '../includes/Connection.class.php';
+include_once'../includes/Connection.php';
 
 
 Class FilmDAO 
@@ -88,13 +88,25 @@ Class FilmDAO
 		}
 	}
 
-	function list()
+	//Return a select of films as json string
+	function selectFilms()
 	{
-        $sql = 'select PK_ID_Film,titre,prix,realisateur,categorie,pochette,description from Film';
-		$stmt = $this->cn->prepare($sql);
-		$stmt->execute();
-		$rs = $stmt->fetch(PDO::FETCH_OBJ); 
-		return($rs);
+		global $cn;
+
+			try {
+				$sql = "SELECT * FROM film";
+				$stmt = $this->cn->prepare($sql);
+				$stmt->execute();
+				$rs = $stmt->fetchAll(PDO::FETCH_ASSOC); 
+				return json_encode($rs);		
+
+			} catch (Exception $e) {
+				echo 'Erro: '. $e;
+
+			}finally{
+				unset($cn);//close  connexion
+				unset($stmt);//clean memoire
+			}
 	}
 
 	// function getFilm($PK_ID_Film)

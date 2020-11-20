@@ -30,7 +30,7 @@ include_once '../dao/MembreDAO.php';
 				//Insert it into DB and bring back its ID
 				$lastID = $membreDAO->insert($membre);//Si ok return 1
 				//clean memoire
-				//unset($membre);
+				unset($membre);
 				//Go create a session
 				$membreDAO->createSession($lastID);
 
