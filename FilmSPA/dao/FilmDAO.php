@@ -109,16 +109,6 @@ Class FilmDAO
 			}
 	}
 
-	// function getFilm($PK_ID_Film)
-	// {
- //        $sql = 'select * from Film where PK_ID_Film = ? ';
-	// 	$stmt = $this->cn->prepare($sql);
-	// 	$stmt->bindValue(1, $PK_ID_Film);	
-	// 	$stmt->execute();
-	// 	$tableau = $stmt->fetchall(PDO::FETCH_ASSOC); 
-	// 	return($tableau);
-	// }
-
 }
 
  
