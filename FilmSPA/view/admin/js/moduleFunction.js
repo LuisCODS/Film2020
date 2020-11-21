@@ -1,8 +1,8 @@
-function montrer(elem){
+function rendreVisible(elem){
 	document.getElementById(elem).style.display='block';
 }
 
-function cacher(elem){
+function rendreInvisible(elem){
   document.getElementById(elem).style.display='none';
 }
 
@@ -31,7 +31,7 @@ function literMembres()
 		}).done((template)=>{
 			//Attache le contenu dans la div avec l'ID (contenu)
 			$("#contenu").html(template);
-			montrer(contenu);
+			rendreInvisible(contenu);
 		})
 	});	
 }
@@ -45,10 +45,9 @@ function showDashboard(){
 	}).done((template)=>{
 		//Attache le contenu dans la div avec l'ID (contenu)
 		$("#contenu").html(template);
-		montrer(contenu);
+		rendreInvisible(contenu);
 	});
 }
-
 
 
 function listerFilms()
@@ -61,13 +60,13 @@ function listerFilms()
 		data: action	
 	}).done((jsonString)=>{
 	
-		//alert(jsonString);	
-		
+		//Va creer le template
 		$.ajax({
 			method: "POST", 
 			url:"template/table-films.php",
 			data: "chaine="+jsonString
 			
+		//Recoit le template
 		}).done((jsonString)=>{
 
 			//alert(jsonString);
@@ -75,4 +74,26 @@ function listerFilms()
 			$("#contenu").html(jsonString);
 		})
 	});	
+}
+
+/* 
+  Hide template table Film.
+  Show display form to create a new movie.
+ */
+function openFormCreate(elem){
+	//alert("Test Callback");
+  rendreInvisible(elem);
+  showFormCreateFilm();  
+}
+
+function showFormCreateFilm()
+{
+	$.ajax({
+		method: "POST", 
+		url:"template/createFilm.php",
+	
+	}).done((template)=>{
+		$("#contenu").html(template);
+		rendreInvisible(contenu);
+	});
 }
