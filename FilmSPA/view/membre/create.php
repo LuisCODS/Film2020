@@ -1,7 +1,5 @@
  <?php 
-
  include_once '../../includes/interfaceVisiteur.php';
-
   ?>
 
 <!doctype html>

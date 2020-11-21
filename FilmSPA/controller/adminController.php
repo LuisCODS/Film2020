@@ -14,11 +14,11 @@ switch ($action)
 {
 
 	case 'literMembres':
-		echo $membreDAO->selectMembres();//Si ok return 1
+		//echo $membreDAO->selectMembres();//Si ok return 1
 		break;
 
 	case 'literFilms':
-		 echo $filmDAO->selectFilms();//Si ok return 1
+		 //echo $filmDAO->selectFilms();//Si ok return 1
 		break;
 		
 	default:

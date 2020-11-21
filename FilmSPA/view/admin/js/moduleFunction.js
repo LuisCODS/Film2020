@@ -9,14 +9,15 @@ function rendreInvisible(elem){
 
 function literMembres()
 {
-	var action = 'action=literMembres';
+	//alert("Teste");
+	var action = 'action=select';
 
 	$.ajax({
 		method: "POST", 
-		url:"../../controller/admin.php",
+		url:"../../controller/membreController.php",
 		data: action	
 	}).done((jsonString)=>{
-	//alert(data);	
+	   //alert(jsonString);	
 
 		/*
 			Fait une nouvelle requisition pour envoyer les données json(chaine de string)
@@ -29,6 +30,7 @@ function literMembres()
 			data: "chaine="+jsonString
 			
 		}).done((template)=>{
+			alert(template);
 			//Attache le contenu dans la div avec l'ID (contenu)
 			$("#contenu").html(template);
 			rendreInvisible(contenu);
@@ -56,7 +58,7 @@ function listerFilms()
 
 	$.ajax({
 		method: "POST", 
-		url:"../../controller/admin.php",
+		url:"../../controller/adminController.php",
 		data: action	
 	}).done((jsonString)=>{
 	

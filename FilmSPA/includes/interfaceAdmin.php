@@ -8,7 +8,7 @@
 <div class="collapse navbar-collapse" id="navbarNavDropdown">
 	<ul class="navbar-nav">
 		<li class="nav-item active">
-			<a class="nav-link"  onClick="showDashboard();" >
+			<a class="nav-link"  href="" onClick="showDashboard();" >
 				<i class="fas fa-home"></i>
 				<span class="sr-only">(Página atual)</span>
 			</a>
@@ -19,11 +19,11 @@
 			Gestion
 			</a>
 			<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-				<a class="dropdown-item"  onClick="literMembres();" >
+				<a class="dropdown-item"  href="" onClick="literMembres();" >
 					<i class="fas fa-users"></i>
 					  Membres
 				</a> 
-				<a class="dropdown-item" onClick="listerFilms();">
+				<a class="dropdown-item" href="" onClick="listerFilms();">
 					<i class="fas fa-video"></i>
 					  Films
 				</a>

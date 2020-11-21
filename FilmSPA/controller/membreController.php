@@ -58,7 +58,7 @@ include_once '../dao/MembreDAO.php';
 			break;
 
 		case 'select':
-			echo $membreDAO->select($input);//Si ok return 1
+			echo $membreDAO->selectMembres();//Si ok return 1
 			break;
 			
 		default:
