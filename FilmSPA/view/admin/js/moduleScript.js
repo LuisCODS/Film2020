@@ -7,35 +7,25 @@ $(()=>{
 });
 
 
-
-
-
-
-
-
-
-//========================================================================
-//   
-//   
-//========================================================================
-//$('#btnNouveau').click(()=>    
-//{	
-	//alert("Test callBack");
-
+// $('#btnEnregistrer').click(function(){
+	
+	//alert("Tetste call");
+	//action="../../controller/admin.php"  onClick="enregistrerFilm();" 
 	//cacher();
 	//get all inputs from form (Profil_ID et ProfilNom )
-	// var champs   = $("#formAjouter").serialize();
-	// var actionType = 'action=delete';
+	//var champs  = $("#formCreateFilm").serialize();
+	//alert(champs);
+	// var action = 'action=insert';
 
 	// // REQUISITION asynchrone 
 	// $.ajax({
-	// 	method: "POST", 
-	// 	url:profilController,
-	// 	data: actionType+'&'+champs
-		
+	// 		method: "POST", 
+	// 		url:"../../controller/film.php",
+	// 		data: action+'&'+champs		
 	// 	}).done((callBack)=>
 	// 	{
-	// 		var reponse = (callBack == 1) ? "Supprimé avec sucess!" : callBack;
+	// 		alert(callback);
+	// 		//var reponse = (callBack == 1) ? "Supprimé avec sucess!" : callBack;
 	// 		//Windos popup du plugin	
 	// 		$.confirm({
 	// 			title: 'Attention!',
@@ -49,4 +39,7 @@ $(()=>{
 	// 			}
 	// 		});
 	// 	});
-//}); 
+// })   
+
+
+

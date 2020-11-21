@@ -1,10 +1,10 @@
 <?php
-// --------------------------------------------------------------
-// 				CONTROLLEUR - film  
-//--------------------------------------------------------------- 
-include '../model/Film.class.php';
-include '../dao/FilmDAO.class.php';
-require_once("../includes/ConnectionPDO.php");
+
+// =================== CONTROLLEUR - film ===================
+
+include '../model/Film.php';
+include '../dao/FilmDAO.php';
+// require_once("../includes/ConnectionPDO.php");
 
 //GLOBAL
 $filmDAO = new FilmDAO();
@@ -40,7 +40,6 @@ if($action == "insert")
 
 	$film = new Film($PK_ID_Film,$titre,$prix,$realisateur,$categorie,$pochette,trim($description),$url);
 	$filmDAO->insert($film);//Si ok return 1	
-    header("location:../view/admin/listerFilm.php");
 }
 
 

@@ -6,7 +6,8 @@ Class FilmDAO
 {
 	private $cn;
 
-	function __Construct()	{
+	function __Construct()
+	{
 		$pdo = new Connection();
 		$this->cn = $pdo->getConnection();
 	}
