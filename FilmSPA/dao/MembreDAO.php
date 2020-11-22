@@ -104,7 +104,7 @@ include_once '../model/Membre.php';
 			global $cn;
 
 			try {
-				$sql = "SELECT * FROM membre";
+				$sql = "select * FROM membre";
 				$stmt = $this->cn->prepare($sql);
 				$stmt->execute();
 				$rs = $stmt->fetchAll(PDO::FETCH_ASSOC); 
