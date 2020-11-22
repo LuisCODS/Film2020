@@ -1,6 +1,6 @@
 <!-- ________________________________  INCLUDE INTERFACE ADMIN ________________________________-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5 ">        
-<a class="navbar-brand">Films</a>
+<a class="navbar-brand" >Films</a>
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
 	aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Alterna navegação">
 	<span class="navbar-toggler-icon"></span>
@@ -14,7 +14,7 @@
 			</a>
 		</li>
 		<li class="nav-item dropdown">
-			<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+			<a class="nav-link dropdown-toggle"  id="navbarDropdownMenuLink"
 			role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			Gestion
 			</a>
@@ -23,7 +23,7 @@
 					<i class="fas fa-users"></i>
 					  Membres
 				</a> 
-				<a class="dropdown-item"  onClick="listerFilms();">
+				<a class="dropdown-item"   onClick="listerFilms();">
 					<i class="fas fa-video"></i>
 					  Films
 				</a>
