@@ -30,7 +30,7 @@ function literMembres()
 			data: "chaine="+jsonString
 			
 		}).done((template)=>{
-			alert(template);
+			//alert(template);
 			//Attache le contenu dans la div avec l'ID (contenu)
 			$("#contenu").html(template);
 			rendreInvisible(contenu);
@@ -54,18 +54,18 @@ function showDashboard(){
 
 function listerFilms()
 {
-	var action = 'action=literFilms';
+	var action = 'action=select';
 
 	$.ajax({
 		method: "POST", 
-		url:"../../controller/adminController.php",
+		url:"../../controller/filmController.php",
 		data: action	
 	}).done((jsonString)=>{
 	
 		//Va creer le template
 		$.ajax({
 			method: "POST", 
-			url:"template/table-films.php",
+			url:"../admin/template/table-films.php",
 			data: "chaine="+jsonString
 			
 		//Recoit le template
