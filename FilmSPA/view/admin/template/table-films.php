@@ -13,7 +13,7 @@
       </div> 
       <!--  COL 3 -->
       <div class="col-md-3">
-           <a class="btn btn-outline-success" href="#" onClick="openFormCreate('templateTableFilm')"; 
+           <a class="btn btn-outline-success" onClick="openFormCreate('templateTableFilm')"; 
                role="button">Nouveau
             </a>
       </div> 

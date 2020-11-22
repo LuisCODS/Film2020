@@ -9,14 +9,15 @@ function rendreInvisible(elem){
 
 function literMembres()
 {
-	var action = 'action=literMembres';
+	//alert("Teste");
+	var action = 'action=select';
 
 	$.ajax({
 		method: "POST", 
-		url:"../../controller/admin.php",
+		url:"../../controller/membreController.php",
 		data: action	
 	}).done((jsonString)=>{
-	//alert(data);	
+	   //alert(jsonString);	
 
 		/*
 			Fait une nouvelle requisition pour envoyer les données json(chaine de string)
@@ -29,6 +30,7 @@ function literMembres()
 			data: "chaine="+jsonString
 			
 		}).done((template)=>{
+			//alert(template);
 			//Attache le contenu dans la div avec l'ID (contenu)
 			$("#contenu").html(template);
 			rendreInvisible(contenu);
@@ -52,18 +54,18 @@ function showDashboard(){
 
 function listerFilms()
 {
-	var action = 'action=literFilms';
+	var action = 'action=select';
 
 	$.ajax({
 		method: "POST", 
-		url:"../../controller/admin.php",
+		url:"../../controller/filmController.php",
 		data: action	
 	}).done((jsonString)=>{
 	
 		//Va creer le template
 		$.ajax({
 			method: "POST", 
-			url:"template/table-films.php",
+			url:"../admin/template/table-films.php",
 			data: "chaine="+jsonString
 			
 		//Recoit le template
@@ -97,3 +99,38 @@ function showFormCreateFilm()
 		rendreInvisible(contenu);
 	});
 }
+
+//function enregistrerFilm()
+//{
+	//alert("Tetste call");
+	//action="../../controller/admin.php"  onClick="enregistrerFilm();" 
+	//cacher();
+	//get all inputs from form (Profil_ID et ProfilNom )
+	//var champs  = $("#formCreateFilm").serialize();
+	//alert(champs);
+	// var action = 'action=insert';
+
+	// // REQUISITION asynchrone 
+	// $.ajax({
+	// 		method: "POST", 
+	// 		url:"../../controller/film.php",
+	// 		data: action+'&'+champs		
+	// 	}).done((callBack)=>
+	// 	{
+	// 		alert(callback);
+	// 		//var reponse = (callBack == 1) ? "Supprimé avec sucess!" : callBack;
+	// 		//Windos popup du plugin	
+	// 		$.confirm({
+	// 			title: 'Attention!',
+	// 			content: reponse,
+	// 			buttons: {
+	// 				Ok: ()=>{
+	// 			         // Recharge la page actuelle à partir du 
+	// 			         //... serveur, sans utiliser le cache.
+	// 					 location.reload(true);
+	// 				}				
+	// 			}
+	// 		});
+	// 	});
+
+//}

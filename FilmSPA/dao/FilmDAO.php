@@ -6,7 +6,8 @@ Class FilmDAO
 {
 	private $cn;
 
-	function __Construct()	{
+	function __Construct()
+	{
 		$pdo = new Connection();
 		$this->cn = $pdo->getConnection();
 	}
@@ -94,7 +95,7 @@ Class FilmDAO
 		global $cn;
 
 			try {
-				$sql = "SELECT * FROM film";
+				$sql = 'select * FROM film';
 				$stmt = $this->cn->prepare($sql);
 				$stmt->execute();
 				$rs = $stmt->fetchAll(PDO::FETCH_ASSOC); 
@@ -109,6 +110,26 @@ Class FilmDAO
 			}
 	}
 
-}
+	function findById($id)
+	{
+		try {
+				$sql = 'select * from Film where PK_ID_Film = ? ';
+				$stmt = $this->cn->prepare($sql);
+				$stmt->bindValue(1, $id);					
+				$stmt->execute();// true/False
+				$rs = $stmt->fetchAll(PDO::FETCH_OBJ); 
+				return $rs;
+
+		} catch (PDOException $e) {
+			echo "Erro: ". $e;
+
+		}finally{
+			unset($cn);//close  connexion
+			unset($stmt);//clean memoire
+		}
+	}
+
+
+}//FIN CLASS
 
  
