@@ -32,7 +32,7 @@ include_once '../model/Membre.php';
 					$stmt->bindValue(4, $m->getCourriel() );
 					$stmt->bindValue(5, $m->getTelMembre() );
 					$stmt->bindValue(6, $m->getMdpMembre() );
-					$stmt->execute();//return 1 si ok
+					$stmt->execute(); // return true /false
 					
 					//Return last ID added
 					return $LAST_ID  = $this->cn->lastInsertId(); 

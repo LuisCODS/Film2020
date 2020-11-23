@@ -40,6 +40,9 @@ function literMembres()
 
 function showDashboard(){
 
+	//Cache la div create film
+	  $("#divFormFilm").hide();
+
 	$.ajax({
 		method: "POST", 
 		url:"template/dashboard.php",
@@ -84,53 +87,71 @@ function listerFilms()
  */
 function openFormCreate(elem){
 	//alert("Test Callback");
-  rendreInvisible(elem);
-  showFormCreateFilm();  
+	  //Cache table list film
+	  rendreInvisible(elem);
+	  // Display form create film
+	  $("#divFormFilm").show();
+	  //showFormCreateFilm();  
 }
 
-function showFormCreateFilm()
+function enregistrerFilm()
 {
+	var formImputs = new FormData(document.getElementById('formEnreg'));
+	//formImputs.append('action','insert');
+
 	$.ajax({
-		method: "POST", 
-		url:"template/createFilm.php",
-	
-	}).done((template)=>{
-		$("#contenu").html(template);
-		rendreInvisible(contenu);
-	});
+			method: "POST", 
+			url:"../../controller/filmController.php",
+			data: formImputs,
+			contentType: false,
+			processData:false,
+
+		}).done((callBack)=>{
+
+			$.ajax({
+				method: "POST", 
+				url:"../admin/index.php",
+
+			})
+	 		//alert(callback);
+	 		 //$("#divFormFilm").hide();
+	 		//reponseInsert();
+			// var sreponse = (callBack == 1) ? "Film enregistré avec sucess!" : callBack;
+			//$('#messages').html(reponse);
+		    //setTimeout(function(){ $('#messages').html(""); }, 5000);
+
+
+	 	});
 }
 
-//function enregistrerFilm()
-//{
-	//alert("Tetste call");
-	//action="../../controller/admin.php"  onClick="enregistrerFilm();" 
-	//cacher();
-	//get all inputs from form (Profil_ID et ProfilNom )
-	//var champs  = $("#formCreateFilm").serialize();
-	//alert(champs);
-	// var action = 'action=insert';
+/*function reponseInsert()
+{
+	alert("dfsgdgsgsgs");
+}*/
 
-	// // REQUISITION asynchrone 
-	// $.ajax({
-	// 		method: "POST", 
-	// 		url:"../../controller/film.php",
-	// 		data: action+'&'+champs		
-	// 	}).done((callBack)=>
-	// 	{
-	// 		alert(callback);
-	// 		//var reponse = (callBack == 1) ? "Supprimé avec sucess!" : callBack;
-	// 		//Windos popup du plugin	
-	// 		$.confirm({
-	// 			title: 'Attention!',
-	// 			content: reponse,
-	// 			buttons: {
-	// 				Ok: ()=>{
-	// 			         // Recharge la page actuelle à partir du 
-	// 			         //... serveur, sans utiliser le cache.
-	// 					 location.reload(true);
-	// 				}				
-	// 			}
-	// 		});
-	// 	});
+// function valider(){
+// 	var num=document.getElementById('num').value;
+// 	var titre=document.getElementById('titre').value;
+// 	var duree=document.getElementById('duree').value;
+// 	var res=document.getElementById('res').value;
+// 	var numRegExp=new RegExp("^[0-9]{1,4}$");
+// 	if(num!="" && titre!="" && duree!="" && res!="")
+// 		if(numRegExp.test(num))
+// 			return true;
+// 	return false;
+// }
 
-//}
+//Cas d'un button
+/*
+function valider(){
+	var formEnreg=document.getElementById('formEnreg');
+	var num=document.getElementById('num').value;
+	var titre=document.getElementById('titre').value;
+	var duree=document.getElementById('duree').value;
+	var res=document.getElementById('res').value;
+	var numRegExp=new RegExp("^[0-9]{1,4}$");
+	if(num!="" && titre!="" && duree!="" && res!="")
+		if(numRegExp.test(num))
+			formEnreg.submit();
+}
+*/

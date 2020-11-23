@@ -1,7 +1,6 @@
 <?php
 include_once'../includes/Connection.php';
 
-
 Class FilmDAO 
 {
 	private $cn;
@@ -22,8 +21,9 @@ Class FilmDAO
 					realisateur,
 					categorie,
 					pochette,
-					description)
-					values(?,?,?,?,?,?)';
+					description,
+					url)
+					values(?,?,?,?,?,?,?)';
 
 				$stmt = $this->cn->prepare($sql);
 
@@ -33,12 +33,15 @@ Class FilmDAO
 				$stmt->bindValue(4, $f->getCategorie() );
 				$stmt->bindValue(5, $f->getPochette() );
 				$stmt->bindValue(6, $f->getDescription() );
-				$stmt->execute();
-				unset($stmt);//libere la memoire
+				$stmt->bindValue(7, $f->getUrl() );
+				$stmt->execute();//true /false
 
-		} catch (PDOException $e) {
-			echo 'Erro: '. $e;
-		}
+			} catch (PDOException $e) {
+				echo 'Erro: '. $e;
+			}finally{
+				unset($cn);//close  connexion
+				unset($stmt);//clean memoire
+			}
 	}
 
 
@@ -132,4 +135,4 @@ Class FilmDAO
 
 }//FIN CLASS
 
- 
+ ?>
