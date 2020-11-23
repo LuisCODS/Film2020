@@ -1,6 +1,13 @@
 
 <!-- TABLE -->
 <div class="container">
+      <div class="row mb-3">
+      <!--  COL 1 -->
+      <div class="col-md-12">
+          <h2 > <i class="fas fa-film"></i>   Liste des Membres </h2> 
+      </div>  
+  </div> 
+
     <table class="table table-hover ">
         <thead class="thead-dark">
             <tr>

@@ -1,11 +1,11 @@
 <!-- _________________  FORM AJOUTER FILM _________________ --> 
-<div class="container" id="divFormFilm" style="display: flex;justify-content: center;">    
-     <!-- <form id="formCreateFilm" enctype="multipart/form-data" style="width: 30%;" method="POST"> -->  
-     <form>        
+<div class="container" id="divFormFilm" 
+     style="display: flex;justify-content: center;">    
+        <form id="formEnreg" enctype="multipart/form-data"  method="POST">
         <h2>Nouveau Film</h2>
         <!-- FORNECE O TIPO DE ACAO AO CONTROLLER -->
-<!--         <div class="form-group">
-              <input 
+        <div class="form-group">
+<!--               <input 
                 type="hidden" 
                 class="form-control" 
                 readonly="true"
@@ -71,8 +71,8 @@
             <input type="file" class="form-control" id="pochette" name="pochette" >
         </div>        
         <button id="btnEnregistrer" 
-                type="submit"        
-                onClick="enregistrerFilm();"                                      
+                type="submit" 
+                onClick="enregistrerFilm();"                      
                 class="btn btn-primary">Enregistrer
         </button>
       </form> 

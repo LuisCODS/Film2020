@@ -1,12 +1,7 @@
- #divEnlever, #divEnreg, #divFiche{
-/*	position: absolute;
-	top:20%;
-	left:35%;*/
-	display:none;	
+
+#divFormFilm { 
+	display: flex;
+	justify-content: center;
+	/* width: 40%;*/
 }
 
-#formCreateFilm {
-/*    display: flex;
-  justify-content: center;*/
-  /* width: 40%;*/
-}

@@ -1,5 +1,3 @@
-
-
 <div class="container" id="templateTableFilm">
   <!-- ROW 1 -->
   <div class="row mb-3">
@@ -13,7 +11,8 @@
       </div> 
       <!--  COL 3 -->
       <div class="col-md-3">
-           <a class="btn btn-outline-success" onClick="openFormCreate('templateTableFilm')"; 
+           <a class="btn btn-outline-success" 
+              onClick="openFormCreate('templateTableFilm')"
                role="button">Nouveau
             </a>
       </div> 
@@ -39,7 +38,7 @@
 
 <?php 
   extract($_POST);
-    // var_dump($chaine);
+ //print_r($chaine);
   foreach (json_decode($chaine) as $ligne) {
 ?>
     <tr>
@@ -47,8 +46,8 @@
         <td><?php echo($ligne->titre) ?></td>
         <td>$ <?php echo($ligne->prix)?></td>
         <td><?php echo($ligne->categorie)?></td>  
-        <td><?php echo($ligne->realisateur)?></td>   
-        <td>
+        <td><?php echo($ligne->realisateur)?></td>  
+        <td>     
           <a 
             class="btn btn-outline-primary " 
             href="../film/editer.php?id=<?php echo ($ligne->PK_ID_Film); ?>"
