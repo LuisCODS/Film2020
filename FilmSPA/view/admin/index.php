@@ -26,12 +26,15 @@ else {
 			CHARGE LES TEMPLATES ICI
 	======================================= -->	
 	</div>
+    <!-- MSN --> 
+    <div id="messages" style="position:absolute;top:2%;left:80%;color:red;"></div>
 
 <!--  FORM AJOUTER FILM  -->
 <div class="container" id="divFormFilm">    
 	<!-- <form id="formEnreg" enctype="multipart/form-data" action="../../controller/filmController.php" method="POST" > -->
 
-	<form id="formEnreg" enctype="multipart/form-data" action="../../controller/filmController.php" method="POST" >
+	<form id="formEnreg" >
+
     <h2>Nouveau Film</h2>
     <!-- FORNECE O TIPO DE ACAO AO CONTROLLER -->
     <div class="form-group">

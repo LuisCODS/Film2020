@@ -11,7 +11,9 @@ switch ($action)
 {	
 	case 'insert':
 		//var_dump($action); ok
-		enregistrer();
+		  enregistrer(); // envois 1 si ok
+		   //header("location:../view/admin/index.php");
+
 		break;
 
 	case 'update':
@@ -34,7 +36,6 @@ switch ($action)
 
 function enregistrer()
 {
-	
 	$titre=$_POST['titre'];
 	$prix=$_POST['prix'];
 	$realisateur=$_POST['realisateur'];
@@ -42,7 +43,6 @@ function enregistrer()
 	//$pochette=$_POST['pochette'];
 	$description=$_POST['description'];
 	$url=$_POST['url'];
-
 
 	$dossier="../img/";
 	$nomPochette=sha1($titre.time());
@@ -71,8 +71,8 @@ function enregistrer()
 				trim($url) );
 
 	$filmDAO = new FilmDAO();	
-	echo $filmDAO->insert($film);//Si ok return 1
-	
+	$filmDAO->insert($film);//Si ok return 1
+	unset($filmDAO);//clean memoire
 }
 
 

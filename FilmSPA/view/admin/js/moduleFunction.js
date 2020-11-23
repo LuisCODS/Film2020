@@ -102,26 +102,32 @@ function enregistrerFilm()
 	$.ajax({
 			method: "POST", 
 			url:"../../controller/filmController.php",
-			data: formImputs		
+			data: formImputs,
+			contentType: false,
+			processData:false,
+
 		}).done((callBack)=>{
 
-	 		alert(callback);
-	// 		//var reponse = (callBack == 1) ? "Supprimé avec sucess!" : callBack;
-	// 		//Windos popup du plugin	
-	// 		// 	$.confirm({
-	// 		// 		title: 'Attention!',
-	// 		// 		content: reponse,
-	// 		// 		buttons: {
-	// 		// 			Ok: ()=>{
-	// 		// 		         // Recharge la page actuelle à partir du 
-	// 		// 		         //... serveur, sans utiliser le cache.
-	// 		// 				 location.reload(true);
-	// 		// 			}				
-	// 		// 		}
-	// 		// 	});
-	 	});
+			$.ajax({
+				method: "POST", 
+				url:"../admin/index.php",
 
+			})
+	 		//alert(callback);
+	 		 //$("#divFormFilm").hide();
+	 		//reponseInsert();
+			// var sreponse = (callBack == 1) ? "Film enregistré avec sucess!" : callBack;
+			//$('#messages').html(reponse);
+		    //setTimeout(function(){ $('#messages').html(""); }, 5000);
+
+
+	 	});
 }
+
+/*function reponseInsert()
+{
+	alert("dfsgdgsgsgs");
+}*/
 
 // function valider(){
 // 	var num=document.getElementById('num').value;
