@@ -2,18 +2,20 @@
 include '../model/Film.php';
 include '../dao/FilmDAO.php';
 
-extract($_POST);
-//$action=$_POST['action'];
-$filmDAO = new FilmDAO();	
 // =================== CONTROLLEUR - film ===================
+
+//extract($_POST);
+$action=$_POST['action'];
+$filmDAO = new FilmDAO();
+$tabRes=array();
 
 switch ($action) 
 {	
 	case 'insert':
+		global $tabRes;
 		//var_dump($action); ok
-		  enregistrer(); // envois 1 si ok
+		  echo enregistrer(); // envois 1 si ok
 		   //header("location:../view/admin/index.php");
-
 		break;
 
 	case 'update':
@@ -24,6 +26,7 @@ switch ($action)
 
 	case 'select':
 		 echo $filmDAO->selectFilms();//Si ok return 1
+		 unset($filmDAO);//clean memoire
 		break;
 
 	default:
@@ -32,15 +35,16 @@ switch ($action)
 
 }//fin switch
 
-
+// =================== METHODES ===================
 
 function enregistrer()
 {
+	global $tabRes;
+
 	$titre=$_POST['titre'];
 	$prix=$_POST['prix'];
 	$realisateur=$_POST['realisateur'];
 	$categorie=$_POST['categorie'];
-	//$pochette=$_POST['pochette'];
 	$description=$_POST['description'];
 	$url=$_POST['url'];
 
@@ -71,7 +75,11 @@ function enregistrer()
 				trim($url) );
 
 	$filmDAO = new FilmDAO();	
-	$filmDAO->insert($film);//Si ok return 1
+	return $filmDAO->insert($film);//Si ok return 1
+	// $tabRes['action']="enregistrer";
+	// $tabRes['msg']="Film bien enregistre";
+	// 	echo $tabRes['action'];
+	// }
 	unset($filmDAO);//clean memoire
 }
 

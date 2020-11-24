@@ -2,6 +2,11 @@
 #divFormFilm { 
 	display: flex;
 	justify-content: center;
-	/* width: 40%;*/
+	display: none;
+	width: 30%;
+}
+
+#divMsg { 
+	display: none;
 }
 

@@ -1,24 +1,21 @@
-function rendreVisible(elem){
-	document.getElementById(elem).style.display='block';
-}
+// function rendreVisible(elem){
+// 	document.getElementById(elem).style.display='block';
+// }
 
 function rendreInvisible(elem){
   document.getElementById(elem).style.display='none';
 }
 
-
 function literMembres()
 {
 	//alert("Teste");
 	var action = 'action=select';
-
 	$.ajax({
 		method: "POST", 
 		url:"../../controller/membreController.php",
 		data: action	
 	}).done((jsonString)=>{
 	   //alert(jsonString);	
-
 		/*
 			Fait une nouvelle requisition pour envoyer les données json(chaine de string)
 			au dossier template(table-membre.php) qui va parcourrir la chaine json et creer 
@@ -27,13 +24,12 @@ function literMembres()
 		$.ajax({
 			method: "POST", 
 			url:"../admin/template/table-membres.php",
-			data: "chaine="+jsonString
-			
+			data: "chaine="+jsonString	
 		}).done((template)=>{
 			//alert(template);
 			//Attache le contenu dans la div avec l'ID (contenu)
 			$("#contenu").html(template);
-			rendreInvisible(contenu);
+			//$("#contenu").hide();
 		})
 	});	
 }
@@ -50,32 +46,25 @@ function showDashboard(){
 	}).done((template)=>{
 		//Attache le contenu dans la div avec l'ID (contenu)
 		$("#contenu").html(template);
-		rendreInvisible(contenu);
+		//rendreInvisible(contenu);
 	});
 }
-
 
 function listerFilms()
 {
 	var action = 'action=select';
-
 	$.ajax({
 		method: "POST", 
 		url:"../../controller/filmController.php",
 		data: action	
 	}).done((jsonString)=>{
-	
 		//Va creer le template
 		$.ajax({
 			method: "POST", 
 			url:"../admin/template/table-films.php",
 			data: "chaine="+jsonString
-			
 		//Recoit le template
 		}).done((jsonString)=>{
-
-			//alert(jsonString);
-			//Attache le contenu dans la div avec l'ID (listTemplate)
 			$("#contenu").html(jsonString);
 		})
 	});	
@@ -89,38 +78,37 @@ function openFormCreate(elem){
 	//alert("Test Callback");
 	  //Cache table list film
 	  rendreInvisible(elem);
-	  // Display form create film
+	  //Display form
 	  $("#divFormFilm").show();
-	  //showFormCreateFilm();  
 }
 
 function enregistrerFilm()
 {
 	var formImputs = new FormData(document.getElementById('formEnreg'));
-	//formImputs.append('action','insert');
-
 	$.ajax({
 			method: "POST", 
 			url:"../../controller/filmController.php",
 			data: formImputs,
 			contentType: false,
-			processData:false,
+			processData:false,	
+					
+		 }).done((callBack)=>{ 
 
-		}).done((callBack)=>{
+	 		//alert(callBack); //return 1		 		
+			if (callBack == 1) 
+			{
+			    var reponse = "Film enregistré avec sucess!";
+				//$("#textMsg").html(reponse);	
+				 //$("#divMsg").show();
+				 //$(".nome").val("");
+	           //$("#textMsg").html("<center>Cadastro realizado com sucesso!</center>");
 
-			$.ajax({
-				method: "POST", 
-				url:"../admin/index.php",
-
-			})
-	 		//alert(callback);
-	 		 //$("#divFormFilm").hide();
-	 		//reponseInsert();
-			// var sreponse = (callBack == 1) ? "Film enregistré avec sucess!" : callBack;
-			//$('#messages').html(reponse);
-		    //setTimeout(function(){ $('#messages').html(""); }, 5000);
-
-
+				 //document.getElementById(divMsg).style.display='block';
+				 //$("#contenu").html(divToShow);
+				//  document.getElementById("textMsg").innerHTML = "Paragraph changed!";
+				// $('#textMsg').html(reponse);
+			 //    setTimeout(function(){ $('#divMsg').html(""); }, 5000);
+			}
 	 	});
 }
 
