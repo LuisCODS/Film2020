@@ -45,7 +45,7 @@ include_once '../../model/Membre.php';
         </div> 
     <div class="row">
           <!-- _________________  FORM EDITER MEMBRE _________________ --> 
-           <form id="formCreate" action="../../controller/membre.php" method="POST">
+           <form id="formCreate" action="../../controller/membreController.php" method="POST">
                      <h2>Formulaire d'édition</h2>
                           <input
                            type="hidden" 
@@ -100,42 +100,48 @@ include_once '../../model/Membre.php';
                           type="email" 
                           class="form-control" 
                           name="courriel">
+                           <small id="isValideCourriel"> </small>
                     </div>
                     <div class="form-group">
-                          <label for="telephone">Telephone</label>
+                          <label for="tel_membre">Telephone</label>
                           <input 
                           value="<?php echo $membre->getTelMembre(); ?>"
                           class="form-control"
-                          onkeypress="testInfo(document.getElementById('tel_membre'));"
+                          onchange="validerTelephone(this.value)"
                           id="tel_membre" 
                           name="tel_membre">
+                          <small id="isValidetTelephone"> </small>
                     </div>
                     <div class="form-group">
                           <label for="MDP_membre">Mot de passe</label>
                           <input 
                           value=""
+                          autocomplete
                           type="password" 
                           class="form-control" 
                           id="MDP_membre" 
                           name="MDP_membre" 
                           required>
-                         <!--  <p id="erreurPassword" style='color:red'></p> -->
+                          <p id="erreurPassword" style='color:red'></p>
+
                     </div>
                     <div class="form-group">
                           <label for="MDP_membreConfirm">Confirmation mot de passe</label>
                           <input 
                           size="40"
                           value=""
+                          autocomplete
                           type="password"
                           class="form-control" 
                           id="MDP_membreConfirm" 
                           name="MDP_membreConfirm" 
                           required>
-                           <p id="erreurPasswordConfirm" style='color:red'></p>
+                          <p id="erreurPasswordConfirm" style='color:red'></p>
+
                     </div> 
                     <button             
                         type="submit" 
-                        onclick="return validerForm( )" 
+                        onclick="return validerPassword( )" 
                         class="btn btn-primary">
                         Editer
                     </button>
