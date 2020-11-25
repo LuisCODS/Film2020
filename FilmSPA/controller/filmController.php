@@ -4,7 +4,7 @@ include '../dao/FilmDAO.php';
 
 // =================== CONTROLLEUR - film ===================
 
-//extract($_POST);
+
 $action=$_POST['action'];
 $filmDAO = new FilmDAO();
 $tabRes=array();
@@ -14,8 +14,11 @@ switch ($action)
 	case 'insert':
 		global $tabRes;
 		//var_dump($action); ok
-		  echo enregistrer(); // envois 1 si ok
-		   //header("location:../view/admin/index.php");
+		    enregistrer(); // envois 1 si ok
+		// $tabRes['action']="enregistrer";
+		// $tabRes['msg']="Film bien enregistre";
+		// 	echo $tabRes['action'];
+		// }
 		break;
 
 	case 'update':
@@ -41,12 +44,13 @@ function enregistrer()
 {
 	global $tabRes;
 
-	$titre=$_POST['titre'];
-	$prix=$_POST['prix'];
-	$realisateur=$_POST['realisateur'];
-	$categorie=$_POST['categorie'];
-	$description=$_POST['description'];
-	$url=$_POST['url'];
+	extract($_POST);
+	// $titre=$_POST['titre'];
+	// $prix=$_POST['prix'];
+	// $realisateur=$_POST['realisateur'];
+	// $categorie=$_POST['categorie'];
+	// $description=$_POST['description'];
+	// $url=$_POST['url'];
 
 	$dossier="../img/";
 	$nomPochette=sha1($titre.time());
@@ -65,6 +69,7 @@ function enregistrer()
 		$pochette=$nomPochette.$extension;
 	}
 
+	//Create a movie
 	$film = new Film(null,
 				trim($titre),
 				trim($prix),
@@ -74,12 +79,9 @@ function enregistrer()
 				trim($description),
 				trim($url) );
 
-	$filmDAO = new FilmDAO();	
-	return $filmDAO->insert($film);//Si ok return 1
-	// $tabRes['action']="enregistrer";
-	// $tabRes['msg']="Film bien enregistre";
-	// 	echo $tabRes['action'];
-	// }
+	 $filmDAO = new FilmDAO();	
+	//Add it into DB
+	 $filmDAO->insert($film);//Si ok return 1
 	unset($filmDAO);//clean memoire
 }
 

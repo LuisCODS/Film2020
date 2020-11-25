@@ -32,6 +32,37 @@ function validerForm()
 		document.getElementById("erreurPasswordConfirm").innerHTML="";
 	}	
 
-
-
 }
+
+	
+	//VALIDAION EMAIL: ajoute un evenement( en quittant le textbox) sur l'input courriel
+	let formCreate = document.getElementById('formCreate');
+	//console.log(formCreate.courriel);
+	
+	formCreate.courriel.addEventListener('change', function(){
+		validerEmail(this);
+	});
+
+	const validerEmail = function(inputEmail)
+	{
+		let emailRegExp = new RegExp('^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$', 'g');
+		//console.log(testCouriel);
+		let tagSmall = document.getElementById("isValideCourriel");
+
+		// If not true
+		if (!emailRegExp.test(inputEmail.value)) 
+		{	
+
+			tagSmall.innerHTML="Courriel non valide!";
+			tagSmall.classList.remove('text-success');
+			tagSmall.classList.add('text-danger');
+		}	
+		else{
+			tagSmall.innerHTML="Courriel valide";
+			tagSmall.classList.remove('text-danger');	
+			tagSmall.classList.add('text-success');	
+		}
+
+	}
+
+   

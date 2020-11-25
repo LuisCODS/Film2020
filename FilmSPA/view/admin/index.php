@@ -68,6 +68,7 @@ else {
             name="prix"
             required 
             size="40">
+            <p id="onlyNumber"></p>
     </div>
     <div class="form-group">
         <label for="categorie">Categorie</label>
@@ -81,11 +82,11 @@ else {
         </select>
     </div>
     <div class="form-group">
-        <label for=realisateur"">Realisateur</label>
+        <label for="realisateur">Realisateur</label>
         <input type="text" class="form-control" id="realisateur" required  name="realisateur" placeholder="">
     </div>
     <div class="form-group">
-        <label for=description"">Description</label>
+        <label for="description">Description</label>
         <textarea
             required
             type="textarea"  
@@ -100,13 +101,15 @@ else {
     </div>    
         <div class="form-group" >                        
         <label for="url">Url</label>
-        <input text="file" class="form-control" id="url" name="url" >
+        <input text="text" class="form-control" id="url" name="url" required>
     </div>     
     <button id="btnEnregistrer" 
             type="submit" 
-            onClick="enregistrerFilm();"                      
+            onClick="return valider();"                      
             class="btn btn-primary">Enregistrer
     </button>
+       <!-- <input type="button" value="Envoyer" onClick="valider();"><br> -->
+
   </form> 
 </div> 
 

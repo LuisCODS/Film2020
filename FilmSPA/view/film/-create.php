@@ -1,4 +1,4 @@
-
+<!-- 
 <?php 
 include_once '../../includes/head.php'; 
 include_once '../../includes/interfaceAdmin.php';
@@ -12,7 +12,7 @@ include_once '../../includes/interfaceAdmin.php';
         <h2>Nouveau film</h2>
 
         <!-- FORNECE O TIPO DE ACAO AO CONTROLLER -->
-        <div class="form-group">
+<!--         <div class="form-group">
               <input 
                 type="hidden" 
                 class="form-control" 
@@ -20,16 +20,16 @@ include_once '../../includes/interfaceAdmin.php';
                 id="action" 
                 name="action"
                 value="insert" >
-        </div>
+        </div> -->
 
-        <div class="form-group">
+<!--         <div class="form-group">
             <label for="PK_ID_Film"></label>
             <input 
                 type="hidden"
                 class="form-control" 
                 id="PK_ID_Film"
                 name="PK_ID_Film" >
-        </div>
+        </div> -->
 
         <div class="form-group">
             <label for="titre">Titre</label>
@@ -92,4 +92,4 @@ include_once '../../includes/interfaceAdmin.php';
 
 
 <!--  FOOTER  --> 
-<?php include '../../includes/footer.php'; ?> 
+<?php include '../../includes/footer.php'; ?>  -->

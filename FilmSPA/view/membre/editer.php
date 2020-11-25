@@ -104,9 +104,9 @@ include_once '../../model/Membre.php';
                     <div class="form-group">
                           <label for="telephone">Telephone</label>
                           <input 
-                          size=""
                           value="<?php echo $membre->getTelMembre(); ?>"
-                          class="form-control" 
+                          class="form-control"
+                          onkeypress="testInfo(document.getElementById('tel_membre'));"
                           id="tel_membre" 
                           name="tel_membre">
                     </div>
@@ -119,7 +119,7 @@ include_once '../../model/Membre.php';
                           id="MDP_membre" 
                           name="MDP_membre" 
                           required>
-                          <p id="erreurPassword" style='color:red'></p>
+                         <!--  <p id="erreurPassword" style='color:red'></p> -->
                     </div>
                     <div class="form-group">
                           <label for="MDP_membreConfirm">Confirmation mot de passe</label>

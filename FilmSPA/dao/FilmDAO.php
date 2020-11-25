@@ -34,7 +34,7 @@ Class FilmDAO
 				$stmt->bindValue(5, $f->getPochette() );
 				$stmt->bindValue(6, $f->getDescription() );
 				$stmt->bindValue(7, $f->getUrl() );
-				echo $stmt->execute();// return 1 si ok
+				$stmt->execute();// return 1 si ok
 
 			} catch (PDOException $e) {
 				echo 'Erro: '. $e;
