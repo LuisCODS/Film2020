@@ -34,7 +34,7 @@ Class FilmDAO
 				$stmt->bindValue(5, $f->getPochette() );
 				$stmt->bindValue(6, $f->getDescription() );
 				$stmt->bindValue(7, $f->getUrl() );
-				$stmt->execute();//true /false
+				echo $stmt->execute();// return 1 si ok
 
 			} catch (PDOException $e) {
 				echo 'Erro: '. $e;
@@ -101,8 +101,9 @@ Class FilmDAO
 				$sql = 'select * FROM film';
 				$stmt = $this->cn->prepare($sql);
 				$stmt->execute();
-				$rs = $stmt->fetchAll(PDO::FETCH_ASSOC); 
-				return json_encode($rs);		
+				$rs = $stmt->fetchAll(PDO::FETCH_OBJ); 
+				//return json_encode($rs);		
+				echo json_encode($rs);		
 
 			} catch (Exception $e) {
 				echo 'Erro: '. $e;

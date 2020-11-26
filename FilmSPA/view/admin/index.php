@@ -20,19 +20,24 @@ else {
      include_once '../../includes/interfaceAdmin.php'; 
      ?>
 </head>
+       
+     <!--  <div class="row mb-3"  id="divMsg"> -->
+          <!-- COL 1 --> 
+
 <body>
+
+    <!-- MSG SUCCES-->
+    <div id="divMsg" class="col-md-12 alert alert-success" role="alert">
+          <p id="textMsg"></p>
+      </div> 
 	<div class="container" id="contenu" >
-	<!-- =======================================
+    <!-- =======================================
 			CHARGE LES TEMPLATES ICI
 	======================================= -->	
 	</div>
-    <!-- MSN --> 
-    <div id="messages" style="position:absolute;top:2%;left:80%;color:red;"></div>
 
-<!--  FORM AJOUTER FILM  -->
+<!--  FORM CREATE FILM  -->
 <div class="container" id="divFormFilm">    
-	<!-- <form id="formEnreg" enctype="multipart/form-data" action="../../controller/filmController.php" method="POST" > -->
-
 	<form id="formEnreg" >
 
     <h2>Nouveau Film</h2>
@@ -106,6 +111,7 @@ else {
     </button>
   </form> 
 </div> 
+
 
  <?php include_once("../../includes/footer.php");?>
 </body>
