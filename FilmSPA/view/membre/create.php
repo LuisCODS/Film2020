@@ -88,7 +88,6 @@
                             <label for="MDP_membre">Mot de passe</label>
                             <input 
                             size=""
-                            autocomplete 
                             type="password" 
                             class="form-control" 
                             id="MDP_membre" 
@@ -101,7 +100,6 @@
                             <label for="MDP_membreConfirm">Confirmation mot de passe</label>
                             <input 
                             size="40"
-                            autocomplete 
                             type="password"
                             class="form-control" 
                             id="MDP_membreConfirm" 
