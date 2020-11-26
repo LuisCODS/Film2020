@@ -101,8 +101,9 @@ Class FilmDAO
 				$sql = 'select * FROM film';
 				$stmt = $this->cn->prepare($sql);
 				$stmt->execute();
-				$rs = $stmt->fetchAll(PDO::FETCH_ASSOC); 
-				return json_encode($rs);		
+				$rs = $stmt->fetchAll(PDO::FETCH_OBJ); 
+				//return json_encode($rs);		
+				echo json_encode($rs);		
 
 			} catch (Exception $e) {
 				echo 'Erro: '. $e;

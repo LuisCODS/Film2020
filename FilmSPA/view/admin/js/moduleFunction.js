@@ -57,7 +57,10 @@ function listerFilms()
 		method: "POST", 
 		url:"../../controller/filmController.php",
 		data: action	
-	}).done((jsonString)=>{
+	}).done((jsonString)=>{ 
+
+		//alert(jsonString);
+
 		//Va creer le template
 		$.ajax({
 			method: "POST", 
@@ -92,24 +95,19 @@ function enregistrerFilm()
 			contentType: false,
 			processData:false,	
 					
-		 }).done((callBack)=>{ 
-
-	 		//alert(callBack); //return 1		 		
-			if (callBack == 1) 
+			success : function (reponse)
 			{
-			    var reponse = "Film enregistré avec sucess!";
-				//$("#textMsg").html(reponse);	
-				 //$("#divMsg").show();
-				 //$(".nome").val("");
-	           //$("#textMsg").html("<center>Cadastro realizado com sucesso!</center>");
+				alert(reponse);
+				//$("#divMsg").hide();
+				//document.getElementById("divMsg").style.display='block';	
+				//document.getElementById("textMsg").innerHTML = "Film crée avec sucess!"};		
+				//setInterval(function(){document.getElementById("textMsg").innerHTML = "Film crée avec sucess!";}, 5000);
+			},
+			fail : function ()
+			{
 
-				 //document.getElementById(divMsg).style.display='block';
-				 //$("#contenu").html(divToShow);
-				//  document.getElementById("textMsg").innerHTML = "Paragraph changed!";
-				// $('#textMsg').html(reponse);
-			 //    setTimeout(function(){ $('#divMsg').html(""); }, 5000);
-			}
-	 	});
+			},
+	}); 
 }
 
 

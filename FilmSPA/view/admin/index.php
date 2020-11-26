@@ -20,21 +20,23 @@ else {
      include_once '../../includes/interfaceAdmin.php'; 
      ?>
 </head>
-       <!-- DIV MSG SUCCES-->
-      <div class="row mb-3"  id="divMsg">
+       
+     <!--  <div class="row mb-3"  id="divMsg"> -->
           <!-- COL 1 --> 
-          <div  class="col-md-12 alert alert-success" role="alert">
-              <p id="textMsg">Film enregistré avec sucess!</p>
-          </div>
-    </div>  
+
 <body>
+
+    <!-- MSG SUCCES-->
+    <div id="divMsg" class="col-md-12 alert alert-success" role="alert">
+          <p id="textMsg"></p>
+      </div> 
 	<div class="container" id="contenu" >
-	<!-- =======================================
+    <!-- =======================================
 			CHARGE LES TEMPLATES ICI
 	======================================= -->	
 	</div>
 
-<!--  FORM AJOUTER FILM  -->
+<!--  FORM CREATE FILM  -->
 <div class="container" id="divFormFilm">    
 	<form id="formEnreg" >
 
@@ -109,6 +111,7 @@ else {
     </button>
   </form> 
 </div> 
+
 
  <?php include_once("../../includes/footer.php");?>
 </body>
