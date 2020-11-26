@@ -33,7 +33,7 @@ function validerPassword()
 	
 
 
-// ========================= VALIDAION EMAI =========================
+// ========================= VALIDATION EMAIL =========================
 
 let  formCreate = document.getElementById('formCreate');
 formCreate.courriel.addEventListener('change', function(){
@@ -65,8 +65,10 @@ const validerEmail = function(courriel)
 function validerTelephone(input_tel_membre)
 {
 
-	let tel_lRegExp = new RegExp('\D*([2-9]\d{2})(\D*)([2-9]\d{2})(\D*)(\d{4})\D*', 'g');
-	//let tel_lRegExp = new RegExp('[0-9-.]{3},' 'g');
+	//let tel_lRegExp = new RegExp('\D*([2-9]\d{2})(\D*)([2-9]\d{2})(\D*)(\d{4})\D*', 'g');
+	//let tel_lRegExp = new RegExp('^D*([2-9]\d{2})(\D*)([2-9]\d{2})(\D*)(\d{4})\D*$');
+	//let tel_lRegExp = new RegExp('^\d{3}-\d{3}-\d{4}$', 'gm');
+	let tel_lRegExp = new RegExp('^\d{3}\d{3}\d{4}$', 'gm');
 
 	let tagSmall_Tel = document.getElementById("isValidetTelephone");
 

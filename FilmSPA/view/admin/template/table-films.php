@@ -41,7 +41,7 @@
 <?php 
     //Get chaine
     extract($_POST);
-  //print_r($chaine);
+   // print_r($chaine);
   foreach (json_decode($chaine) as $ligne) {
 ?>
     <tr>
@@ -59,8 +59,8 @@
         </td>                              
         <td>              
           <a 
-          class="btn btn-outline-danger " 
-          href="../../controller/film.php?delete=<?php echo ($ligne->PK_ID_Film); ?>"
+          onClick="deleteFilm(<?php echo ($ligne->PK_ID_Film); ?>);"
+          class="btn btn-outline-danger"          
           role="button">Supprimer
           </a>
         </td>                         

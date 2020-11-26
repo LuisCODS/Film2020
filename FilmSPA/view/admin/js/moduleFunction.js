@@ -117,28 +117,29 @@ function enregistrerFilm()
 
 
 
+
 //Cas d'un button
-function valider()
-{
-	var formEnreg = document.getElementById('formEnreg');
-	var titre = document.getElementById('titre').value;
-	var prix = document.getElementById('prix').value;
-	var categorie = document.getElementById('categorie').value;
-	var description = document.getElementById('description').value;
-	var realisateur = document.getElementById('realisateur').value;
+// function valider()
+// {
+// 	var formEnreg = document.getElementById('formEnreg');
+// 	var titre = document.getElementById('titre').value;
+// 	var prix = document.getElementById('prix').value;
+// 	var categorie = document.getElementById('categorie').value;
+// 	var description = document.getElementById('description').value;
+// 	var realisateur = document.getElementById('realisateur').value;
 
-	//[0-9]{1,2}[,.][0-9]{1,2}  ou (\d+\.\d{1,2})
-	//var numRegExp = new RegExp("^[0-9]{1,2}[.][0-9]{1,2}$");// true ou false.
-	//var numRegExp = new RegExp("[0-9]{1,2}[.][0-9]{1,2}");// true ou false.	
-	var numRegExp = new RegExp('^[0-9]{1,2}[.,]{1}[0-9]{1,2}$', 'gm');// true ou false.	
-	//console.log(numRegExp);
+// 	//[0-9]{1,2}[,.][0-9]{1,2}  ou (\d+\.\d{1,2})
+// 	//var numRegExp = new RegExp("^[0-9]{1,2}[.][0-9]{1,2}$");// true ou false.
+// 	//var numRegExp = new RegExp("[0-9]{1,2}[.][0-9]{1,2}");// true ou false.	
+// 	var numRegExp = new RegExp('^[0-9]{1,2}[.,]{1}[0-9]{1,2}$', 'gm');// true ou false.	
+// 	//console.log(numRegExp);
 
-	if(titre!="" && categorie!="" && description!="" && realisateur!="")
-	{	
-		if(numRegExp.test(prix))		
-			formEnreg.submit();
-			enregistrerFilm();		
-	}
+// 	if(titre!="" && categorie!="" && description!="" && realisateur!="")
+// 	{	
+// 		if(numRegExp.test(prix))		
+// 			formEnreg.submit();
+// 			enregistrerFilm();		
+// 	}
 
-}
+// }
 

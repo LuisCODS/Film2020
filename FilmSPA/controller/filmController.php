@@ -7,24 +7,18 @@ include '../dao/FilmDAO.php';
 
 $action=$_POST['action'];
 $filmDAO = new FilmDAO();
-$tabRes=array();
 
 switch ($action) 
 {	
 	case 'insert':
-		global $tabRes;
-		//var_dump($action); ok
 		    enregistrer(); // envois 1 si ok
-		// $tabRes['action']="enregistrer";
-		// $tabRes['msg']="Film bien enregistre";
-		// 	echo $tabRes['action'];
-		// }
 		break;
 
 	case 'update':
 		break;
 
 	case 'delete':
+		 echo $filmDAO->selectFilms();//Si ok return 1
 		break;
 
 	case 'select':
@@ -42,8 +36,8 @@ switch ($action)
 
 function enregistrer()
 {
-	global $tabRes;
-
+	global $filmDAO;
+	
 	extract($_POST);
 	// $titre=$_POST['titre'];
 	// $prix=$_POST['prix'];
@@ -84,6 +78,8 @@ function enregistrer()
 	 $filmDAO->insert($film);//Si ok return 1
 	unset($filmDAO);//clean memoire
 }
+
+
 
 
 

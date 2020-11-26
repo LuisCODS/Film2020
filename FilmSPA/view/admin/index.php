@@ -105,7 +105,6 @@ else {
     </div>     
     <button id="btnEnregistrer" 
             type="submit" 
-            onClick="return valider();"                      
             class="btn btn-primary">Enregistrer
     </button>
        <!-- <input type="button" value="Envoyer" onClick="valider();"><br> -->
