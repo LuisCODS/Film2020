@@ -32,7 +32,6 @@ function validerForm()
 		document.getElementById("erreurPasswordConfirm").innerHTML="";
 	}	
 
-<<<<<<< HEAD
 }//end method
 	
 
@@ -61,8 +60,7 @@ const validerEmail = function(courriel)
 		tagSmall.classList.remove('text-danger');	
 		tagSmall.classList.add('text-success');	
 	}
-=======
->>>>>>> parent of 7b14dbd... validation tel not yet
+
 }
 
 	
@@ -94,7 +92,6 @@ const validerEmail = function(courriel)
 			tagSmall.classList.add('text-success');	
 		}
 
-<<<<<<< HEAD
 // ========================= VALIDATION TELEPHONE =========================
 
 function validerTelephone(input_tel_membre)
@@ -118,8 +115,6 @@ function validerTelephone(input_tel_membre)
 		tagSmall_Tel.innerHTML="Telephone valide";
 		tagSmall_Tel.classList.remove('text-danger');	
 		tagSmall_Tel.classList.add('text-success');	
-=======
->>>>>>> parent of 7b14dbd... validation tel not yet
 	}
 
    
