@@ -24,7 +24,7 @@
          <!--  LIGNE 2 -->
         <div class="row ">
             <div class="col-md">               
-                 <form id="formCreate" action="../../controller/membreController.php" method="POST">
+                 <form id="formCreate" action="../../controller/membre.php" method="POST">
                        <h2>Formulaire d'inscription</h2>
 
                       <div class="form-group">
@@ -81,7 +81,7 @@
                             type="email" 
                             class="form-control" 
                             name="courriel">
-                            <small id="isValideCourriel"> </small> 
+                            <p id="erreurCourriel" style='color:red'></p>
                       </div>
 
                       <div class="form-group">

@@ -14,19 +14,16 @@
 			</a>
 		</li>
 		<li class="nav-item dropdown">
-			<a class="nav-link dropdown-toggle"  
-			id="navbarDropdownMenuLink"
+			<a class="nav-link dropdown-toggle"  id="navbarDropdownMenuLink"
 			role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 			Gestion
 			</a>
 			<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-				<a class="dropdown-item"   
-					onClick="literMembres();$('#divFormFilm').hide();" >
+				<a class="dropdown-item"   onClick="literMembres();" >
 					<i class="fas fa-users"></i>
 					  Membres
 				</a> 
-				<a class="dropdown-item"   
-					onClick="listerFilms();$('#divFormFilm').hide(); ">
+				<a class="dropdown-item"   onClick="listerFilms();">
 					<i class="fas fa-video"></i>
 					  Films
 				</a>

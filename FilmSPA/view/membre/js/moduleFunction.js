@@ -63,15 +63,6 @@ const validerEmail = function(courriel)
 
 }
 
-	
-	//VALIDAION EMAIL: ajoute un evenement( en quittant le textbox) sur l'input courriel
-	let formCreate = document.getElementById('formCreate');
-	//console.log(formCreate.courriel);
-	
-	formCreate.courriel.addEventListener('change', function(){
-		validerEmail(this);
-	});
-
 	const validerEmail = function(inputEmail)
 	{
 		let emailRegExp = new RegExp('^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$', 'g');
@@ -116,5 +107,5 @@ function validerTelephone(input_tel_membre)
 		tagSmall_Tel.classList.remove('text-danger');	
 		tagSmall_Tel.classList.add('text-success');	
 	}
+}
 
-   

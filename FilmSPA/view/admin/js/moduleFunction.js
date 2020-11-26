@@ -64,12 +64,11 @@ function listerFilms()
 			url:"../admin/template/table-films.php",
 			data: "chaine="+jsonString
 		//Recoit le template
-		}).done((template)=>{
-			$("#contenu").html(template);
+		}).done((jsonString)=>{
+			$("#contenu").html(jsonString);
 		})
 	});	
 }
-
 
 /* 
   Hide template table Film.
@@ -86,8 +85,6 @@ function openFormCreate(elem){
 function enregistrerFilm()
 {
 	var formImputs = new FormData(document.getElementById('formEnreg'));
-	//formFilm.append('action','insert');
-
 	$.ajax({
 			method: "POST", 
 			url:"../../controller/filmController.php",
@@ -96,11 +93,11 @@ function enregistrerFilm()
 			processData:false,	
 					
 		 }).done((callBack)=>{ 
-		
+
 	 		//alert(callBack); //return 1		 		
-			//if (callBack == 1) 
-			//{
-			   // var reponse = "Film enregistré avec sucess!";
+			if (callBack == 1) 
+			{
+			    var reponse = "Film enregistré avec sucess!";
 				//$("#textMsg").html(reponse);	
 				 //$("#divMsg").show();
 				 //$(".nome").val("");
@@ -111,7 +108,7 @@ function enregistrerFilm()
 				//  document.getElementById("textMsg").innerHTML = "Paragraph changed!";
 				// $('#textMsg').html(reponse);
 			 //    setTimeout(function(){ $('#divMsg').html(""); }, 5000);
-			//}
+			}
 	 	});
 }
 
@@ -143,3 +140,34 @@ function enregistrerFilm()
 
 // }
 
+/*function reponseInsert()
+{
+	alert("dfsgdgsgsgs");
+}*/
+
+// function valider(){
+// 	var num=document.getElementById('num').value;
+// 	var titre=document.getElementById('titre').value;
+// 	var duree=document.getElementById('duree').value;
+// 	var res=document.getElementById('res').value;
+// 	var numRegExp=new RegExp("^[0-9]{1,4}$");
+// 	if(num!="" && titre!="" && duree!="" && res!="")
+// 		if(numRegExp.test(num))
+// 			return true;
+// 	return false;
+// }
+
+//Cas d'un button
+/*
+function valider(){
+	var formEnreg=document.getElementById('formEnreg');
+	var num=document.getElementById('num').value;
+	var titre=document.getElementById('titre').value;
+	var duree=document.getElementById('duree').value;
+	var res=document.getElementById('res').value;
+	var numRegExp=new RegExp("^[0-9]{1,4}$");
+	if(num!="" && titre!="" && duree!="" && res!="")
+		if(numRegExp.test(num))
+			formEnreg.submit();
+}
+*/
