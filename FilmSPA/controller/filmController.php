@@ -2,34 +2,37 @@
 include '../model/Film.php';
 include '../dao/FilmDAO.php';
 
-// =================== CONTROLLEUR - film ===================
-
+//GLOBAL 
 extract($_POST);
 //$action=$_POST['action'];
 $filmDAO = new FilmDAO();
-$tabRes=array();
+//$tabRes=array();
+//print_r($action);
 
-//var_dump($action);
+// =================== CONTROLLEUR - film ===================
 
 switch ($action) 
 {	
-	case 'insert':
-		 // echo enregistrer(); // envois 1 si ok
-		   enregistrer(); // envois 1 si ok
-		   echo json_encode($tabRes);
+	case 'insert':		
+		    enregistrer(); // envois 1 si ok
 		break;
 
 	case 'update':
-		break;
+		// break;
 
 	case 'delete':
-		// echo $filmDAO->selectFilms();//Si ok return 1
+			//print_r($idFilm);//get id from action into supprimerFilm()
+		    sendToDelete($idFilm);
 		break;
 
 	case 'select':
-		// lister();
 		  echo $filmDAO->selectFilms();//Si ok return 1
-		 // unset($filmDAO);//clean memoire
+		  unset($filmDAO);//clean memoire
+		break;
+
+	case 'listerCards':
+		  echo $filmDAO->selectFilms();//Si ok return 1
+		  unset($filmDAO);//clean memoire
 		break;
 
 	default:
@@ -44,16 +47,9 @@ switch ($action)
 
 function enregistrer()
 {
-	global $filmDAO,$tabRes;	 
+	global $filmDAO;	 
 	
-	//extract($_POST);
-
-	// $titre=$_POST['titre'];
-	// $prix=$_POST['prix'];
-	// $realisateur=$_POST['realisateur'];
-	// $categorie=$_POST['categorie'];
-	// $description=$_POST['description'];
-	// $url=$_POST['url'];
+	extract($_POST);
 
 	$dossier="../img/";
 	$nomPochette=sha1($titre.time());
@@ -62,7 +58,7 @@ function enregistrer()
 	//Si une photo a été choisie
 	if($_FILES['pochette']['tmp_name']!=="")
 	{
-		//Upload de la photo
+		// chargé sur le serveur le nom temporaire du fichier
 		$tmp = $_FILES['pochette']['tmp_name'];
 		$fichier= $_FILES['pochette']['name'];
 		$extension=strrchr($fichier,'.');
@@ -81,24 +77,13 @@ function enregistrer()
 				trim($description),
 				trim($url) );
 
-	$filmDAO = new FilmDAO();	
-	$filmDAO->insert($film);//Si ok return 1
+	$filmDAO->insert($film);//Si ok return 1	
 	unset($filmDAO);//clean memoire
-	$tabRes['action']="enregistrer";
-	$tabRes['msg']="Film bien enregistre!";
 }
 
-// function lister()
-// {
-// 	global $filmDAO,$tabRes;
-// 	$tabRes['action']="lister";
-// 	//var_dump($tabRes);
-// 	return $filmDAO->selectFilms();//Si ok return 1
-// 	unset($filmDAO);//clean memoire	
-// }
-
-
-
-
-
-
+function sendToDelete($idFilm)
+{
+	//print_r($idFilm);
+	 global $filmDAO;
+	 $filmDAO->findById($idFilm);
+}

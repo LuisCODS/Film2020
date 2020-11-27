@@ -62,13 +62,13 @@
         <td>     
           <a 
             class="btn btn-outline-primary " 
-            href="../film/editer.php?id=<?php echo ($ligne->PK_ID_Film); ?>"
+             onClick="modifierFilm(<?php echo ($ligne->PK_ID_Film); ?>);"
             role="button">Editer
           </a>                         
         </td>                              
         <td>              
           <a 
-          onClick="deleteFilm(<?php echo ($ligne->PK_ID_Film); ?>);"
+          onClick="supprimerFilm(<?php echo ($ligne->PK_ID_Film); ?>);"
           class="btn btn-outline-danger"          
           role="button">Supprimer
           </a>

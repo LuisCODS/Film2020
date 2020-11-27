@@ -23,9 +23,9 @@ else {
 <body>
     <!-- MSG SUCCES-->
     <div id="divMsg" class="col-md-12 alert alert-success" role="alert">
-           
+        <span id="emsg">MSG HERE!</span>      
     </div>     
-     <span id="emsg"></span> 
+     
 
 	<div class="container" id="contenu" >
     <!-- =======================================
