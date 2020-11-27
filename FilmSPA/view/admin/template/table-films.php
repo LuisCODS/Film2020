@@ -48,12 +48,10 @@
                   <tbody>  
 
 <?php 
-    //Get chaine
-    extract($_POST);
-   // print_r($chaine);
+    //Get data
+  //var_dump($data);
   extract($_POST);
- //print_r($chaine);
-  foreach (json_decode($chaine) as $ligne) {
+  foreach (json_decode($data) as $ligne) {
 ?>
     <tr>
         <td><img src="../../img/<?php echo($ligne->pochette)?>" width=80 height=80></td>
@@ -64,13 +62,13 @@
         <td>     
           <a 
             class="btn btn-outline-primary " 
-            href="../film/editer.php?id=<?php echo ($ligne->PK_ID_Film); ?>"
+             onClick="modifierFilm(<?php echo ($ligne->PK_ID_Film); ?>);"
             role="button">Editer
           </a>                         
         </td>                              
         <td>              
           <a 
-          onClick="deleteFilm(<?php echo ($ligne->PK_ID_Film); ?>);"
+          onClick="supprimerFilm(<?php echo ($ligne->PK_ID_Film); ?>);"
           class="btn btn-outline-danger"          
           role="button">Supprimer
           </a>

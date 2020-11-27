@@ -1,12 +1,13 @@
 
 <?php
     extract($_POST);
-    foreach( json_decode($obj) as $film)  
+    foreach( json_decode($chaine) as $film)  
     {
 ?>          
 
 <!-- TEMPLATE CARD FILM -->
-<div class="card flex-container" style="width: 20rem;  ">
+ <div  style="display: inline-block" >
+<div class="card" style="width: 20rem;  ">
         <a href="#" target="_blank">
             <img class="card-img-top"  src="../../img/<?php echo $film->pochette; ?>"width="200" height="300">
         </a>
@@ -19,6 +20,9 @@
              <a href="#" class="btn btn-primary">Ajouter Panier</a>
         </div>
 </div>
+</div>
 <!--  FIN TEMPLATE CARD FILM -->
 
-<?php  } ?>   
+<?php  } ?>    
+
+

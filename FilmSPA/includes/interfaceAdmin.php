@@ -19,11 +19,11 @@
 			Gestion
 			</a>
 			<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-				<a class="dropdown-item"   onClick="literMembres();" >
+				<a class="dropdown-item"   onClick="literMembres(); $('#divFormFilm').hide();" >
 					<i class="fas fa-users"></i>
 					  Membres
 				</a> 
-				<a class="dropdown-item"   onClick="listerFilms();">
+				<a class="dropdown-item"   onClick="listerFilms(); $('#divFormFilm').hide();" >
 					<i class="fas fa-video"></i>
 					  Films
 				</a>

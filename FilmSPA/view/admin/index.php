@@ -1,15 +1,15 @@
 <?php
-session_start();
-include_once '../../model/Membre.php';
+    session_start();
+    include_once '../../model/Membre.php';
 
-// SI LA SESSION EXISTE
-if (isset ($_SESSION["membre"]) ) {
-	 $membre = unserialize($_SESSION["membre"]);
-}
-else {
-	header("location: ../login/login.php");
-	exit();
- }
+    // SI LA SESSION EXISTE
+    if (isset ($_SESSION["membre"]) ) {
+    	 $membre = unserialize($_SESSION["membre"]);
+    }
+    else {
+    	header("location: ../login/login.php");
+    	exit();
+     }
  ?>
 <!-- ============================================ -->
 <!doctype html>
@@ -20,16 +20,13 @@ else {
      include_once '../../includes/interfaceAdmin.php'; 
      ?>
 </head>
-       
-     <!--  <div class="row mb-3"  id="divMsg"> -->
-          <!-- COL 1 --> 
-
 <body>
 
     <!-- MSG SUCCES-->
     <div id="divMsg" class="col-md-12 alert alert-success" role="alert">
-          <p id="textMsg"></p>
-      </div> 
+        <span id="emsg">MSG HERE!</span>      
+    </div>
+
 	<div class="container" id="contenu" >
     <!-- =======================================
 			CHARGE LES TEMPLATES ICI
@@ -38,8 +35,7 @@ else {
 
 <!--  FORM CREATE FILM  -->
 <div class="container" id="divFormFilm">    
-	<form id="formEnreg" >
-
+	<form id="formEnreg" name="formEnreg">
     <h2>Nouveau Film</h2>
     <!-- FORNECE O TIPO DE ACAO AO CONTROLLER -->
     <div class="form-group">
@@ -83,11 +79,11 @@ else {
         </select>
     </div>
     <div class="form-group">
-        <label for=realisateur"">Realisateur</label>
+        <label for="realisateur">Realisateur</label>
         <input type="text" class="form-control" id="realisateur" required  name="realisateur" placeholder="">
     </div>
     <div class="form-group">
-        <label for=description"">Description</label>
+        <label for="description">Description</label>
         <textarea
             required
             type="textarea"  
