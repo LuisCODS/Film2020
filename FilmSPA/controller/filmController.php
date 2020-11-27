@@ -14,9 +14,9 @@ $tabRes=array();
 switch ($action) 
 {	
 	case 'insert':
-		//var_dump($action); ok
-		  echo enregistrer(); // envois 1 si ok
-		   //header("location:../view/admin/index.php");
+		 // echo enregistrer(); // envois 1 si ok
+		   enregistrer(); // envois 1 si ok
+		   echo json_encode($tabRes);
 		break;
 
 	case 'update':
@@ -27,9 +27,9 @@ switch ($action)
 		break;
 
 	case 'select':
-		//echo  select();
-		 echo $filmDAO->selectFilms();//Si ok return 1
-		 unset($filmDAO);//clean memoire
+		// lister();
+		  echo $filmDAO->selectFilms();//Si ok return 1
+		 // unset($filmDAO);//clean memoire
 		break;
 
 	default:
@@ -39,16 +39,14 @@ switch ($action)
 }//fin switch
 
 
-//Ce que retourne
-//echo json_encode($tabRes);
 
 // =================== METHODES ===================
 
 function enregistrer()
 {
-	global $filmDAO; $tabRes;
+	global $filmDAO,$tabRes;	 
 	
-	extract($_POST);
+	//extract($_POST);
 
 	// $titre=$_POST['titre'];
 	// $prix=$_POST['prix'];
@@ -84,17 +82,19 @@ function enregistrer()
 				trim($url) );
 
 	$filmDAO = new FilmDAO();	
-	return $filmDAO->insert($film);//Si ok return 1
+	$filmDAO->insert($film);//Si ok return 1
+	unset($filmDAO);//clean memoire
 	$tabRes['action']="enregistrer";
 	$tabRes['msg']="Film bien enregistre!";
-
-	unset($filmDAO);//clean memoire
 }
 
-// function select()
+// function lister()
 // {
-// 	  return $filmDAO->selectFilms();//Si ok return 1
-// 	 unset($filmDAO);//clean memoire	
+// 	global $filmDAO,$tabRes;
+// 	$tabRes['action']="lister";
+// 	//var_dump($tabRes);
+// 	return $filmDAO->selectFilms();//Si ok return 1
+// 	unset($filmDAO);//clean memoire	
 // }
 
 

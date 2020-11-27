@@ -1,6 +1,6 @@
-// function rendreVisible(elem){
-// 	document.getElementById(elem).style.display='block';
-// }
+function rendreVisible(elem){
+	document.getElementById(elem).style.display='block';
+}
 
 function rendreInvisible(elem){
   document.getElementById(elem).style.display='none';
@@ -53,13 +53,14 @@ function showDashboard(){
 function listerFilms()
 {
 	var action = 'action=select';
+	//console.log(action);
+	
 	$.ajax({
 		method: "POST", 
 		url:"../../controller/filmController.php",
 		data: action	
-	}).done((jsonString)=>{ 
-
-		//alert(jsonString);
+	}).done((jsonString)=>{
+		//console.log(jsonString);
 
 		//Va creer le template
 		$.ajax({
@@ -67,11 +68,27 @@ function listerFilms()
 			url:"../admin/template/table-films.php",
 			data: "chaine="+jsonString
 		//Recoit le template
-		}).done((jsonString)=>{
-			$("#contenu").html(jsonString);
+		}).done((template)=>{
+			$("#contenu").html(template);
 		})
-	});	
+	});
 }
+
+// function lister(reponse){
+// 	var taille;
+// 	var rep="<div class='table-users' style='overflow: scroll; height: 500px;'>";
+// 	rep+="<div class='header'>Liste des films<span style='float:right;padding-right:10px;cursor:pointer;' onClick=\"$('#contenu').hide();\">X</span></div>";
+// 	rep+="<table cellspacing='0'>";
+// 	rep+="<tr><th>POCHETTE</th><th>TITRE</th><th>CATEGORIE</th><th>REALISATEUR</th><th>ACTION</th></tr>";
+// 	taille=listFilms.length;
+// 	for(var i=0; i<taille; i++){
+// 		rep+="</td><td><img src='img/"+listFilms[i].pochette+"' width=80 height=80></td></tr>"+"</td><td>"+listFilms[i].titre+"</td><td>"+listFilms[i].prix+"</td><td>"+listFilms[i].realisateur;		 
+// 	}
+// 	rep+="</table>";
+// 	rep+="</div>";
+// 	$('#contenu').html(rep);
+// }
+
 
 /* 
   Hide template table Film.
@@ -87,26 +104,29 @@ function openFormCreate(elem){
 
 function enregistrerFilm()
 {
+	document.getElementById("divFormFilm").style.display='block';
 	var formImputs = new FormData(document.getElementById('formEnreg'));
 	$.ajax({
 			method: "POST", 
 			url:"../../controller/filmController.php",
 			data: formImputs,
+			dataType : 'json',
 			contentType: false,
 			processData:false,	
-					
-			success : function (reponse)
-			{
+			cache: false,					
+			success : function (reponse){
 				alert(reponse);
-				//$("#divMsg").hide();
-				//document.getElementById("divMsg").style.display='block';	
-				//document.getElementById("textMsg").innerHTML = "Film crée avec sucess!"};		
-				//setInterval(function(){document.getElementById("textMsg").innerHTML = "Film crée avec sucess!";}, 5000);
-			},
-			fail : function ()
-			{
+				//document.getElementById(divMsg).style.display='none';
+				//$('#divMsg').show();
+				 document.getElementById("emsg").innerHTML = reponse.msg;		
+				 setInterval(function(){document.getElementById("divMsg").innerHTML =""; }, 5000 );
+				//setInterval(function(){ $('#divMsg').show();}, 5000);
+				// $('#emsg').html(reponse.msg);
+				// setTimeout(function(){ $('#emsg').html(""); }, 5000);
 
 			},
+			error : function(err){
+			}
 	}); 
 }
 

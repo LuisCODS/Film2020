@@ -26,7 +26,6 @@ Class FilmDAO
 					values(?,?,?,?,?,?,?)';
 
 				$stmt = $this->cn->prepare($sql);
-
 				$stmt->bindValue(1, $f->getTitre() );
 				$stmt->bindValue(2, $f->getPrix() );
 				$stmt->bindValue(3, $f->getRealisateur() );
@@ -34,7 +33,8 @@ Class FilmDAO
 				$stmt->bindValue(5, $f->getPochette() );
 				$stmt->bindValue(6, $f->getDescription() );
 				$stmt->bindValue(7, $f->getUrl() );
-				echo $stmt->execute();// return 1 si ok
+				//echo $stmt->execute();// return 1 si ok
+				 $stmt->execute();// return 1 si ok
 
 			} catch (PDOException $e) {
 				echo 'Erro: '. $e;
@@ -95,23 +95,22 @@ Class FilmDAO
 	//Return a select of films as json string
 	function selectFilms()
 	{
-		global $cn;
+		
+		try {
+			$sql = 'select * FROM film';
+			$stmt = $this->cn->prepare($sql);
+			$stmt->execute();
+			$rs = $stmt->fetchAll(PDO::FETCH_ASSOC); 
+			return json_encode($rs);		
+			//echo json_encode($rs);		
 
-			try {
-				$sql = 'select * FROM film';
-				$stmt = $this->cn->prepare($sql);
-				$stmt->execute();
-				$rs = $stmt->fetchAll(PDO::FETCH_OBJ); 
-				//return json_encode($rs);		
-				echo json_encode($rs);		
+		} catch (Exception $e) {
+			echo 'Erro: '. $e;
 
-			} catch (Exception $e) {
-				echo 'Erro: '. $e;
-
-			}finally{
-				unset($cn);//close  connexion
-				unset($stmt);//clean memoire
-			}
+		}finally{
+			unset($cn);//close  connexion
+			unset($stmt);//clean memoire
+		}
 	}
 
 	function findById($id)

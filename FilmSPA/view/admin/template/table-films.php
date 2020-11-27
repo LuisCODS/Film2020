@@ -49,10 +49,8 @@
 
 <?php 
     //Get chaine
-    extract($_POST);
-   // print_r($chaine);
+  //var_dump($chaine);
   extract($_POST);
- //print_r($chaine);
   foreach (json_decode($chaine) as $ligne) {
 ?>
     <tr>

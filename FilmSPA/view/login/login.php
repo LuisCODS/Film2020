@@ -24,7 +24,7 @@
                 <span id="msgErrorEmail" style="font-weight: bold"></span>
             </div>
             <div class="form-group">
-                <input type="password"  placeholder="Mot de passe" class="form-control mb-4" name="MDP_membre" id="MDP_membre" required>
+                <input type="password"  placeholder="Mot de passe" class="form-control mb-4" name="MDP_membre" id="MDP_membre" autocomplete  required>
             </div>
              <p style='color:red'>
                <?php if (isset ($_SESSION["invalidImput"])){ echo $_SESSION["invalidImput"]; }  ?>
