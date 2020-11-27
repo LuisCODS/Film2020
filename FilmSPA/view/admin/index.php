@@ -89,8 +89,7 @@
             type="textarea"  
             class="form-control"
             id="description"
-            name="description" >
-        </textarea>
+            name="description"></textarea>
     </div>
     <div class="form-group" >                        
         <label for="pochette">Pochette</label>
@@ -101,7 +100,7 @@
         <input text="file" class="form-control" id="url" name="url" >
     </div>     
     <button id="btnEnregistrer" 
-            type="submit" 
+            type="button" 
             onClick="enregistrerFilm();"                      
             class="btn btn-primary">Enregistrer
     </button>
