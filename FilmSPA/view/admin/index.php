@@ -1,15 +1,15 @@
 <?php
-session_start();
-include_once '../../model/Membre.php';
+    session_start();
+    include_once '../../model/Membre.php';
 
-// SI LA SESSION EXISTE
-if (isset ($_SESSION["membre"]) ) {
-	 $membre = unserialize($_SESSION["membre"]);
-}
-else {
-	header("location: ../login/login.php");
-	exit();
- }
+    // SI LA SESSION EXISTE
+    if (isset ($_SESSION["membre"]) ) {
+    	 $membre = unserialize($_SESSION["membre"]);
+    }
+    else {
+    	header("location: ../login/login.php");
+    	exit();
+     }
  ?>
 <!-- ============================================ -->
 <!doctype html>
@@ -21,11 +21,11 @@ else {
      ?>
 </head>
 <body>
+
     <!-- MSG SUCCES-->
     <div id="divMsg" class="col-md-12 alert alert-success" role="alert">
         <span id="emsg">MSG HERE!</span>      
-    </div>     
-     
+    </div>
 
 	<div class="container" id="contenu" >
     <!-- =======================================

@@ -59,14 +59,14 @@ function listerFilms()
 		method: "POST", 
 		url:"../../controller/filmController.php",
 		data: action	
-	}).done((jsonString)=>{
-		//console.log(jsonString);
 
+	}).done((jsonString)=>{
 		//Va creer le template
 		$.ajax({
 			method: "POST", 
 			url:"../admin/template/table-films.php",
-			data: "chaine="+jsonString
+			data: "data="+jsonString
+
 		//Recoit le template
 		}).done((template)=>{
 			$("#contenu").html(template);
@@ -135,6 +135,34 @@ function supprimerFilm(id)
 	 });
 }
 
+
+function modifierFilm(id)
+{
+	//alert(id);//get id ok
+	var action = 'action=update';
+	var idFilm = 'idFilm='+id;
+	
+	$.ajax({
+
+		method: "POST", 
+		url:"../../controller/filmController.php",
+		data: action+'&'+idFilm
+		
+	}).done((jsonString)=>{
+		
+		//alert(jsonString);
+
+		//Va creer le template
+		$.ajax({
+			method: "POST", 
+			url:"../film/template/formEditFilm.php",
+			data: "data="+jsonString
+		//Recoit le template
+		}).done((template)=>{
+			$("#contenu").html(template);
+		})
+	});
+}
 
 // function lister(reponse){
 // 	var taille;

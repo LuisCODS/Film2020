@@ -86,6 +86,7 @@ Class FilmDAO
 	{
 		
 		try {
+
 			$sql = 'select * FROM film';
 			$stmt = $this->cn->prepare($sql);
 			$stmt->execute();
@@ -103,9 +104,9 @@ Class FilmDAO
 	}
 
 	/*
-	La methode va chercher l'image reliée au film et la fournir à la methode (enleverFichier)
-	étant que parmetre pour la suppresion de l'image.
-	Ensuite, une autre appel est fait pour la suppresion du film lui même.
+		La methode va chercher l'image reliée au film et la fournir à la methode (enleverFichier)
+		étant que parmetre pour la suppresion de l'image.
+		Ensuite, une autre appel est fait pour la suppresion du film lui même.
 	*/
 	function findById($id)
 	{
@@ -164,6 +165,27 @@ Class FilmDAO
 				$stmt->execute();// true/False
 				unset($stmt);
 								
+		} catch (PDOException $e) {
+			echo "Erro: ". $e;
+
+		}finally{
+			unset($cn);//close  connexion
+			unset($stmt);//clean memoire
+		}
+	}
+
+
+	/*Return un film en json format*/
+	function showFormEditer($id)
+	{
+		try {
+				$sql = 'select * from Film where PK_ID_Film = ? ';
+				$stmt = $this->cn->prepare($sql);
+				$stmt->bindValue(1, $id);					
+				$stmt->execute();// true/False
+				$rs = $stmt->fetchAll(PDO::FETCH_ASSOC); 
+				echo json_encode($rs);
+
 		} catch (PDOException $e) {
 			echo "Erro: ". $e;
 

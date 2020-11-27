@@ -48,10 +48,10 @@
                   <tbody>  
 
 <?php 
-    //Get chaine
-  //var_dump($chaine);
+    //Get data
+  //var_dump($data);
   extract($_POST);
-  foreach (json_decode($chaine) as $ligne) {
+  foreach (json_decode($data) as $ligne) {
 ?>
     <tr>
         <td><img src="../../img/<?php echo($ligne->pochette)?>" width=80 height=80></td>
