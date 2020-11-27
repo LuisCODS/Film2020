@@ -12,7 +12,7 @@ switch ($action)
 {	
 	case 'insert':		
 		    enregistrer();
-		    echo "ok";
+		   // echo "ok";
 		break;
 
 	case 'update':
@@ -77,7 +77,7 @@ function enregistrer()
 				trim($description),
 				trim($url) );
 
-	$filmDAO->insert($film);//Si ok return 1	
+	$filmDAO->insert($film);	
 	unset($filmDAO);//clean memoire
 }
 

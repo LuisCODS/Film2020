@@ -81,11 +81,14 @@ function listerFilms()
   Show display form to create a new movie.
  */
 function openFormCreate(elem){
-	//alert("Test Callback");
-	  //Cache table list film
-	  rendreInvisible(elem);
-	  //Display form
-	  $("#divFormFilm").show();
+
+	//Cache table list film
+	rendreInvisible(elem);
+	//Clean form data 
+	//document.forms['formImputs'].reset();
+	document.getElementById('formEnreg').reset();
+		//Display form
+	$("#divFormFilm").show();
 }
 
 function enregistrerFilm()
@@ -169,17 +172,3 @@ function modifierFilm(id)
 	});
 }
 
-// function lister(reponse){
-// 	var taille;
-// 	var rep="<div class='table-users' style='overflow: scroll; height: 500px;'>";
-// 	rep+="<div class='header'>Liste des films<span style='float:right;padding-right:10px;cursor:pointer;' onClick=\"$('#contenu').hide();\">X</span></div>";
-// 	rep+="<table cellspacing='0'>";
-// 	rep+="<tr><th>POCHETTE</th><th>TITRE</th><th>CATEGORIE</th><th>REALISATEUR</th><th>ACTION</th></tr>";
-// 	taille=listFilms.length;
-// 	for(var i=0; i<taille; i++){
-// 		rep+="</td><td><img src='img/"+listFilms[i].pochette+"' width=80 height=80></td></tr>"+"</td><td>"+listFilms[i].titre+"</td><td>"+listFilms[i].prix+"</td><td>"+listFilms[i].realisateur;		 
-// 	}
-// 	rep+="</table>";
-// 	rep+="</div>";
-// 	$('#contenu').html(rep);
-// }
