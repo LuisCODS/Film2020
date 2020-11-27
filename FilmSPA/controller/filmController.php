@@ -12,6 +12,7 @@ switch ($action)
 {	
 	case 'insert':		
 		    enregistrer();
+		    echo "ok";
 		break;
 
 	case 'update':

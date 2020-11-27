@@ -51,7 +51,9 @@
     //Get data
   //var_dump($data);
   extract($_POST);
-  foreach (json_decode($data) as $ligne) {
+  $array = json_decode($data);
+  //print_r($array);
+  foreach ($array as $ligne) {
 ?>
     <tr>
         <td><img src="../../img/<?php echo($ligne->pochette)?>" width=80 height=80></td>
