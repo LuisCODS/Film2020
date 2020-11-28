@@ -35,7 +35,6 @@ function validerForm()
 }//end method
 	
 
-
 // ========================= VALIDATION EMAIL =========================
 
 let  formCreate = document.getElementById('formCreate');
@@ -63,26 +62,26 @@ const validerEmail = function(courriel)
 
 }
 
-	const validerEmail = function(inputEmail)
-	{
-		let emailRegExp = new RegExp('^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$', 'g');
-		//console.log(testCouriel);
-		let tagSmall = document.getElementById("isValideCourriel");
+// const validerEmail = function(inputEmail)
+// {
+// 	let emailRegExp = new RegExp('^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$', 'g');
+// 	//console.log(testCouriel);
+// 	let tagSmall = document.getElementById("isValideCourriel");
 
-		// If not true
-		if (!emailRegExp.test(inputEmail.value)) 
-		{	
+// 	// If not true
+// 	if (!emailRegExp.test(inputEmail.value)) 
+// 	{	
 
-			tagSmall.innerHTML="Courriel non valide!";
-			tagSmall.classList.remove('text-success');
-			tagSmall.classList.add('text-danger');
-		}	
-		else{
-			tagSmall.innerHTML="Courriel valide";
-			tagSmall.classList.remove('text-danger');	
-			tagSmall.classList.add('text-success');	
-		}
-
+// 		tagSmall.innerHTML="Courriel non valide!";
+// 		tagSmall.classList.remove('text-success');
+// 		tagSmall.classList.add('text-danger');
+// 	}	
+// 	else{
+// 		tagSmall.innerHTML="Courriel valide";
+// 		tagSmall.classList.remove('text-danger');	
+// 		tagSmall.classList.add('text-success');	
+// 	}
+// }
 // ========================= VALIDATION TELEPHONE =========================
 
 function validerTelephone(input_tel_membre)
@@ -109,3 +108,29 @@ function validerTelephone(input_tel_membre)
 	}
 }
 
+
+function listerFilms()
+{
+	var action = 'action=select';
+	//console.log(action);
+	
+	$.ajax({
+		method: "POST", 
+		url:"../../controller/filmController.php",
+		data: action	
+
+	}).done((jsonString)=>{
+		//Va creer le template
+		$.ajax({
+			method: "POST", 
+			url:"../../admin/template/table-films.php",
+			data:{
+				data: jsonString
+			}
+
+		//Recoit le template
+		}).done((template)=>{
+			$("#contenu").html(template);
+		})
+	});
+}

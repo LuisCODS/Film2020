@@ -107,13 +107,7 @@
                             required>
                              <p id="erreurPasswordConfirm" style='color:red'></p>
                       </div> 
-
-                      <button             
-                          type="submit" 
-                          onclick="return validerForm()" 
-                          class="btn btn-primary">
-                          Enregistrer
-                      </button>
+                      <button type="submit" onSubmit="return validerForm('numF');" class="btn btn-primary">Enregistrer</button>
                 </form>     
             </div>
        </div>

@@ -104,7 +104,7 @@ function enregistrerFilm()
 			method: "POST", 
 			url:"../../controller/filmController.php",
 			data: formImputs,
-			//dataType : 'json',
+			//async: false,
 			contentType: false,
 			processData:false,
 
@@ -183,11 +183,10 @@ function editerFilm()
 		contentType: false,
 		processData:false,
 	}).done((jsonString)=>{
-
 		 listerFilms();//Call this one to refresh page
 		 document.getElementById("divMsg").style.display='block';
 		 document.getElementById("emsg").innerHTML = "Film bien modifié!";		
-		 setInterval(function(){document.getElementById("divMsg").style.display='none';}, 3000 ); 
+		 setInterval(function(){document.getElementById("divMsg").style.display='none';}, 4000 ); 
 	});
 }
 
