@@ -10,7 +10,7 @@
     
       <!--  COL 1 -->
       <div class="col-md-3">
-          <h2 > <i class="fas fa-film"></i>   Liste des Film </h2> 
+          <h2 > <i class="fas fa-film"></i>Liste des Films </h2> 
       </div>  
 
       <!--  COL 2 -->
@@ -64,7 +64,7 @@
         <td>     
           <a 
             class="btn btn-outline-primary " 
-             onClick="modifierFilm(<?php echo ($ligne->PK_ID_Film); ?>);"
+             onClick="showFormEditer(<?php echo ($ligne->PK_ID_Film); ?>);"
             role="button">Editer
           </a>                         
         </td>                              

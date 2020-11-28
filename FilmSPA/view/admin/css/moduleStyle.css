@@ -10,3 +10,9 @@
 	display: none;
 }
 
+#emsg { 
+	/*centralize le paragraphe*/
+	text-align: center;
+	color:red;
+	font-size:20px;
+}

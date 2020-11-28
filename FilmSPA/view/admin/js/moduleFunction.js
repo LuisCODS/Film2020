@@ -81,11 +81,14 @@ function listerFilms()
   Show display form to create a new movie.
  */
 function openFormCreate(elem){
-	//alert("Test Callback");
-	  //Cache table list film
-	  rendreInvisible(elem);
-	  //Display form
-	  $("#divFormFilm").show();
+
+	//Clean form data
+	document.getElementById('formEnreg').reset();
+	
+	//Cache table list film
+	rendreInvisible(elem);
+	//Display form
+	$("#divFormFilm").show();
 }
 
 function enregistrerFilm()
@@ -107,11 +110,11 @@ function enregistrerFilm()
 
 	}).done((output)=>{
 		//alert("ok");
- 		listerFilms();//Call this one to refresh page
+ 		listerFilms();
  		$('#divFormFilm').hide();
 		document.getElementById("divMsg").style.display='block';
 		document.getElementById("emsg").innerHTML = "Film bien enregistre!";		
-		setInterval(function(){document.getElementById("divMsg").style.display='none';}, 5000 );
+		setInterval(function(){document.getElementById("divMsg").style.display='none';}, 4000 );
 	});
 
 	return false;
@@ -135,28 +138,25 @@ function supprimerFilm(id)
 		 listerFilms();//Call this one to refresh page
 		 document.getElementById("divMsg").style.display='block';
 		 document.getElementById("emsg").innerHTML = "Film bien supprimé!";		
-		 setInterval(function(){document.getElementById("divMsg").style.display='none';}, 5000 ); 
+		 setInterval(function(){document.getElementById("divMsg").style.display='none';}, 4000 ); 
 
 	 });
 }
 
 
-function modifierFilm(id)
+/*Adffiche le form editer avec les champs courrants*/
+function showFormEditer(id)
 {
 	//alert(id);//get id ok
-	var action = 'action=update';
+	var action = 'action=showForm';
 	var idFilm = 'idFilm='+id;
 	
 	$.ajax({
-
 		method: "POST", 
 		url:"../../controller/filmController.php",
-		data: action+'&'+idFilm
-		
+		//data: action+'&'+idFilm,
+		data: action+'&'+idFilm,
 	}).done((jsonString)=>{
-		
-		//alert(jsonString);
-
 		//Va creer le template
 		$.ajax({
 			method: "POST", 
@@ -169,17 +169,36 @@ function modifierFilm(id)
 	});
 }
 
-// function lister(reponse){
-// 	var taille;
-// 	var rep="<div class='table-users' style='overflow: scroll; height: 500px;'>";
-// 	rep+="<div class='header'>Liste des films<span style='float:right;padding-right:10px;cursor:pointer;' onClick=\"$('#contenu').hide();\">X</span></div>";
-// 	rep+="<table cellspacing='0'>";
-// 	rep+="<tr><th>POCHETTE</th><th>TITRE</th><th>CATEGORIE</th><th>REALISATEUR</th><th>ACTION</th></tr>";
-// 	taille=listFilms.length;
-// 	for(var i=0; i<taille; i++){
-// 		rep+="</td><td><img src='img/"+listFilms[i].pochette+"' width=80 height=80></td></tr>"+"</td><td>"+listFilms[i].titre+"</td><td>"+listFilms[i].prix+"</td><td>"+listFilms[i].realisateur;		 
-// 	}
-// 	rep+="</table>";
-// 	rep+="</div>";
-// 	$('#contenu').html(rep);
-// }
+
+/*Edite le film*/
+function editerFilm()
+{
+	var formImputs = new FormData(document.getElementById('formEditer'));
+
+	$.ajax({
+		method: "POST", 
+		url:"../../controller/filmController.php",
+		//data: action+'&'+idFilm,
+		data: formImputs,
+		contentType: false,
+		processData:false,
+	}).done((jsonString)=>{
+
+		 listerFilms();//Call this one to refresh page
+		 document.getElementById("divMsg").style.display='block';
+		 document.getElementById("emsg").innerHTML = "Film bien modifié!";		
+		 setInterval(function(){document.getElementById("divMsg").style.display='none';}, 3000 ); 
+
+		//alert("Test");
+		//Va creer le template
+		// $.ajax({
+		// 	method: "POST", 
+		// 	url:"../film/template/formEditFilm.php",
+		// 	data: "data="+jsonString
+		// //Recoit le template
+		// }).done((template)=>{
+		// 	$("#contenu").html(template);
+		// })
+	});
+}
+
