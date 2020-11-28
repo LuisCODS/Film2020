@@ -188,17 +188,6 @@ function editerFilm()
 		 document.getElementById("divMsg").style.display='block';
 		 document.getElementById("emsg").innerHTML = "Film bien modifié!";		
 		 setInterval(function(){document.getElementById("divMsg").style.display='none';}, 3000 ); 
-
-		//alert("Test");
-		//Va creer le template
-		// $.ajax({
-		// 	method: "POST", 
-		// 	url:"../film/template/formEditFilm.php",
-		// 	data: "data="+jsonString
-		// //Recoit le template
-		// }).done((template)=>{
-		// 	$("#contenu").html(template);
-		// })
 	});
 }
 
