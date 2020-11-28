@@ -8,11 +8,9 @@
 </head>
 <body >
 
-<div  id="contenu">
-
+<div class="container-fluid"  id="contenu">
+		<!-- DISPLAY TEMPLATE HERE -->
 </div> 
-
-
 
  <?php include_once("../../includes/footer.php");?>
 </body>

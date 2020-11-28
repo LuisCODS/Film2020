@@ -9,6 +9,7 @@ function validerForm()
 	var courriel= formCreate.courriel.value;
 	var prenom  = formCreate.prenom.value;
 
+	alert("ok");
 	//PASSWORD LIMITE
 
 	if ( motUm.length != 4   &&  motUm != "" ) 
