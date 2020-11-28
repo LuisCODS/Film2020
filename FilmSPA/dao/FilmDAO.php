@@ -45,7 +45,7 @@ Class FilmDAO
 	}
 
 
-	function update(Film $f)
+	function update($titre,$prix,$realisateur,$categorie,$pochette,$description,$url,$PK_ID_Film)
 	{
 		try {
 				$sql =  'update Film set
@@ -61,14 +61,14 @@ Class FilmDAO
 				$stmt = $this->cn->prepare($sql);
 
 				
-				$stmt->bindValue(1, $f->getTitre() );
-				$stmt->bindValue(2, $f->getPrix() );
-				$stmt->bindValue(3, $f->getRealisateur() );
-				$stmt->bindValue(4, $f->getCategorie() );
-				$stmt->bindValue(5, $f->getPochette() );
-				$stmt->bindValue(6, $f->getDescription() );
-				$stmt->bindValue(7, $f->getFilmID() );
-				$stmt->bindValue(8, $f->getUrl() );
+				$stmt->bindValue(1, $titre );
+				$stmt->bindValue(2, $prix );
+				$stmt->bindValue(3, $realisateur);
+				$stmt->bindValue(4, $categorie);
+				$stmt->bindValue(5, $pochette );
+				$stmt->bindValue(6, $description);
+				$stmt->bindValue(7, $url);
+				$stmt->bindValue(8, $PK_ID_Film);
 				$stmt->execute();
 				unset($stmt);//libere la memoire
 
@@ -135,11 +135,12 @@ Class FilmDAO
 	}
 
 	/*Supprime une image dans le serveur*/
-	private function enleverFichier($img,$pochette)
+	private function enleverFichier($dossier,$pochette)
 	{
-		if($pochette!=="avatar.jpg"){
-			$rmPoc="../$img/".$pochette;
-			$tabFichiers = glob("../$img/*");
+		if($pochette!=="avatar.jpg")
+		{
+			$rmPoc="../$dossier/".$pochette;
+			$tabFichiers = glob("../$dossier/*");
 			//print_r($tabFichiers);
 			// parcourir les fichier
 			foreach($tabFichiers as $fichier)
@@ -195,34 +196,54 @@ Class FilmDAO
 		}
 	}
 
+	function getFilm($id)
+	{
+		try {
+				$sql = 'select * from Film where PK_ID_Film = ? ';
+				$stmt = $this->cn->prepare($sql);
+				$stmt->bindValue(1, $id);					
+				$stmt->execute();// true/False
+				$rs = $stmt->fetch(PDO::FETCH_OBJ); 
+				return($rs);
+
+		} catch (PDOException $e) {
+			echo "Erro: ". $e;
+
+		}finally{
+			unset($cn);//close  connexion
+			unset($stmt);//clean memoire
+		}
+	}
+
+
 	/*Enregistre une image dans le serveur
 	  Parms:
 	  $dossier: chemin où se trouvent les images au serveur;
 	  $inputNom: nom fichier envoyé par l'utilisateur;
 	  $fichierDefaut: nom default;
 	*/
-	//  function verserFichier($dossier, $inputNom, $fichierDefaut, $titre)
-	// {
-	// 	$cheminDossier="../$dossier/";
-	// 	$nomPochette=sha1($titre.time());
-	// 	$pochette=$fichierDefaut;
+	 function verserFichier($dossier, $inputNom, $fichierDefaut, $titre)
+	{
+		$cheminDossier="../$dossier/";
+		$nomPochette=sha1($titre.time());
+		$pochette=$fichierDefaut;
 
-		
-	// 	if($_FILES[$inputNom]['tmp_name']!=="")
-	// 	{
-	// 		//Le nom temporaire du fichier qui sera chargé sur le serveur.
-	// 		$tmp = $_FILES[$inputNom]['tmp_name'];
-	// 		$fichier= $_FILES[$inputNom]['name'];
-	// 		$extension=strrchr($fichier,'.');
-	// 		@move_uploaded_file($tmp,$cheminDossier.$nomPochette.$extension);
-	// 		// Enlever le fichier temporaire charg�
-	// 		@unlink($tmp); //effacer le fichier temporaire
-	// 		//Enlever l'ancienne pochette dans le cas de modifier
-	// 		$this->enleverFichier($dossier,$pochette);
-	// 		$pochette=$nomPochette.$extension;
-	// 	}
-	// 	return $pochette;
-	// }
+		//Si une img a été envoyée
+		if($_FILES[$inputNom]['tmp_name']!=="")
+		{
+			//Le nom temporaire du fichier qui sera chargé sur le serveur.
+			$tmp = $_FILES[$inputNom]['tmp_name'];
+			$fichier= $_FILES[$inputNom]['name'];
+			$extension=strrchr($fichier,'.');
+			@move_uploaded_file($tmp,$cheminDossier.$nomPochette.$extension);
+			// Enlever le fichier temporaire charg�
+			@unlink($tmp); //effacer le fichier temporaire
+			//Enlever l'ancienne pochette dans le cas de modifier
+			$this->enleverFichier($dossier,$pochette);
+			$pochette=$nomPochette.$extension;
+		}
+		return $pochette;
+	}
 
 
 

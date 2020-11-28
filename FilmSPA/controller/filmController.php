@@ -15,9 +15,13 @@ switch ($action)
 		   // echo "ok";
 		break;
 
-	case 'update':
+	case 'showForm':
 			echo $filmDAO->showFormEditer($idFilm);
 			unset($filmDAO);//clean memoire
+		 break;
+
+	case 'update':
+			echo EditerFilm($PK_ID_Film);
 		 break;
 
 	case 'delete':
@@ -92,30 +96,19 @@ function sendToDelete($idFilm)
 function EditerFilm($idFilm)
 {
 	//GET ALL FORM DATA
-	//extract($_POST);
-	//global $filmDAO;
-
-	 
-	//return $filmDAO->TouverParID($idFilm);
-	 //unset($filmDAO);//clean memoire
-
-
-	// $PK_ID_Film=$_POST['PK_ID_Film'];
-	// $titre=$_POST['titre'];
-	// $prix=$_POST['prix'];
-	// $realisateur=$_POST['realisateur'];
-	// $categorie=$_POST['categorie'];
-	// $description=$_POST['description'];
-	// $url=$_POST['url'];
-	// $dossier="../img/";
+	global $filmDAO;
+	extract($_POST);
 
 	// ce select est necessaire pour recuperer la pochette courrante
-	// $requette="SELECT pochette FROM film WHERE PK_ID_Film=?";
-	// $stmt = $connexion->prepare($requette);
-	// $stmt->execute(array($PK_ID_Film));
-	// $ligne=$stmt->fetch(PDO::FETCH_OBJ);
-	// $pochette=$ligne->pochette;
+	$film =  $filmDAO->getFilm($idFilm);
+	 //unset($filmDAO);//clean memoire
+	 $anciennePochette = $film->pochette;
+	 unset($film);//clean memoire
+
+	 $pochette = $filmDAO->verserFichier("img","pochette",$anciennePochette, $titre);
    
+	$filmDAO->update(trim($titre),trim($prix),trim($realisateur),trim($categorie),trim($pochette),trim($description),trim($url),$PK_ID_Film);	
+	unset($filmDAO);//clean memoire
 
 	// //CAS NOUVELLE IMAGE
 	// if($_FILES['pochette']['tmp_name']!=="")
@@ -148,20 +141,5 @@ function EditerFilm($idFilm)
 	// 	@unlink($tmp); //effacer le fichier temporaire
 	// }
 
-	// $requette="UPDATE film set 
-	// 				titre=?,
-	// 				prix=?,
-	// 				realisateur=?,
-	// 				categorie=?,
-	// 				description=?,
-	// 				url=?,
-	// 				pochette=?
-	// 		   WHERE PK_ID_Film=?";
 
-	// $stmt = $connexion->prepare($requette);
-	// $stmt->execute(array($titre,$prix,$realisateur,$categorie,trim($description),$url,$pochette, $PK_ID_Film));
-	// unset($connexion);
-	// unset($stmt);
-
-	//$filmDAO->update($film);//Si ok return 1
 }

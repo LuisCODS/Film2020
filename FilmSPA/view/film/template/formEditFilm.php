@@ -2,8 +2,9 @@
   extract($_POST);
   
     $film = json_decode($data); 
-    // var_dump($film);      
-    //echo $film[0]->prix; 
+
+    //var_dump($film);      
+   // echo $film[0]->prix; 
 ?>
 
 <!-- _________________  FORM EDITER FILM _________________ --> 
@@ -41,7 +42,7 @@
             class="form-control"
             id="PK_ID_Film" 
             name="PK_ID_Film"
-            value="<?php echo $film[0]->PK_ID_Film ?>"> 
+            value="<?php echo $film[0]->PK_ID_Film; ?>"> 
     </div>
 
     <div class="form-group">
@@ -63,13 +64,13 @@
             id="prix"
             name="prix" 
             size="40" 
-            value="<?php echo $film[0]->prix ?>">
+            value="<?php echo $film[0]->prix; ?>">
     </div>
 
     <div class="form-group">
         <label for="categorie">Categorie</label>
         <select class="form-control" id="categorie" name="categorie">
-            <option selected><?php echo $film[0]->categorie ?></option>
+            <option selected><?php echo $film[0]->categorie; ?></option>
             <option value="Romance">Romance</option>
             <option value="Horreur">Horreur</option>
             <option value="Comedie">Comedie</option>
@@ -85,7 +86,7 @@
             class="form-control"
             id="realisateur" 
             name="realisateur"
-            value="<?php echo $film[0]->realisateur ?>">
+            value="<?php echo $film[0]->realisateur; ?>">
     </div>
 
     <div class="form-group">
@@ -95,7 +96,7 @@
             class="form-control"
             id="description"
             name="description" 
-            value="<?php echo $film[0]->description ?>"  >
+            value="<?php echo $film[0]->description; ?>">
          </textarea>
     </div>
 
@@ -106,22 +107,23 @@
             class="form-control" 
             id="pochette" 
             name="pochette"
-            value="<?php echo $film[0]->pochette ?>">
+            value="<?php echo $film[0]->pochette; ?>">
     </div>
 
         <div class="form-group">
           <input
                 type="hidden" 
                 class="form-control" 
-                readonly="true" 
+                readonly="true"  
                 id="url" 
                 name="url" 
-                value="<?php echo $film[0]->url ?>">
+                value="<?php echo $film[0]->url; ?>">
        </div>
 
        <button
              id="btnEnregistrer"
-             type="submit" 
+             type="button" 
+             onClick="editerFilm();" 
              value="Envoyer"
              class="btn btn-primary">Enregistrer
      </button>

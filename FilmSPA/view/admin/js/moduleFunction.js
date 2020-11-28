@@ -82,12 +82,12 @@ function listerFilms()
  */
 function openFormCreate(elem){
 
+	//Clean form data
+	document.getElementById('formEnreg').reset();
+	
 	//Cache table list film
 	rendreInvisible(elem);
-	//Clean form data 
-	//document.forms['formImputs'].reset();
-	document.getElementById('formEnreg').reset();
-		//Display form
+	//Display form
 	$("#divFormFilm").show();
 }
 
@@ -110,11 +110,11 @@ function enregistrerFilm()
 
 	}).done((output)=>{
 		//alert("ok");
- 		listerFilms();//Call this one to refresh page
+ 		listerFilms();
  		$('#divFormFilm').hide();
 		document.getElementById("divMsg").style.display='block';
 		document.getElementById("emsg").innerHTML = "Film bien enregistre!";		
-		setInterval(function(){document.getElementById("divMsg").style.display='none';}, 5000 );
+		setInterval(function(){document.getElementById("divMsg").style.display='none';}, 4000 );
 	});
 
 	return false;
@@ -138,28 +138,25 @@ function supprimerFilm(id)
 		 listerFilms();//Call this one to refresh page
 		 document.getElementById("divMsg").style.display='block';
 		 document.getElementById("emsg").innerHTML = "Film bien supprimé!";		
-		 setInterval(function(){document.getElementById("divMsg").style.display='none';}, 5000 ); 
+		 setInterval(function(){document.getElementById("divMsg").style.display='none';}, 4000 ); 
 
 	 });
 }
 
 
-function modifierFilm(id)
+/*Adffiche le form editer avec les champs courrants*/
+function showFormEditer(id)
 {
 	//alert(id);//get id ok
-	var action = 'action=update';
+	var action = 'action=showForm';
 	var idFilm = 'idFilm='+id;
 	
 	$.ajax({
-
 		method: "POST", 
 		url:"../../controller/filmController.php",
-		data: action+'&'+idFilm
-		
+		//data: action+'&'+idFilm,
+		data: action+'&'+idFilm,
 	}).done((jsonString)=>{
-		
-		//alert(jsonString);
-
 		//Va creer le template
 		$.ajax({
 			method: "POST", 
@@ -169,6 +166,39 @@ function modifierFilm(id)
 		}).done((template)=>{
 			$("#contenu").html(template);
 		})
+	});
+}
+
+
+/*Edite le film*/
+function editerFilm()
+{
+	var formImputs = new FormData(document.getElementById('formEditer'));
+
+	$.ajax({
+		method: "POST", 
+		url:"../../controller/filmController.php",
+		//data: action+'&'+idFilm,
+		data: formImputs,
+		contentType: false,
+		processData:false,
+	}).done((jsonString)=>{
+
+		 listerFilms();//Call this one to refresh page
+		 document.getElementById("divMsg").style.display='block';
+		 document.getElementById("emsg").innerHTML = "Film bien modifié!";		
+		 setInterval(function(){document.getElementById("divMsg").style.display='none';}, 3000 ); 
+
+		//alert("Test");
+		//Va creer le template
+		// $.ajax({
+		// 	method: "POST", 
+		// 	url:"../film/template/formEditFilm.php",
+		// 	data: "data="+jsonString
+		// //Recoit le template
+		// }).done((template)=>{
+		// 	$("#contenu").html(template);
+		// })
 	});
 }
 

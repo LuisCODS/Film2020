@@ -24,7 +24,7 @@
 
     <!-- MSG SUCCES-->
     <div id="divMsg" class="col-md-12 alert alert-success" role="alert">
-        <span id="emsg">MSG HERE!</span>      
+        <p id="emsg"></p>      
     </div>
 
 	<div class="container" id="contenu" >
@@ -45,7 +45,7 @@
             readonly="true"
             id="action" 
             name="action"
-            value="insert" >
+            value="insert">
     </div>
     <div class="form-group">
         <label for="titre">Titre</label>
@@ -106,6 +106,7 @@
     </button>
   </form> 
 </div> 
+
 
 
  <?php include_once("../../includes/footer.php");?>
