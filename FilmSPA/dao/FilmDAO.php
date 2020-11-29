@@ -223,8 +223,8 @@ Class FilmDAO
 				$stmt = $this->cn->prepare($sql);
 				$stmt->bindValue(1, $categorie);					
 				$stmt->execute();// true/False
-				$rs = $stmt->fetch(PDO::FETCH_OBJ); 
-				return($rs);
+				$rs = $stmt->fetchAll(PDO::FETCH_ASSOC); 
+				return json_encode($rs);
 
 		} catch (PDOException $e) {
 			echo "Erro: ". $e;

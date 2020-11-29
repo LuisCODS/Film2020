@@ -5,7 +5,6 @@ include '../dao/FilmDAO.php';
 //GLOBAL 
 extract($_POST);
 $filmDAO = new FilmDAO();
-var_dump($cat);
 // =================== CONTROLLEUR - film ===================
 
 switch ($action) 
@@ -40,8 +39,8 @@ switch ($action)
 		break;
 
 	case 'listerByCategorie':
-		  echo $filmDAO->getByCategorie();
-		  unset($filmDAO);//clean memoire
+		   echo $filmDAO->getByCategorie($cat);
+		  // unset($filmDAO);//clean memoire
 		break;
 
 	default:

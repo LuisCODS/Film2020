@@ -22,7 +22,7 @@
 				</a>
 			<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 				<a class="dropdown-item" onClick="listerCategorie('Action');">Action</a>
-				<a class="dropdown-item" href="../../view/film/lister.php?cat=comedie">Comedie</a>
+				<a class="dropdown-item" onClick="listerCategorie('Comedie');">Comedie</a>
 				<a class="dropdown-item" href="../../view/film/lister.php?cat=romance">Romance</a>
 				<a class="dropdown-item" href="../../view/film/lister.php?cat=drame">Drame</a>
 				<a class="dropdown-item" href="../../view/film/lister.php?cat=horreur">Horreur</a>

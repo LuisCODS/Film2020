@@ -7,23 +7,11 @@
     ?>
 </head>
 <body >
-
-
-
-
-<!-- ================= ZONE  TEMPLATE  ================= -->
+<!-- =================  TEMPLATE  ================= -->
 <div class="container-fluid"  id="contenu">
-		
+			<!-- ZONE AFFICHAGE -->
 </div> 
-
-
-
-
+<!-- ============================================== -->
  <?php include_once("../../includes/footer.php");?>
 </body>
 </html>
-
-
-
-
-

@@ -38,7 +38,7 @@ function listerFilmsCards()
 		url:"../../controller/filmController.php",
 		data: action	
 	}).done((jsonString)=>{
-		//console.log(jsonString);
+		//alert(jsonString);
 
 		//Va creer le template
 		$.ajax({
@@ -54,30 +54,23 @@ function listerFilmsCards()
 
 function listerCategorie(categorie)
 {
-	//var action = 'action=listerByCategorie';
-	var form = new FormData();
-	form.append('action','listerByCategorie');	
-	form.append('cat','categorie');	
-
-
-	//var categorie = 'categorie='+categorie;	
+	var action = 'action=listerByCategorie&cat='+categorie;
 	$.ajax({
 		method: "POST", 
 		url:"../../controller/filmController.php",
-	    data:$( form ).serialize()
+	    data:action
+	   // data:$( form ).serialize()
 
 	}).done((jsonString)=>{
 
-		alert(jsonString);
-		//Va creer le template
-		// $.ajax({
-		// 	method: "POST", 
-		// 	url:"../film/template/card-film.php",
-		// 	data: "chaine="+jsonString
-		// //Recoit le template
-		// }).done((template)=>{
-		// 	$("#contenu").html(template);
-		// })
+		$.ajax({
+			method: "POST", 
+			url:"../film/template/card-film.php",
+			data: "chaine="+jsonString
+		//Recoit le template
+		}).done((template)=>{
+			$("#contenu").html(template);
+		})
 	});
 }
 
