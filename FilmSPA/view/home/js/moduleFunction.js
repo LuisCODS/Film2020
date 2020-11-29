@@ -59,10 +59,8 @@ function listerCategorie(categorie)
 		method: "POST", 
 		url:"../../controller/filmController.php",
 	    data:action
-	   // data:$( form ).serialize()
-
 	}).done((jsonString)=>{
-
+		
 		$.ajax({
 			method: "POST", 
 			url:"../film/template/card-film.php",
