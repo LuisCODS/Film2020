@@ -48,11 +48,12 @@
                   <tbody>  
 
 <?php 
-    //Get data
-  //var_dump($data);
   extract($_POST);
   $array = json_decode($data);
-  //print_r($array);
+  echo  $inerHtml = "<div id='totalCat' style='text-align:center' class='alert alert-info' role='alert'>
+                        <h4>Total de films (".count($array).")</h4>
+                  </div>";
+
   foreach ($array as $ligne) {
 ?>
     <tr>

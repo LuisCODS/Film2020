@@ -6,33 +6,54 @@ function rendreInvisible(elem){
   document.getElementById(elem).style.display='none';
 }
 
+// ===========================  GESTION VALIDATION ===========================
+function validerForm()
+{
+	//alert("Form sended");
+}
+
+// ===========================  GESTION MEMBRE ===========================
+
 function literMembres()
 {
-	//alert("Teste");
 	var action = 'action=select';
 	$.ajax({
 		method: "POST", 
 		url:"../../controller/membreController.php",
 		data: action	
 	}).done((jsonString)=>{
-	   //alert(jsonString);	
-		/*
-			Fait une nouvelle requisition pour envoyer les données json(chaine de string)
-			au dossier template(table-membre.php) qui va parcourrir la chaine json et creer 
-			une table remplie en retour.
-		*/
 		$.ajax({
 			method: "POST", 
 			url:"../admin/template/table-membres.php",
 			data: "chaine="+jsonString	
 		}).done((template)=>{
-			//alert(template);
-			//Attache le contenu dans la div avec l'ID (contenu)
 			$("#contenu").html(template);
-			//$("#contenu").hide();
 		})
 	});	
 }
+
+function supprimerMembre(id)
+{
+	//alert(id);//get id ok
+	var action = 'action=delete';
+	var idMembre = 'idMembre='+id;
+	
+	$.ajax({
+
+		method: "POST", 
+		url:"../../controller/membreController.php",
+		data: action+'&'+idMembre
+		
+	}).done(()=>{
+		 literMembres();//Call this one to refresh page
+		 document.getElementById("divMsg").style.display='block';
+		 document.getElementById("emsg").innerHTML = "<h4>Membre bien supprimé!</h4>";		
+		 setInterval(function(){document.getElementById("divMsg").style.display='none';}, 4000 ); 
+
+	 });
+}
+
+// ===========================  GESTION ADMIN ===========================
 
 function showDashboard(){
 
@@ -50,16 +71,16 @@ function showDashboard(){
 	});
 }
 
+// ===========================  GESTION FILM ===========================
+
 function listerFilms()
 {
 	var action = 'action=select';
-	//console.log(action);
-	
+	//console.log(action);	
 	$.ajax({
 		method: "POST", 
 		url:"../../controller/filmController.php",
 		data: action	
-
 	}).done((jsonString)=>{
 		//Va creer le template
 		$.ajax({
@@ -68,7 +89,6 @@ function listerFilms()
 			data:{
 				data: jsonString
 			}
-
 		//Recoit le template
 		}).done((template)=>{
 			$("#contenu").html(template);
@@ -93,30 +113,22 @@ function openFormCreate(elem){
 
 function enregistrerFilm()
 {
-	//Show  form Create film
 	document.getElementById("divFormFilm").style.display='block';
-
-	var formImputs = new FormData(document.getElementById('formEnreg'));
-	//var action = 'action=select';
-	
+	var formImputs = new FormData(document.getElementById('formEnreg'));	
 	$.ajax({
-
 			method: "POST", 
 			url:"../../controller/filmController.php",
 			data: formImputs,
-			//dataType : 'json',
+			//async: false,
 			contentType: false,
 			processData:false,
-
 	}).done((output)=>{
-		//alert("ok");
  		listerFilms();
  		$('#divFormFilm').hide();
 		document.getElementById("divMsg").style.display='block';
-		document.getElementById("emsg").innerHTML = "Film bien enregistre!";		
+		document.getElementById("emsg").innerHTML = "<h4>Film bien enregistre!</h4>";		
 		setInterval(function(){document.getElementById("divMsg").style.display='none';}, 4000 );
 	});
-
 	return false;
 }
 
@@ -137,7 +149,7 @@ function supprimerFilm(id)
 	}).done(()=>{
 		 listerFilms();//Call this one to refresh page
 		 document.getElementById("divMsg").style.display='block';
-		 document.getElementById("emsg").innerHTML = "Film bien supprimé!";		
+		 document.getElementById("emsg").innerHTML = "<h4>Film bien supprimé!</h4>";		
 		 setInterval(function(){document.getElementById("divMsg").style.display='none';}, 4000 ); 
 
 	 });
@@ -183,22 +195,10 @@ function editerFilm()
 		contentType: false,
 		processData:false,
 	}).done((jsonString)=>{
-
 		 listerFilms();//Call this one to refresh page
 		 document.getElementById("divMsg").style.display='block';
 		 document.getElementById("emsg").innerHTML = "Film bien modifié!";		
-		 setInterval(function(){document.getElementById("divMsg").style.display='none';}, 3000 ); 
-
-		//alert("Test");
-		//Va creer le template
-		// $.ajax({
-		// 	method: "POST", 
-		// 	url:"../film/template/formEditFilm.php",
-		// 	data: "data="+jsonString
-		// //Recoit le template
-		// }).done((template)=>{
-		// 	$("#contenu").html(template);
-		// })
+		 setInterval(function(){document.getElementById("divMsg").style.display='none';}, 4000 ); 
 	});
 }
 

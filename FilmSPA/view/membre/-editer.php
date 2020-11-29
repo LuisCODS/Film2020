@@ -45,7 +45,7 @@ include_once '../../model/Membre.php';
         </div> 
     <div class="row">
           <!-- _________________  FORM EDITER MEMBRE _________________ --> 
-           <form id="formCreate" action="../../controller/membre.php" method="POST">
+           <form id="formCreate" action="../../controller/membreController.php" method="POST">
                      <h2>Formulaire d'édition</h2>
                           <input
                            type="hidden" 

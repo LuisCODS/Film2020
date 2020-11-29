@@ -29,7 +29,7 @@
 				</div>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="editer.php">Editer Profil <i class="far fa-user"></i></a>
+				<a class="nav-link" href="" onClick="$('#contenu').hide(); $('#divFormEditer').show();">Editer Profil <i class="far fa-user"></i></a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="../../view/membre/panier.php">Panier  <i class="fas fa-shopping-cart"></i></a>

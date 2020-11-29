@@ -14,30 +14,16 @@
 			</a>
 		</li>
 		<li class="nav-item dropdown">
-			<a class="nav-link dropdown-toggle"  id="navbarDropdownMenuLink"
-			role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-			Gestion
-			</a>
+			<a class="nav-link dropdown-toggle"  id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Gestion</a>
 			<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 				<a class="dropdown-item"   onClick="literMembres(); $('#divFormFilm').hide();" >
-					<i class="fas fa-users"></i>
-					  Membres
-				</a> 
-				<a class="dropdown-item"   onClick="listerFilms(); $('#divFormFilm').hide();" >
-					<i class="fas fa-video"></i>
-					  Films
-				</a>
+					<i class="fas fa-users"></i> Membres</a> 
+				<a class="dropdown-item" onClick="listerFilms(); $('#divFormFilm').hide();"><i class="fas fa-video"></i>Films</a>
 			</div>
 		</li>
-		<li class="nav-item">
-			<a id="emailShowUp" class="nav-link"></a>
-		</li>
-		<li class="nav-item">
-			<a class="nav-link" href="../../view/login/logout.php">Quitter <i class="fas fa-sign-in-alt"></i></a>
-		</li>
-		<li class="nav-item" style="padding-left: 700px;">
-			<a class="nav-link"><?php echo $membre->getCourriel();  ?></a>
-		</li>
+		<li class="nav-item"><a id="emailShowUp" class="nav-link"></a></li>
+		<li class="nav-item"><a class="nav-link" href="../../view/login/logout.php">Quitter <i class="fas fa-sign-in-alt"></i></a></li>
+		<li class="nav-item" style="padding-left: 700px;"><a class="nav-link"><?php echo $membre->getCourriel();  ?></a></li>
 	</ul>
 </div>
 </nav>

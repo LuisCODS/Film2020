@@ -1,4 +1,4 @@
-<!-- ______________________  INCLUDE INTERFACE VISITEUR   ______________________-->
+<!-- ______________________   INTERFACE VISITEUR   ______________________-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">        
 	<!-- <a class="navbar-brand" href="#">Films</a> -->
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
@@ -8,12 +8,12 @@
 	<div class="collapse navbar-collapse" id="navbarNavDropdown">
 		<ul class="navbar-nav">
 			<li class="nav-item active">
-				<a class="nav-link" href="../../view/home/index.php"><i 
+				<a class="nav-link" href=""><i 
 				class="fas fa-home"></i><span class="sr-only">(Página atual)</span>
 				</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="../film/lister.php">Nos films</a>
+				<a class="nav-link" onClick="listerFilmsCards();">Nos films</a>
 			</li>
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
@@ -21,18 +21,18 @@
 					Categories
 				</a>
 			<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-				<a class="dropdown-item" href="../../view/film/lister.php?cat=action">Action</a>
-				<a class="dropdown-item" href="../../view/film/lister.php?cat=comedie">Comedie</a>
-				<a class="dropdown-item" href="../../view/film/lister.php?cat=romance">Romance</a>
-				<a class="dropdown-item" href="../../view/film/lister.php?cat=drame">Drame</a>
-				<a class="dropdown-item" href="../../view/film/lister.php?cat=horreur">Horreur</a>
+				<a class="dropdown-item" onClick="listerCategorie('Action');">Action</a>
+				<a class="dropdown-item" onClick="listerCategorie('Comedie');">Comedie</a>
+				<a class="dropdown-item" onClick="listerCategorie('Romance');">Romance</a>
+				<a class="dropdown-item" onClick="listerCategorie('Drame');">Drame</a>
+				<a class="dropdown-item" onClick="listerCategorie('Horreur');">Horreur</a>
 			</div>
 			</li>
 			<li class="nav-item">                                 
 				<a class="nav-link" href="../../view/login/login.php">Connection  <i class="fas fa-sign-in-alt"></i></a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="../../view/membre/create.php">Devenir membre <i class="far fa-user"></i></a>
+				<a class="nav-link" onClick="$('#dviFormCreateUser').show();">Devenir membre <i class="far fa-user"></i></a>
 			</li>
 		</ul>
 	</div>
