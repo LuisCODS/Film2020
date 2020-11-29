@@ -8,9 +8,16 @@
 </head>
 <body >
 
+
+
+
+<!-- ================= ZONE  TEMPLATE  ================= -->
 <div class="container-fluid"  id="contenu">
-		<!-- DISPLAY TEMPLATE HERE -->
+		
 </div> 
+
+
+
 
  <?php include_once("../../includes/footer.php");?>
 </body>

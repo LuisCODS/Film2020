@@ -215,6 +215,27 @@ Class FilmDAO
 		}
 	}
 
+	/*Return une liste de film categorisé*/
+	function getByCategorie($categorie)
+	{
+		try {
+				$sql = 'select * from Film where categorie = ? ';
+				$stmt = $this->cn->prepare($sql);
+				$stmt->bindValue(1, $categorie);					
+				$stmt->execute();// true/False
+				$rs = $stmt->fetch(PDO::FETCH_OBJ); 
+				return($rs);
+
+		} catch (PDOException $e) {
+			echo "Erro: ". $e;
+
+		}finally{
+			unset($cn);//close  connexion
+			unset($stmt);//clean memoire
+		}
+	}
+
+
 
 	/*Enregistre une image dans le serveur
 	  Parms:

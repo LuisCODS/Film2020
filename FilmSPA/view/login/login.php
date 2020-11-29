@@ -30,7 +30,8 @@
                <?php if (isset ($_SESSION["invalidImput"])){ echo $_SESSION["invalidImput"]; }  ?>
              </p>  
             <button type="submit" name="btnLogin" id="btnLogin" class="form-control btn btn-primary">Login</button>  
-            <a href="../membre/create.php">Pas encore membre?</a> 
+            
+            <!-- <button type="button" class="btn btn-link" onClick="displayDivForm();">Pas encore membre?</button> -->
             <hr>
             <a href="../home/index.php" role="button"><i class="fas fa-backward"></i>   Retourner</a>
        </form> 

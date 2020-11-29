@@ -6,6 +6,11 @@ function rendreInvisible(elem){
   document.getElementById(elem).style.display='none';
 }
 
+function validerForm()
+{
+	alert("Form sended");
+}
+
 function literMembres()
 {
 	//alert("Teste");
