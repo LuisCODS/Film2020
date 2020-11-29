@@ -6,10 +6,13 @@ function rendreInvisible(elem){
   document.getElementById(elem).style.display='none';
 }
 
+// ===========================  GESTION VALIDATION ===========================
 function validerForm()
 {
-	alert("Form sended");
+	//alert("Form sended");
 }
+
+// ===========================  GESTION MEMBRE ===========================
 
 function literMembres()
 {
@@ -50,6 +53,7 @@ function supprimerMembre(id)
 	 });
 }
 
+// ===========================  GESTION ADMIN ===========================
 
 function showDashboard(){
 
@@ -67,16 +71,16 @@ function showDashboard(){
 	});
 }
 
+// ===========================  GESTION FILM ===========================
+
 function listerFilms()
 {
 	var action = 'action=select';
-	//console.log(action);
-	
+	//console.log(action);	
 	$.ajax({
 		method: "POST", 
 		url:"../../controller/filmController.php",
 		data: action	
-
 	}).done((jsonString)=>{
 		//Va creer le template
 		$.ajax({
@@ -85,7 +89,6 @@ function listerFilms()
 			data:{
 				data: jsonString
 			}
-
 		//Recoit le template
 		}).done((template)=>{
 			$("#contenu").html(template);

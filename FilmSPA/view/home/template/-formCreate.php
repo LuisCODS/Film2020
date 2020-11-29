@@ -55,9 +55,9 @@
               <button type="submit" value="Envoyer" class="btn btn-primary btn-block">Valider</button>      
           </div>
           <!-- RETOUR -->
-          <div class="form-group">
+          <!-- <div class="form-group">
               <input type="button" value="Returner" class="btn btn-primary btn-block" onClick="listerFilmsCards();"></input>
-          </div>
+          </div> -->
       </form>     
   </div>
 </div>

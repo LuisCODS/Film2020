@@ -32,7 +32,7 @@
 				<a class="nav-link" href="../../view/login/login.php">Connection  <i class="fas fa-sign-in-alt"></i></a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" onClick="showFormCreate();">Devenir membre <i class="far fa-user"></i></a>
+				<a class="nav-link" onClick="$('#dviFormCreateUser').show();">Devenir membre <i class="far fa-user"></i></a>
 			</li>
 		</ul>
 	</div>

@@ -6,10 +6,13 @@
 	margin: auto;
 }
 
-
-/*#divFormFilm { 
-	display: flex;
-	justify-content: center;
+#dviFormCreateUser { 
 	display: none;
-	width: 30%;
-}*/
+}
+
+/*	
+display: flex;
+justify-content: center;
+display: none;
+width: 30%;
+*/
