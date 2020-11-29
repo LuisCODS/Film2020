@@ -8,7 +8,7 @@
 </head>
 <body >
 <!-- =================  TEMPLATE  ================= -->
-<div class="container-fluid"  id="contenu">
+<div class="container"  id="contenu">
 			<!-- ZONE AFFICHAGE -->
 </div> 
 <!-- ============================================== -->

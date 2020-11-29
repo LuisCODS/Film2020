@@ -1,7 +1,15 @@
 
-#dviFormCreateUser
-{
-	
+#formCreateNewUser
+{	
+	width: 40%;
 	justify-content: center;
-	width: 30%;
+	margin: auto;
 }
+
+
+/*#divFormFilm { 
+	display: flex;
+	justify-content: center;
+	display: none;
+	width: 30%;
+}*/

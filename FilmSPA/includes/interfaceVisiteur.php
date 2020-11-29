@@ -8,7 +8,7 @@
 	<div class="collapse navbar-collapse" id="navbarNavDropdown">
 		<ul class="navbar-nav">
 			<li class="nav-item active">
-				<a class="nav-link" href="../../view/home/index.php"><i 
+				<a class="nav-link" href=""><i 
 				class="fas fa-home"></i><span class="sr-only">(Página atual)</span>
 				</a>
 			</li>

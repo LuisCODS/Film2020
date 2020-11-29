@@ -20,8 +20,11 @@
         <tbody>  
     <?php 
     	extract($_POST);
-        // var_dump($chaine);
-    	foreach (json_decode($chaine) as $list) {
+  $array = json_decode($chaine);
+  echo  $inerHtml = "<div id='totalCat' style='text-align:center' class='alert alert-info' role='alert'>
+                        <h4>Total de Membres (".count($array).")</h4>
+                    </div>";
+  	foreach (json_decode($chaine) as $list) {
     ?>
     	<tr>
     	    <td><?php echo $list->nom;    ?></td>
@@ -29,7 +32,7 @@
     	    <td><?php echo $list->profil; ?></td>                                 
             <td>              
               <a class="btn btn-outline-danger" 
-    	          href="../../controller/admin.php?delete=<?php echo ($list->PK_ID_Membre); ?>" 
+              onClick="supprimerMembre(<?php echo ($list->PK_ID_Membre); ?>);"
     	          role="button">Supprimer</a>
             </td>  
     	 </tr>

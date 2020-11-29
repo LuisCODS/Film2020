@@ -1,34 +1,74 @@
-function validerInputsForm(leForm)
+
+// ============================ GESTION VALIDATION ========================
+
+//Get form ref
+var leForm = document.getElementById('formCreateNewUser');
+//Get all inputs inside the form as array
+var inputs = document.querySelectorAll('#leForm input');
+//Cree les expressions
+var REG_PASSWORD = /^[A-Za-z\d]{4}$/;
+var REG_EMAIL = /^(\w+[\-\.])*\w+@(\w+\.)+[A-Za-z]+$/;
+
+// Block form submit
+leForm.addEventListener('submit', (e)=>{
+	e.preventDefault();
+});
+
+// onSubmit="return valideForm();"
+// function valideForm()
+// {
+// 	//alert("Input click ok");
+
+// 	//Get form ref
+//  	var leForm = document.getElementById('formCreateNewUser');
+//  	//Get all inputs inside the form as array
+//  	var inputs = document.querySelectorAll('#leForm input');
+
+// 	var motUm   = leForm.MDP_membre.value;
+// 	var motDeux = leForm.MDP_membreConfirm.value;
+// 	var msg = document.getElementById("#msgEmail");
+
+// 	//var REG_EMAIL = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+// 	var REG_PASSWORD = /^[A-Za-z\d]{4}$/;
+// 	var REG_EMAIL = /^(\w+[\-\.])*\w+@(\w+\.)+[A-Za-z]+$/;
+
+// 	//alert(motUm);
+// 	//alert(inputs);
+
+// }//end method
+
+/*onkeydown="validerCourriel();"*/
+function validerCourriel()
 {
-	//GET FORM INPUTS
-	var motUm   = leForm.MDP_membre.value;
-	var motDeux = leForm.MDP_membreConfirm.value;
-	var courriel= leForm.courriel.value;
-	var msg = document.getElementById("msgEmail");
-	
+	var leForm = document.getElementById('formCreateNewUser');
+	var courriel = document.getElementById('courriel').value;
+	var MDP_membre = document.getElementById('MDP_membre').value;
+	var msg = document.getElementById('msgEmail');
+	var pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
 
-	//var REG_EMAIL = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-	var REG_PASSWORD = /^[A-Za-z\d]{4}$/;
-	var REG_EMAIL = /^(\w+[\-\.])*\w+@(\w+\.)+[A-Za-z]+$/;
+	//alert(courriel.length);
+	if (courriel.length >= 0) 
+	{
+		if(courriel.match(pattern)){				
+			leForm.classList.add("valid");
+			leForm.classList.remove("invalid");
+			msg.innerHTML = "Email valide!";
+			msg.style.color = "#009933";
+			//return true;
+			//leForm.submit();
 
-    // VALIDATION EMAIL
-	if(courriel.test(REG_EMAIL))
-	{		
-		leForm.classList.add("valid");
-		leForm.classList.remove("invalid");
-		msg.innerHTML="Email valide!";
-		msg.style.color = "#009933";
-		return true;
+		}else{
+			leForm.classList.remove("valid");
+			leForm.classList.add("invalid");
+			msg.innerHTML = "Email invalide!";
+			msg.style.color = "#ff0000";	
+			//return false;	
+		}		
+	}	
+}
 
-	}else{
-		leForm.classList.remove("valid");
-		leForm.classList.add("invalid");
-		msg.innerHTML = "Email invalide!";
-		msg.style.color = "#ff0000";	
-		return false;	
-	}		
 
-}//end method
+// ============================ GESTION FILM ========================
 
 function listerFilmsCards()
 {
@@ -38,20 +78,18 @@ function listerFilmsCards()
 		url:"../../controller/filmController.php",
 		data: action	
 	}).done((jsonString)=>{
-		//alert(jsonString);
-
-		//Va creer le template
 		$.ajax({
 			method: "POST", 
 			url:"../film/template/card-film.php",
 			data: "chaine="+jsonString
-		//Recoit le template
 		}).done((template)=>{
 			$("#contenu").html(template);
 		})
 	});
 }
 
+
+/*Affiche une liste de card  du film par categorie*/
 function listerCategorie(categorie)
 {
 	var action = 'action=listerByCategorie&cat='+categorie;
@@ -60,7 +98,7 @@ function listerCategorie(categorie)
 		url:"../../controller/filmController.php",
 	    data:action
 	}).done((jsonString)=>{
-		
+
 		$.ajax({
 			method: "POST", 
 			url:"../film/template/card-film.php",
@@ -68,44 +106,46 @@ function listerCategorie(categorie)
 		//Recoit le template
 		}).done((template)=>{
 			$("#contenu").html(template);
+			setInterval(function(){document.getElementById("totalCat").style.display='none';}, 5000 );
 		})
 	});
 }
 
-function showFormCreate(){
 
-	//Cache la div create film
-	  //$("#divFormFilm").hide();
+// ============================ GESTION MEMBRE ========================
 
+function showFormCreate()
+{
 	$.ajax({
 		method: "POST", 
 		url:"template/formCreate.php",
-	
 	}).done((template)=>{
 		$("#contenu").html(template);
-		//rendreInvisible(contenu);
 	});
 }
 
+
 //Enregistrer un nouveau membre
-// function envoyerEnreg(leForm){
-// 	$.ajax({
-// 	   type: "POST",
-// 	   url: "PHP/livresControleur.php",
-// 	   data:$( leForm ).serialize(),
-// 	   dataType:'text',
-// 	   success:function(reponse)
-// 	   {
-// 		  //alert(reponse); //test le type de retour de donnée
-// 		  document.getElementById("emsg").innerHTML=reponse;
-// 		  //Vide la msg apres 5 sec.
-// 		  setInterval(function(){ document.getElementById("emsg").innerHTML=""; }, 5000);
-// 		},
-// 	   error:function(err){
-// 		 //Votre message
-// 	   },
-// 	});
-// }
+function envoyerEnreg(leForm){
+	//alert(leForm);
+	$.ajax({
+	   type: "POST",
+	   url:"../../controller/membreController.php",
+	   data:$( leForm ).serialize(),
+	   // dataType:'text',
+	   success:function(reponse)
+	   {
+
+		  //alert(reponse); //test le type de retour de donnée
+		  //document.getElementById("SucessCompte").innerHTML=reponse;
+		  //Vide la msg apres 5 sec.
+		  //setInterval(function(){ document.getElementById("emsg").innerHTML=""; }, 5000);
+		},
+	   error:function(err){
+		 //Votre message
+	   },
+	});
+}
 
 
 
@@ -133,7 +173,7 @@ function showFormCreate(){
 // ========================= VALIDATION EMAIL =========================
 // function validerEmail()
 // {
-// 	var formLogin = document.getElementById('leForm');
+// 	var leForm = document.getElementById('leForm');
 // 	var courriel = document.getElementById('courriel').value;
 // 	//var MDP_membre = document.getElementById('MDP_membre').value;
 // 	var msg = document.getElementById('msgErrorEmail');
@@ -142,15 +182,15 @@ function showFormCreate(){
 // 	if (courriel != "") 
 // 	{
 // 		if(courriel.match(pattern) && courriel != "" ){		
-// 			//formLogin.submit();
-// 			formLogin.classList.add("valid");
-// 			formLogin.classList.remove("invalid");
+// 			//leForm.submit();
+// 			leForm.classList.add("valid");
+// 			leForm.classList.remove("invalid");
 // 			msg.innerHTML = "Email valide!";
 // 			msg.style.color = "#009933";
 
 // 		}else{
-// 			formLogin.classList.remove("valid");
-// 			formLogin.classList.add("invalid");
+// 			leForm.classList.remove("valid");
+// 			leForm.classList.add("invalid");
 // 			msg.innerHTML = "Email invalide!";
 // 			msg.style.color = "#ff0000";		
 // 		}		

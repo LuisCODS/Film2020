@@ -9,9 +9,9 @@ include_once '../dao/MembreDAO.php';
 	extract($_POST);
 	$membreDAO = new MembreDAO();	
 
-
 	switch ($action) 
 	{
+
 		case 'insert':
 
 				//hash the password extracted from form
@@ -24,7 +24,7 @@ include_once '../dao/MembreDAO.php';
 					          trim($prenom),
 					          trim($profil),					   
 					          trim($courriel),
-					          null,
+					         			 null,
 					          trim($hashed_password) );	
 
 				//Insert it into DB and bring back its ID
@@ -54,7 +54,7 @@ include_once '../dao/MembreDAO.php';
 			break;
 
 		case 'delete':
-				//echo $membreDAO->delete($id);//Si ok return 1
+				echo $membreDAO->delete($idMembre);//Si ok return 1
 			break;
 
 		case 'select':
@@ -65,8 +65,6 @@ include_once '../dao/MembreDAO.php';
 			echo "Aucun action trouvée";
 			break;
 
-	}//fin switch
-
-	
+	}//fin switch	
 ?>
 

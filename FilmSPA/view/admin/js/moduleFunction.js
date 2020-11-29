@@ -13,31 +13,43 @@ function validerForm()
 
 function literMembres()
 {
-	//alert("Teste");
 	var action = 'action=select';
 	$.ajax({
 		method: "POST", 
 		url:"../../controller/membreController.php",
 		data: action	
 	}).done((jsonString)=>{
-	   //alert(jsonString);	
-		/*
-			Fait une nouvelle requisition pour envoyer les données json(chaine de string)
-			au dossier template(table-membre.php) qui va parcourrir la chaine json et creer 
-			une table remplie en retour.
-		*/
 		$.ajax({
 			method: "POST", 
 			url:"../admin/template/table-membres.php",
 			data: "chaine="+jsonString	
 		}).done((template)=>{
-			//alert(template);
-			//Attache le contenu dans la div avec l'ID (contenu)
 			$("#contenu").html(template);
-			//$("#contenu").hide();
 		})
 	});	
 }
+
+function supprimerMembre(id)
+{
+	//alert(id);//get id ok
+	var action = 'action=delete';
+	var idMembre = 'idMembre='+id;
+	
+	$.ajax({
+
+		method: "POST", 
+		url:"../../controller/membreController.php",
+		data: action+'&'+idMembre
+		
+	}).done(()=>{
+		 literMembres();//Call this one to refresh page
+		 document.getElementById("divMsg").style.display='block';
+		 document.getElementById("emsg").innerHTML = "<h4>Membre bien supprimé!</h4>";		
+		 setInterval(function(){document.getElementById("divMsg").style.display='none';}, 4000 ); 
+
+	 });
+}
+
 
 function showDashboard(){
 
@@ -98,30 +110,22 @@ function openFormCreate(elem){
 
 function enregistrerFilm()
 {
-	//Show  form Create film
 	document.getElementById("divFormFilm").style.display='block';
-
-	var formImputs = new FormData(document.getElementById('formEnreg'));
-	//var action = 'action=select';
-	
+	var formImputs = new FormData(document.getElementById('formEnreg'));	
 	$.ajax({
-
 			method: "POST", 
 			url:"../../controller/filmController.php",
 			data: formImputs,
 			//async: false,
 			contentType: false,
 			processData:false,
-
 	}).done((output)=>{
-		//alert("ok");
  		listerFilms();
  		$('#divFormFilm').hide();
 		document.getElementById("divMsg").style.display='block';
-		document.getElementById("emsg").innerHTML = "Film bien enregistre!";		
+		document.getElementById("emsg").innerHTML = "<h4>Film bien enregistre!</h4>";		
 		setInterval(function(){document.getElementById("divMsg").style.display='none';}, 4000 );
 	});
-
 	return false;
 }
 
@@ -142,7 +146,7 @@ function supprimerFilm(id)
 	}).done(()=>{
 		 listerFilms();//Call this one to refresh page
 		 document.getElementById("divMsg").style.display='block';
-		 document.getElementById("emsg").innerHTML = "Film bien supprimé!";		
+		 document.getElementById("emsg").innerHTML = "<h4>Film bien supprimé!</h4>";		
 		 setInterval(function(){document.getElementById("divMsg").style.display='none';}, 4000 ); 
 
 	 });
