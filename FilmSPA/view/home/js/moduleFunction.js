@@ -7,18 +7,18 @@ const inputs = document.querySelectorAll('#leForm input');
 var REG_PASSWORD = /^[A-Za-z\d]{4}$/;
 var REG_EMAIL = /^(\w+[\-\.])*\w+@(\w+\.)+[A-Za-z]+$/;
 
-//console.log(leForm);
-
 //Pour chaque input do ...
 // inputs.forEach((input)=>{
 // 	input.addEventListener('keyup', ()=>{
 // 		console.log('Tecla pressionada');
 // 	});
-// });
-// // Block form submit
+//  });
+
+// // // Block form submit
 // leForm.addEventListener('submit', (e)=>{
-// 	e.preventDefault();
+// e.preventDefault();
 // });
+
 
 // onSubmit="return valideForm();"
 // function valideForm()
@@ -42,6 +42,7 @@ var REG_EMAIL = /^(\w+[\-\.])*\w+@(\w+\.)+[A-Za-z]+$/;
 // 	//alert(inputs);
 
 // }//end method
+
 
 /*onkeydown="validerCourriel();"*/
 function validerCourriel()
@@ -109,9 +110,10 @@ function listerCategorie(categorie)
 			url:"../film/template/card-film.php",
 			data: "chaine="+jsonString
 		//Recoit le template
-		}).done((template)=>{
+		}).done((template)=>{			
 			$("#contenu").html(template);
-			setInterval(function(){document.getElementById("totalCat").style.display='none';}, 5000 );
+			$('#totalCat').show();
+			//setInterval(function(){document.getElementById("totalCat").style.display='none';}, 5000 );
 		})
 	});
 }
@@ -119,20 +121,9 @@ function listerCategorie(categorie)
 
 // ============================ GESTION MEMBRE ========================
 
-// function showFormCreate()
-// {
-// 	$.ajax({
-// 		method: "POST", 
-// 		url:"template/formCreate.php",
-// 	}).done((template)=>{
-// 		$("#contenu").html(template);
-// 	});
-// }
-
-
 //Enregistrer un nouveau membre
 function envoyerEnreg(leForm){
-	//alert(leForm);
+	alert(leForm);
 	$.ajax({
 	   type: "POST",
 	   url:"../../controller/membreController.php",
@@ -140,7 +131,6 @@ function envoyerEnreg(leForm){
 	   // dataType:'text',
 	   success:function(reponse)
 	   {
-
 		  //alert(reponse); //test le type de retour de donnée
 		  //document.getElementById("SucessCompte").innerHTML=reponse;
 		  //Vide la msg apres 5 sec.

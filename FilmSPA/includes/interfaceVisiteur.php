@@ -13,7 +13,7 @@
 		</a>
 	</li>
 	<li class="nav-item">
-		<a class="nav-link" onClick="$('#contenu').show();listerFilmsCards();$('#dviFormCreateUser').hide();">Nos films</a>
+		<a class="nav-link" onClick="$('#divFormLogin').hide();$('#dviFormCreateUser').hide();$('#contenu').show();listerFilmsCards();">Nos films</a>
 	</li>
 	<li class="nav-item dropdown">
 		<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
@@ -21,18 +21,19 @@
 			Categories
 		</a>
 	<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-		<a class="dropdown-item" onClick="$('#contenu').show();$('#dviFormCreateUser').hide();listerCategorie('Action');">Action</a>
-		<a class="dropdown-item" onClick="$('#contenu').show();$('#dviFormCreateUser').hide();listerCategorie('Comedie');">Comedie</a>
-		<a class="dropdown-item" onClick="$('#contenu').show();$('#dviFormCreateUser').hide();listerCategorie('Romance');">Romance</a>
-		<a class="dropdown-item" onClick="$('#contenu').show();$('#dviFormCreateUser').hide();listerCategorie('Drame');">Drame</a>
-		<a class="dropdown-item" onClick="$('#contenu').show();$('#dviFormCreateUser').hide();listerCategorie('Horreur');">Horreur</a>
+		<a class="dropdown-item" onClick="$('#divFormLogin').hide();$('#dviFormCreateUser').hide();$('#contenu').show();listerCategorie('Action');">Action</a>
+		<a class="dropdown-item" onClick="$('#divFormLogin').hide();$('#dviFormCreateUser').hide();$('#contenu').show();listerCategorie('Comedie');">Comedie</a>
+		<a class="dropdown-item" onClick="$('#divFormLogin').hide();$('#dviFormCreateUser').hide();$('#contenu').show();listerCategorie('Romance');">Romance</a>
+		<a class="dropdown-item" onClick="$('#divFormLogin').hide();$('#dviFormCreateUser').hide();$('#contenu').show();listerCategorie('Drame');">Drame</a>
+		<a class="dropdown-item" onClick="$('#divFormLogin').hide();$('#dviFormCreateUser').hide();$('#contenu').show();listerCategorie('Horreur');">Horreur</a>
 	</div>
 	</li>
 	<li class="nav-item">                                 
-		<a class="nav-link" href="../../view/login/login.php">Connection  <i class="fas fa-sign-in-alt"></i></a>
+		<a class="nav-link" onClick="$('#divFormLogin').hide();$('#contenu').hide();$('#dviFormCreateUser').hide();$('#divFormLogin').show();">Connection  <i class="fas fa-sign-in-alt"></i></a>
 	</li>
 	<li class="nav-item">
-		<a class="nav-link" onClick="$('#contenu').hide();$('#dviFormCreateUser').show();">Devenir membre <i class="far fa-user"></i></a>
+		<a class="nav-link" 
+		onClick="$('#divFormLogin').hide();$('#contenu').hide();$('#dviFormCreateUser').show();">Devenir membre <i class="far fa-user"></i></a>
 	</li>
 </ul>
 </div>

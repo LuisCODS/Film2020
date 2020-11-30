@@ -1,13 +1,23 @@
 
 #formCreateNewUser
 {	
-	width: 40%;
+	width: 50%;
 	justify-content: center;
 	margin: auto;
 }
 
 #dviFormCreateUser { 
 	display: none;
+	width: 50%;
+}
+
+#divFormLogin { 
+	display: none;
+	width: 50%;
+}
+
+.icone{
+   font-size: 200px;
 }
 
 /*	

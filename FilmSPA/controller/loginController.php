@@ -1,7 +1,6 @@
 <?php
 session_start();
 include_once '../dao/MembreDAO.php';
-// include_once '../model/Membre.php';
 
 // =================== CONTROLEUR LOGIN =======================
 
@@ -11,11 +10,13 @@ $membreDAO = new MembreDAO();
 //CAS LOGIN
 if ( isset($_POST["action"])  &&  $_POST["action"] == "login"){
 
-	 //print_r($MDP_membre);
 	 $membreDAO->login($courriel,$MDP_membre);
 }
 else{ 
-	header("location: ../view/login/login.php");
+	header("location: ../view/home/index.php");
+	//echo "$('#divFormLogin').show();";
+	//echo "$('#divFormLogin').html();";
+
 }
 
 

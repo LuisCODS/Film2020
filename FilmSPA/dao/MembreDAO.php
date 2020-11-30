@@ -161,7 +161,7 @@ include_once '../model/Membre.php';
 						}	
 					} 
 					else{	
-					 	header("location: ../view/login/login.php");
+					 	header("location: ../view/home/index.php");
 					}
 
 

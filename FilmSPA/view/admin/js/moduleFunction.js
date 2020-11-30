@@ -97,14 +97,12 @@ function listerFilms()
 }
 
 /* 
-  Hide template table Film.
   Show display form to create a new movie.
  */
-function openFormCreate(elem){
-
+function openFormCreate(elem)
+{
 	//Clean form data
-	document.getElementById('formEnreg').reset();
-	
+	document.getElementById('formEnreg').reset();	
 	//Cache table list film
 	rendreInvisible(elem);
 	//Display form
