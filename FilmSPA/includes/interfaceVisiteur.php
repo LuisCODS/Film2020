@@ -1,40 +1,40 @@
 <!-- ______________________   INTERFACE VISITEUR   ______________________-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">        
-	<!-- <a class="navbar-brand" href="#">Films</a> -->
-	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-		aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Alterna navegação">
-		<span class="navbar-toggler-icon"></span>
-	</button>
-	<div class="collapse navbar-collapse" id="navbarNavDropdown">
-		<ul class="navbar-nav">
-			<li class="nav-item active">
-				<a class="nav-link" href=""><i 
-				class="fas fa-home"></i><span class="sr-only">(Página atual)</span>
-				</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" onClick="listerFilmsCards();">Nos films</a>
-			</li>
-			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
-					role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-					Categories
-				</a>
-			<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-				<a class="dropdown-item" onClick="listerCategorie('Action');">Action</a>
-				<a class="dropdown-item" onClick="listerCategorie('Comedie');">Comedie</a>
-				<a class="dropdown-item" onClick="listerCategorie('Romance');">Romance</a>
-				<a class="dropdown-item" onClick="listerCategorie('Drame');">Drame</a>
-				<a class="dropdown-item" onClick="listerCategorie('Horreur');">Horreur</a>
-			</div>
-			</li>
-			<li class="nav-item">                                 
-				<a class="nav-link" href="../../view/login/login.php">Connection  <i class="fas fa-sign-in-alt"></i></a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" onClick="$('#dviFormCreateUser').show();">Devenir membre <i class="far fa-user"></i></a>
-			</li>
-		</ul>
+<!-- <a class="navbar-brand" href="#">Films</a> -->
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+	aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Alterna navegação">
+	<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarNavDropdown">
+<ul class="navbar-nav">
+	<li class="nav-item active">
+		<a class="nav-link" href=""><i 
+		class="fas fa-home"></i><span class="sr-only">(Página atual)</span>
+		</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" onClick="$('#contenu').show();listerFilmsCards();$('#dviFormCreateUser').hide();">Nos films</a>
+	</li>
+	<li class="nav-item dropdown">
+		<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+			role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			Categories
+		</a>
+	<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+		<a class="dropdown-item" onClick="$('#contenu').show();$('#dviFormCreateUser').hide();listerCategorie('Action');">Action</a>
+		<a class="dropdown-item" onClick="$('#contenu').show();$('#dviFormCreateUser').hide();listerCategorie('Comedie');">Comedie</a>
+		<a class="dropdown-item" onClick="$('#contenu').show();$('#dviFormCreateUser').hide();listerCategorie('Romance');">Romance</a>
+		<a class="dropdown-item" onClick="$('#contenu').show();$('#dviFormCreateUser').hide();listerCategorie('Drame');">Drame</a>
+		<a class="dropdown-item" onClick="$('#contenu').show();$('#dviFormCreateUser').hide();listerCategorie('Horreur');">Horreur</a>
 	</div>
+	</li>
+	<li class="nav-item">                                 
+		<a class="nav-link" href="../../view/login/login.php">Connection  <i class="fas fa-sign-in-alt"></i></a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" onClick="$('#contenu').hide();$('#dviFormCreateUser').show();">Devenir membre <i class="far fa-user"></i></a>
+	</li>
+</ul>
+</div>
 </nav>
 

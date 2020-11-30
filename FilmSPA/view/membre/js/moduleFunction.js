@@ -1,4 +1,35 @@
 
+// ========================= VALIDATION TELEPHONE =========================
+// onClick="validerTelephone();"
+// function validerTelephone()
+// {
+// 	//let tel_lRegExp = new RegExp('^\d{3}-\d{3}-\d{4}$', 'gm');
+// 	//let tel_lRegExp = new RegExp('[0-9]{3}[-][0-9]{3}[-][0-9]{4}', 'gm');
+// 	let tel_lRegExp = new RegExp('[0-9]{3}-[0-9]{3}-[0-9]{4}');
+
+// 	let errorMsgTel = document.getElementById("isValidetTelephone");
+// 	let tel_membre = document.getElementById("tel_membre");
+
+// 	//Si quelque chose
+// 	if (tel_membre.value.length != "") {
+
+// 		//Error
+// 		if (!tel_lRegExp.test(tel_membre.value)) 
+// 		{	
+// 			errorMsgTel.innerHTML="Telephone non valide!";
+// 			errorMsgTel.classList.remove('text-success');
+// 			errorMsgTel.classList.add('text-danger');
+// 		}	
+// 		//ok
+// 		else{
+// 			errorMsgTel.innerHTML="Telephone valide";
+// 			errorMsgTel.classList.remove('text-danger');	
+// 			errorMsgTel.classList.add('text-success');	
+// 		}		
+// 	}
+// }
+
+
 // function listerFilms()
 // {
 // 	var action = 'action=select';
