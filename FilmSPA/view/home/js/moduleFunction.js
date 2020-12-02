@@ -1,77 +1,44 @@
 // ============================ GESTION VALIDATION ========================
-//Get form ref
-const leForm = document.getElementById('formCreateNewUser');
-//Get all inputs inside the form as array
-const inputs = document.querySelectorAll('#leForm input');
-//Cree les expressions
-var REG_PASSWORD = /^[A-Za-z\d]{4}$/;
-var REG_EMAIL = /^(\w+[\-\.])*\w+@(\w+\.)+[A-Za-z]+$/;
 
-//console.log(leForm);
+//Les expressions
+var REG_MDP_membre = /^[A-Za-z\d]{4}$/;
+var REG_courriel = /^(\w+[\-\.])*\w+@(\w+\.)+[A-Za-z]+$/;
+var mailformat = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-//Pour chaque input do ...
-// inputs.forEach((input)=>{
-// 	input.addEventListener('keyup', ()=>{
-// 		console.log('Tecla pressionada');
-// 	});
-// });
-// // Block form submit
-// leForm.addEventListener('submit', (e)=>{
-// 	e.preventDefault();
-// });
 
-// onSubmit="return valideForm();"
-// function valideForm()
-// {
-// 	//alert("Input click ok");
+function valideForm(leForm) 
+{    
+	var courriel = leForm.courriel.value;
+	var MDP_membre = leForm.MDP_membre.value;
+	 //const leForm = $("#formLogin");
 
-// 	//Get form ref
-//  	var leForm = document.getElementById('formCreateNewUser');
-//  	//Get all inputs inside the form as array
-//  	var inputs = document.querySelectorAll('#leForm input');
-
-// 	var motUm   = leForm.MDP_membre.value;
-// 	var motDeux = leForm.MDP_membreConfirm.value;
-// 	var msg = document.getElementById("#msgEmail");
-
-// 	//var REG_EMAIL = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-// 	var REG_PASSWORD = /^[A-Za-z\d]{4}$/;
-// 	var REG_EMAIL = /^(\w+[\-\.])*\w+@(\w+\.)+[A-Za-z]+$/;
-
-// 	//alert(motUm);
-// 	//alert(inputs);
-
-// }//end method
-
-/*onkeydown="validerCourriel();"*/
-function validerCourriel()
-{
-	var leForm = document.getElementById('formCreateNewUser');
-	var courriel = document.getElementById('courriel').value;
-	var MDP_membre = document.getElementById('MDP_membre').value;
-	var msg = document.getElementById('msgEmail');
-	var pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-
-	//alert(courriel.length);
-	if (courriel.length >= 0) 
+	//IF EMPTY FIELDS
+	if (!courriel || !MDP_membre)
 	{
-		if(courriel.match(pattern)){				
-			leForm.classList.add("valid");
-			leForm.classList.remove("invalid");
-			msg.innerHTML = "Email valide!";
-			msg.style.color = "#009933";
-			//return true;
-			//leForm.submit();
+		$('#message').html(
+		      "<div class='alert alert-danger text-center' id='danger-alert'><strong>Erreur ! </strong>Tous les Champs sont Requis</div>"
+		);
+		// cacher l'erreur apres 5 secondes
+		$("#danger-alert").fadeTo(4000, 500).slideUp(500, function() {
+		  $("#danger-alert").slideUp(500);
+		});
+		return false;
+	}
 
-		}else{
-			leForm.classList.remove("valid");
-			leForm.classList.add("invalid");
-			msg.innerHTML = "Email invalide!";
-			msg.style.color = "#ff0000";	
-			//return false;	
-		}		
-	}	
-}
+ 	//VALIDATION Regular Expressions
+	if (courriel.match(mailformat)){
+	 	 return true;
+	}else{
+		$('#messageCourriel').html("Courriel invalide!");
+		$("#messageCourriel").css("color", "red");
+	  	return false;
+	}
+
+
+}//End function
+  
+
+// var courriel = $("#courriel").val();
 
 // ============================ GESTION FILM ========================
 
@@ -109,9 +76,10 @@ function listerCategorie(categorie)
 			url:"../film/template/card-film.php",
 			data: "chaine="+jsonString
 		//Recoit le template
-		}).done((template)=>{
+		}).done((template)=>{			
 			$("#contenu").html(template);
-			setInterval(function(){document.getElementById("totalCat").style.display='none';}, 5000 );
+			$('#totalCat').show();
+			//setInterval(function(){document.getElementById("totalCat").style.display='none';}, 5000 );
 		})
 	});
 }
@@ -119,20 +87,9 @@ function listerCategorie(categorie)
 
 // ============================ GESTION MEMBRE ========================
 
-// function showFormCreate()
-// {
-// 	$.ajax({
-// 		method: "POST", 
-// 		url:"template/formCreate.php",
-// 	}).done((template)=>{
-// 		$("#contenu").html(template);
-// 	});
-// }
-
-
 //Enregistrer un nouveau membre
 function envoyerEnreg(leForm){
-	//alert(leForm);
+	alert(leForm);
 	$.ajax({
 	   type: "POST",
 	   url:"../../controller/membreController.php",
@@ -140,14 +97,13 @@ function envoyerEnreg(leForm){
 	   // dataType:'text',
 	   success:function(reponse)
 	   {
-
 		  //alert(reponse); //test le type de retour de donnée
 		  //document.getElementById("SucessCompte").innerHTML=reponse;
 		  //Vide la msg apres 5 sec.
 		  //setInterval(function(){ document.getElementById("emsg").innerHTML=""; }, 5000);
 		},
 	   error:function(err){
-		 //Votre message
+		 //Votre msgErrorEmail
 	   },
 	});
 }

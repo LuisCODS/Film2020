@@ -1,18 +1,33 @@
 
 #formCreateNewUser
 {	
-	width: 40%;
+	width: 50%;
 	justify-content: center;
 	margin: auto;
 }
 
 #dviFormCreateUser { 
 	display: none;
+	width: 70%;
 }
+
+#divFormLogin { 
+	display: none;
+	width: 30%;
+	justify-content: center;
+}
+
+.icone{
+   font-size: 200px;
+}
+
+.card{
+   margin-left: 30px;
+   margin-top: 20px;
+}
+
 
 /*	
 display: flex;
 justify-content: center;
-display: none;
-width: 30%;
 */

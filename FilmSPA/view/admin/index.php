@@ -71,9 +71,14 @@
     </div>    
         <div class="form-group" >                        
         <label for="url">Url</label>
-        <input type="Url" class="form-control" id="url" name="url" required>
+        <input type="Url" class="form-control" 
+                id="url" 
+                placeholder="http://www.nomdusite.com"
+                pattern="^((http[s]?|ftp):\/)?\/?([^:\/\s]+)((\/\w+)*\/)([\w\-\.]+[^#?\s]+)(.*)?(#[\w\-]+)?$"
+                name="url" 
+                required>
     </div>     
-    <button id="btnEnregistrer" type="button" onClick="enregistrerFilm();" class="btn btn-primary">Enregistrer</button>
+    <button id="btnEnregistrer" type="submit" onClick="enregistrerFilm();" class="btn btn-primary">Enregistrer</button>
   </form> 
 </div> 
  <?php include_once("../../includes/footer.php");?>

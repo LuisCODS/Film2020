@@ -13,27 +13,21 @@ $membreDAO = new MembreDAO();
 
 switch ($action) 
 {
-
 	case 'insert':
 			enregistrer();
 	    break;
-
 	case 'update':
 			 editer();
 		break;
-
 	case 'delete':
 			echo $membreDAO->delete($idMembre);//Si ok return 1
 		break;
-
 	case 'select':
 			echo $membreDAO->selectMembres();//Si ok return 1
-		break;
-		
+		break;		
 	default:
 		echo "Aucun action trouvée";
 		break;
-
 }//fin switch	
 
 

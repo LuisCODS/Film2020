@@ -62,42 +62,78 @@ include_once '../../model/Membre.php';
         </div> 
     </div> 
     <div class="row">
-       <!-- _________________  FORM EDITER MEMBRE _________________ --> 
        <form id="formCreate" action="../../controller/membreController.php" method="POST">
+
            <h2>Formulaire d'édition</h2>
+
               <input type="hidden" id="PK_ID_Membre" value="<?php  echo $membre->getMembreID();?>" name="PK_ID_Membre">
+
               <input type="hidden" id="profil" value="<?php  echo $membre->getProfil();?>" name="profil">
+
             <!-- FORNECE O TIPO DE ACAO AO CONTROLLER -->
                   <input type="hidden" readonly="true" id="action" name="action" value="update">
+            
             <div class="form-group">
                   <label for="nom">Nom</label>
                   <input value="<?php echo $membre->getNom();?>" type="text" class="form-control" name="nom" id="nom" required>
                   <p id="erreurNom"></p>
             </div>
+
             <div class="form-group">
                   <label for="prenom">Prenom</label>
                   <input value="<?php echo $membre->getPrenom();?>" type="text" class="form-control" name="prenom" required>
             </div>
+
             <div class="form-group">
                   <label for="courriel">Courriel</label>
-                  <input value="<?php echo $membre->getCourriel();?>" required id="courriel" type="email" class="form-control" name="courriel">
+                  <input value="<?php echo $membre->getCourriel();?>"
+                         required
+                         id="courriel" 
+                         type="email" 
+                         class="form-control" 
+                         name="courriel">
             </div>
+
             <div class="form-group">
                   <label for="telephone">Telephone</label>
-                  <input value="<?php echo $membre->getTelMembre(); ?>" class="form-control" id="tel_membre" name="tel_membre">
+                  <input value="<?php echo $membre->getTelMembre();?>"
+                         class="form-control" 
+                         id="tel_membre" 
+                         name="tel_membre" 
+                         placeholder="000-000-0000"
+                         pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
+                        <p id="isValidetTelephone" style='color:red'></p>
             </div>
+
             <div class="form-group">
                   <label for="MDP_membre">Mot de passe</label>
-                  <input type="password" class="form-control" id="MDP_membre" name="MDP_membre" required>
+                  <input type="password" 
+                         class="form-control"
+                         id="MDP_membre"
+                         placeholder="0000"
+                         pattern="[0-9]{4}"
+                         name="MDP_membre"
+                         required>
                   <p id="erreurPassword" style='color:red'></p>
             </div>
+
             <div class="form-group">
                   <label for="MDP_membreConfirm">Confirmation mot de passe</label>
-                  <input value="" type="password" class="form-control" id="MDP_membreConfirm" name="MDP_membreConfirm" required>
+                  <input value="" 
+                         type="password"
+                         class="form-control"
+                         id="MDP_membreConfirm"
+                         name="MDP_membreConfirm"
+                         placeholder="0000"
+                         pattern="[0-9]{4}"
+                         required>
                    <p id="erreurPasswordConfirm" style='color:red'></p>
             </div> 
-            <button type="submit" onclick="return validerForm( )" class="btn btn-primary">Editer</button>
+            <!-- onclick="return validerForm( )" -->
+            <button type="submit" class="btn btn-primary">Editer</button>
+
         </form> 
+
     </div>
 </div>
 

@@ -2,7 +2,8 @@
 <?php
 extract($_POST);
 $total = json_decode($chaine,true);
-//echo count($total);
+    
+// ZONE MESSAGE
 echo  $inerHtml = "<div id='totalCat' style='text-align:center' class='alert alert-info' role='alert'>
                    <h2>Total de films: (".count($total).")</h2>
                   </div>";

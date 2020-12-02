@@ -1,4 +1,5 @@
-<!-- _______________________  INCLUDE INTERFACE MEMBRE   _______________________-->
+<!-- _______________________  INTERFACE MEMBRE   _______________________-->
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">        
 	<a class="navbar-brand" href="#">Films</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
@@ -29,13 +30,13 @@
 				</div>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="" onClick="$('#contenu').hide(); $('#divFormEditer').show();">Editer Profil <i class="far fa-user"></i></a>
+				<a class="nav-link"  onClick="$('#contenu').hide(); $('#divFormEditer').show();">Editer Profil <i class="far fa-user"></i></a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href="../../view/membre/panier.php">Panier  <i class="fas fa-shopping-cart"></i></a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="../../view/login/logout.php">Quitter <i class="fas fa-sign-in-alt"></i></a>
+				<a class="nav-link" href="../../view/home/index.php">Quitter <i class="fas fa-sign-in-alt"></i></a>
 			</li>
 			<li class="nav-item" style="padding-left: 400px;">
 				<a class="nav-link" href="#"><?php if (isset ($_SESSION["membre"])){ echo $membre->getCourriel();  }  ?></a>

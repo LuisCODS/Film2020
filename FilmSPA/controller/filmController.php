@@ -11,42 +11,32 @@ switch ($action)
 {	
 	case 'insert':		
 		    enregistrer();
-		   // echo "ok";
 		break;
-
 	case 'showForm':
 			echo $filmDAO->showFormEditer($idFilm);
 			unset($filmDAO);//clean memoire
 		 break;
-
 	case 'update':
 			echo EditerFilm($PK_ID_Film);
 		 break;
-
 	case 'delete':
-			//print_r($idFilm);//get id from action into supprimerFilm()
 		    sendToDelete($idFilm);
 		break;
-
 	case 'select':
 		  echo $filmDAO->selectFilms();
 		  unset($filmDAO);//clean memoire
 		break;
-
 	case 'listerCards':
 		  echo $filmDAO->selectFilms();
 		  unset($filmDAO);//clean memoire
 		break;
-
 	case 'listerByCategorie':
 		   echo $filmDAO->getByCategorie($cat);
-		  // unset($filmDAO);//clean memoire
+		   unset($filmDAO);//clean memoire
 		break;
-
 	default:
 		echo "Aucun action trouvée";
 		break;
-
 }//fin switch
 
 
