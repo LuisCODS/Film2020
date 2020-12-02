@@ -13,12 +13,13 @@
 <body >
 <!-- __________________________  TEMPLATE  __________________________ -->
 
-<div class="container "  id="contenu">
+<div class="container"  id="contenu">
 			<!-- ZONE AFFICHAGE -->
 </div> 
 
- <!-- __________________________ DIV FORM CREATE USER __________________________ --> 
- <div class="container-fluid" id="dviFormCreateUser">
+ <!-- __________________________  CREATE __________________________ --> 
+
+ <div class="container" id="dviFormCreateUser">
       <!--  MSG -->
       <div class="alert alert-success" role="alert" style="display: none;">
           Compte enregistré avec succes! Veuillez vous loguer.
@@ -96,23 +97,21 @@
       </div>
 </div> 
 
- <!-- __________________________ DIV LOGIN __________________________ --> 
-<div class="container" id="divFormLogin">
+<!-- action="../../controller/loginController.php" -->
+ <!-- __________________________ LOGIN ______________________________ --> 
+
+<div class="container text-center" id="divFormLogin">
     <form id="formLogin" method="POST" action="../../controller/loginController.php"> 
-          <div class="icone">  
-                <i class="fas fa-film"></i>
-          </div> 
+          <div class="icone"><i class="fas fa-film"></i></div> 
           <h1 class="mb-4">Page connection</h1> 
-          <!-- FORNECE O TIPO DE ACAO AO CONTROLLER -->
           <input type="hidden" readonly="true" id="action" name="action" value="login" > 
           <div class="form-group">   
               <input type="text" 
                       placeholder="Courriel" 
                       name="courriel" 
                       id="courriel" 
-                      class="form-control mb-4" 
-                      required>               
-              <span id="msgErrorEmail" style="font-weight: bold"></span>
+                      class="form-control mb-4">               
+          <span id="messageCourriel" style="font-weight: bold"></span>
           </div>
           <div class="form-group">
               <input type="password"  
@@ -120,19 +119,26 @@
                     class="form-control mb-4" 
                     name="MDP_membre" 
                     id="MDP_membre" 
-                    autocomplete  
-                    required>
+                    autocomplete>
+          <p id="msgErrorPassword" style="font-weight: bold"></p>
           </div>
            <p style='color:red'>
              <?php if (isset ($_SESSION["invalidImput"])){ echo $_SESSION["invalidImput"]; }  ?>
            </p>  
-          <button type="submit" name="btnLogin" id="btnLogin" class="form-control btn btn-primary">Login</button>  
+          <button type="submit" 
+                  name="btnLogin" 
+                  id="btnLogin" 
+                  onClick="return valideForm(formLogin);"
+                  class="form-control btn btn-primary">Login</button>  
           
           <!-- <button type="button" class="btn btn-link" onClick="displayDivForm();">Pas encore membre?</button> -->
           <hr>
+          <span id="message"></span>
          <!--  <a href="../home/index.php" role="button"><i class="fas fa-backward"></i>   Retourner</a> -->
      </form> 
 </div> 
+
+
  <?php include_once("../../includes/footer.php");?>
 </body>
 </html>
