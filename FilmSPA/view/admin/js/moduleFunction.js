@@ -9,8 +9,25 @@ function rendreInvisible(elem){
 // ===========================  GESTION VALIDATION ===========================
 function validerForm()
 {
-	//alert("Form sended");
+
+	var inputs = getElementsByClassName("form-control");
+	for(var i = 0; i < inputs.length; i++)
+	{
+		  if($inputs[i].value == "")
+		  {
+				$('#msgErreur').html(
+			      "<div class='alert alert-danger text-center' id='danger-alert'><strong>Erreur ! </strong>Champs requis</div>"
+				);
+				// cacher l'erreur apres 2 secondes
+				$("#danger-alert").fadeTo(2000, 500).slideUp(500, function() {
+				 	 $("#danger-alert").slideUp(500);
+				});
+				return false;
+		   } 
+	}  
 }
+
+
 
 // ===========================  GESTION MEMBRE ===========================
 
@@ -127,9 +144,8 @@ function enregistrerFilm()
 		document.getElementById("emsg").innerHTML = "<h4>Film bien enregistre!</h4>";		
 		setInterval(function(){document.getElementById("divMsg").style.display='none';}, 4000 );
 	});
-	return false;
+	//return false;
 }
-
 
 //Get ID from button supprimer from template/table-films.php
 function supprimerFilm(id)
@@ -152,7 +168,6 @@ function supprimerFilm(id)
 
 	 });
 }
-
 
 /*Adffiche le form editer avec les champs courrants*/
 function showFormEditer(id)
@@ -178,7 +193,6 @@ function showFormEditer(id)
 		})
 	});
 }
-
 
 /*Edite le film*/
 function editerFilm()

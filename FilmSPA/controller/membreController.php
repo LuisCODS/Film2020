@@ -18,6 +18,7 @@ switch ($action)
 	    break;
 	case 'update':
 			 editer();
+			 //echo "xxxxxxxxxx";
 		break;
 	case 'delete':
 			echo $membreDAO->delete($idMembre);//Si ok return 1
@@ -62,9 +63,9 @@ function enregistrer()
 function editer()
 {
 	extract($_POST);
-	 global $membreDAO;	
+	global $membreDAO;	
 
-	$hashed_password = password_hash($MDP_membre, PASSWORD_DEFAULT);
+	//$hashed_password = password_hash($MDP_membre, PASSWORD_DEFAULT);
 	
 	//Create an objet with extract imputs from form
 	$membre = new Membre($PK_ID_Membre,
@@ -72,10 +73,10 @@ function editer()
 						  trim($prenom),
 						  trim($profil),
 						  trim($courriel),
-						  trim($hashed_password),
+						  trim($MDP_membre),
 						  trim($tel_membre));
 
-	$membreDAO->update($membre);//Si ok return 1
+	echo $membreDAO->update($membre);//Si ok return 1
 }
 
 //PHP END

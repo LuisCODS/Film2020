@@ -26,6 +26,9 @@
    margin-top: 20px;
 }
 
+#addPanier{
+	display: none;
+}
 
 /*	
 display: flex;

@@ -1,5 +1,5 @@
 <!-- ___________________  FOOTER   ___________________-->
- <footer class="my-6 pt-6 text-black text-center text-small">
+ <footer  class="my-3 pt-3 text-black text-center text-small">
    <hr />
    <p class="mb-1">© 2020 LuisCODS</p>
  </footer>

@@ -30,47 +30,69 @@
 // }
 
 
-// function listerFilms()
-// {
-// 	var action = 'action=select';
-// 	//console.log(action);
-	
-// 	$.ajax({
-// 		method: "POST", 
-// 		url:"../../controller/filmController.php",
-// 		data: action	
+// ============================ GESTION MEMBRE ========================
 
-// 	}).done((jsonString)=>{
-// 		//Va creer le template
-// 		$.ajax({
-// 			method: "POST", 
-// 			url:"template/table-films.php",
-// 			data:{
-// 				data: jsonString
-// 			}
+function editerMembre(leForm)
+{
+	//var formImputs = new FormData(document.getElementById('formEditer'));
+	//alert($(leForm).serialize());
+	$.ajax({
+	   type: "POST",
+	   url:"../../controller/membreController.php",
+	   data:$(leForm).serialize(),
+	   // dataType:'text',
+	   success:function(reponse)
+	   {
+		  //alert(reponse); //test le type de retour de donnée
+		  $("#msgEditeSucess").show();
+		  //document.getElementById("msgEditeSucess").innerHTML= "<b>Sucess!</b> Donnes mis à jour!reponse";
+		  //Vide la msg apres 5 sec.
+		  //setInterval(function(){ document.getElementById("emsg").innerHTML=""; }, 5000);
+		},
+	   error:function(err){
+		 //Votre msgErrorEmail
+	   },
+	});
+}
+// ============================ GESTION FILM ========================
 
-// 		//Recoit le template
-// 		}).done((template)=>{
-// 			$("#contenu").html(template);
-// 		})
-// 	});
-// }
+function listerFilmsCards()
+{
+	var action = 'action=listerCards';	
+	$.ajax({
+		method: "POST", 
+		url:"../../controller/filmController.php",
+		data: action	
+	}).done((jsonString)=>{
+		$.ajax({
+			method: "POST", 
+			url:"../film/template/card-film.php",
+			data: "chaine="+jsonString
+		}).done((template)=>{
+			$("#contenu").html(template);
+		})
+	});
+}
 
-// function editerMembre()
-// {
-// 	var formImputs = new FormData(document.getElementById('formEditer'));
+/*Affiche une liste de card  du film par categorie*/
+function listerCategorie(categorie)
+{
+	var action = 'action=listerByCategorie&cat='+categorie;
+	$.ajax({
+		method: "POST", 
+		url:"../../controller/filmController.php",
+	    data:action
+	}).done((jsonString)=>{
 
-// 	$.ajax({
-// 		method: "POST", 
-// 		url:"../../controller/membreController.php",
-// 		//data: action+'&'+idFilm,
-// 		data: formImputs,
-// 		contentType: false,
-// 		processData:false,
-// 	}).done((jsonString)=>{
-// 		 listerFilms();//Call this one to refresh page
-// 		 document.getElementById("divMsg").style.display='block';
-// 		 document.getElementById("emsg").innerHTML = "Film bien modifié!";		
-// 		 setInterval(function(){document.getElementById("divMsg").style.display='none';}, 4000 ); 
-// 	});
-// }
+		$.ajax({
+			method: "POST", 
+			url:"../film/template/card-film.php",
+			data: "chaine="+jsonString
+		//Recoit le template
+		}).done((template)=>{			
+			$("#contenu").html(template);
+			$('#totalCat').show();
+			//setInterval(function(){document.getElementById("totalCat").style.display='none';}, 5000 );
+		})
+	});
+}

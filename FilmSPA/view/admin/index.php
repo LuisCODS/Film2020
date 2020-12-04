@@ -21,26 +21,29 @@
      ?>
 </head>
 <body>
-<!-- MSG SUCCES-->
+
+<!-- ==================== MSG SUCCES ====================-->
 <div id="divMsg" class="col-md-12 alert alert-success" role="alert">
     <p id="emsg"></p>      
 </div>
+
+<!-- ==================== ZONE TEMPLATES ====================-->
 <div class="container" id="contenu" >
-<!-- =======================================
-		CHARGE LES TEMPLATES ICI
-======================================= -->	
+		<!-- CHARGE LES TEMPLATES ICI -->
 </div>
-<!--  FORM CREATE FILM  -->
+
+<!--  ==================== FORM CREATE FILM ====================   -->
 <div class="container" id="divFormFilm">    
-	<form id="formEnreg" name="formEnreg">
+	<form id="formEnreg" name="formEnreg" onSubmit="return validerForm();">
     <h2>Nouveau Film</h2>
     <!-- FORNECE O TIPO DE ACAO AO CONTROLLER -->
     <div class="form-group">
-          <input type="hidden" class="form-control" readonly="true" id="action" name="action" value="insert">
+          <input type="hidden" readonly="true" id="action" name="action" value="insert">
     </div>
     <div class="form-group">
         <label for="titre">Titre</label>
-        <input type="text" class="form-control" id="titre" name="titre" required size="40">
+        <input type="text" class="form-control" id="titre" name="titre" required size="40" maxlength="40">
+      <p id="msgErreur" style='color:red'></p>
     </div>
     <div class="form-group">
         <label for="prix">Prix</label>
@@ -71,16 +74,22 @@
     </div>    
         <div class="form-group" >                        
         <label for="url">Url</label>
-        <input type="Url" class="form-control" 
+        <input type="url" class="form-control" 
                 id="url" 
                 placeholder="http://www.nomdusite.com"
                 pattern="^((http[s]?|ftp):\/)?\/?([^:\/\s]+)((\/\w+)*\/)([\w\-\.]+[^#?\s]+)(.*)?(#[\w\-]+)?$"
                 name="url" 
                 required>
     </div>     
-    <button id="btnEnregistrer" type="submit" onClick="enregistrerFilm();" class="btn btn-primary">Enregistrer</button>
+    <!-- onClick="return validerForm();" -->
+    <button id="btnEnregistrer" type="submit"  onClick="return enregistrerFilm();" class="btn btn-primary">Enregistrer</button>
   </form> 
 </div> 
+
+
+
+
+
  <?php include_once("../../includes/footer.php");?>
 </body>
 </html>

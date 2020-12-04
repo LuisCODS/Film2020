@@ -14,7 +14,7 @@
 				</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="../../view/membre/listerFilm.php">Nos films</a>
+				<a class="nav-link" onClick="$('#divFormEditer').hide();$('#contenu').show();listerFilmsCards();">Nos films</a>
 			</li>
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
@@ -22,11 +22,11 @@
 					Categories
 				</a>
 				<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-					<a class="dropdown-item" href="../../view/membre/listerFilm.php?cat=action">Action</a>
-					<a class="dropdown-item" href="../../view/membre/listerFilm.php?cat=comedie">Comedie</a>
-					<a class="dropdown-item" href="../../view/membre/listerFilm.php?cat=romance">Romance</a>
-					<a class="dropdown-item" href="../../view/membre/listerFilm.php?cat=drame">Drame</a>
-					<a class="dropdown-item" href="../../view/membre/listerFilm.php?cat=horreur">Horreur</a>
+					<a class="dropdown-item" onClick="$('#divFormEditer').hide();$('#dviFormCreateUser').hide();$('#contenu').show();listerCategorie('Action');">Action</a>
+					<a class="dropdown-item" onClick="$('#divFormEditer').hide();$('#dviFormCreateUser').hide();$('#contenu').show();listerCategorie('Comedie');">Comedie</a>
+					<a class="dropdown-item" onClick="$('#divFormEditer').hide();$('#dviFormCreateUser').hide();$('#contenu').show();listerCategorie('Romance');">Romance</a>
+					<a class="dropdown-item" onClick="$('#divFormEditer').hide();$('#dviFormCreateUser').hide();$('#contenu').show();listerCategorie('Drame');">Drame</a>
+					<a class="dropdown-item" onClick="$('#divFormEditer').hide();$('#dviFormCreateUser').hide();$('#contenu').show();listerCategorie('Horreur');">Horreur</a>
 				</div>
 			</li>
 			<li class="nav-item">
