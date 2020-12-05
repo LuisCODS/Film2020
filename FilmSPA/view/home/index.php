@@ -28,17 +28,12 @@
       <div class="row ">
         <div class="col-md">               
             <form id="formCreateNewUser" method="post" action="../../controller/membreController.php">
-                 <h2>Formulaire d'inscription</h2>
-                <div class="form-group">
-                      <label for="profil"></label>
-                      <input type="hidden" id="profil" 
-                      name="profil" value="membre">
-                </div>
+                <h2>Formulaire d'inscription</h2>
+                <!-- AFFECTE LE PROFIL DEFAULT-->
+                <input type="hidden" id="profil" name="profil" value="membre">
                 
                 <!-- CONTROLLER ACTION-->
-                <div class="form-group">
-                      <input type="hidden" readonly="true" id="action" name="action" value="insert">
-                </div>
+                <input type="hidden" readonly="true" id="action" name="action" value="insert">
 
                 <!-- NOM -->
                 <div class="form-group">
@@ -113,10 +108,10 @@
                 </div>
 
                 <!-- RETOUR -->
-                <div class="form-group">
+<!--                 <div class="form-group">
                     <input type="button" value="Returner" class="btn btn-primary btn-block" 
                     onClick="listerFilmsCards();"></input>
-                </div>
+                </div> -->
             </form>     
         </div>
       </div>

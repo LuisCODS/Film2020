@@ -14,11 +14,13 @@ $membreDAO = new MembreDAO();
 switch ($action) 
 {
 	case 'insert':
+		if($membreDAO->existeDeja($courriel))
+			header("location: ../view/home/index.php");
+		else
 			enregistrer();
 	    break;
 	case 'update':
 			 editer();
-			 //echo "xxxxxxxxxx";
 		break;
 	case 'delete':
 			echo $membreDAO->delete($idMembre);//Si ok return 1

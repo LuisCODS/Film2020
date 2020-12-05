@@ -126,26 +126,3 @@ function listerCategorie(categorie)
 
 // ============================ GESTION MEMBRE ========================
 
-//Enregistrer un nouveau membre
-//function envoyerLogin(leForm){
-// $('#btnLogin').click(function(){
-
-// 		//alert("callback");
-// 		//alert($(leForm).serialize());
-// 		var leForm = document.getElementById('formLogin');
-// 		$.ajax({
-
-// 		   method: "POST",
-// 		   url:"../../controller/loginController.php",
-// 		   data:$(leForm).serialize(),
-
-// 		});
-// });	
-
-
-  // if(reponse=="false"){		  	
-  // document.getElementById("messageError").innerHTML="Courriel ou mot de passse invalide!";
-  // }
- //$("#contenu").html(reponse);
-  //Vide la msg apres 5 sec.
-  //setInterval(function(){ document.getElementById("emsg").innerHTML=""; }, 5000);v

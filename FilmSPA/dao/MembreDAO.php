@@ -238,6 +238,36 @@ Class MembreDAO
 
 	}
 
+		/*
+	 Verifie dans la bd si un courriel existe deja.
+	 Retourn true ou false.
+	*/
+	function existeDeja($courriel)
+	{
+		global $cn;
+
+		try {
+				//VERIFIE SI LE COURRIEL EXISTE
+				$sql="SELECT * FROM membre WHERE courriel=? ";
+				$stmt  = $this->cn->prepare($sql);
+			   	$stmt->execute(array($courriel)); 
+				$rs = $stmt->fetchAll(PDO::FETCH_ASSOC);//return false si pas d'objet
+
+				//SI COURRIEL ET PASSWORD VALIDES
+				if( count($rs) == 1 )
+				{
+					return true;							 			
+				}else{
+					return false;	
+				}
+		} catch (Exception $e) {
+			echo 'Erro: '. $e;
+		}finally{
+			unset($cn);//close  connexion
+			unset($stmt);//clean memoire
+		}
+	}
+
 	
 	
 }//End class
