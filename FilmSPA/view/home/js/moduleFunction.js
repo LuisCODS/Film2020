@@ -1,44 +1,84 @@
+function rendreVisible(elem){
+	document.getElementById(elem).style.display='block';
+}
+
+function rendreInvisible(elem){
+  document.getElementById(elem).style.display='none';
+}
+
 // ============================ GESTION VALIDATION ========================
 
-//Les expressions
-var REG_MDP_membre = /^[A-Za-z\d]{4}$/;
-var REG_courriel = /^(\w+[\-\.])*\w+@(\w+\.)+[A-Za-z]+$/;
-var mailformat = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+var formLogin = document.getElementById('formLogin');
+var emailElement = document.getElementById('courriel');
+var courriel = document.getElementById('courriel').value
+var MDP_membre = document.getElementById('MDP_membre').value
 
+ //  ECOUTE LA SOUMISSION DU FORM 
+formLogin.addEventListener("submit", function(e) {
+	  //Block l'envoie du form
+	  e.preventDefault();
+  	// if (formLogin.courriel.lenght > 0 && formLogin.MDP_membre.lenght > 0 ) {
+	   if(isValidEmail(formLogin.courriel) && isValidPassword(formLogin.MDP_membre) ) 
+	      formLogin.submit(); 
+	      //envoyerLogin(formLogin);
+  	//}
+});
 
-function valideForm(leForm) 
-{    
-	var courriel = leForm.courriel.value;
-	var MDP_membre = leForm.MDP_membre.value;
-	 //const leForm = $("#formLogin");
+ //VALIDATION COURRIEL  
 
-	//IF EMPTY FIELDS
-	if (!courriel || !MDP_membre)
-	{
-		$('#message').html(
-		      "<div class='alert alert-danger text-center' id='danger-alert'><strong>Erreur ! </strong>Tous les Champs sont Requis</div>"
-		);
-		// cacher l'erreur apres 5 secondes
-		$("#danger-alert").fadeTo(4000, 500).slideUp(500, function() {
-		  $("#danger-alert").slideUp(500);
-		});
-		return false;
-	}
+//Ecoute l'evenement du courriel
+formLogin.courriel.addEventListener("change", function() {
 
- 	//VALIDATION Regular Expressions
-	if (courriel.match(mailformat)){
-	 	 return true;
+	isValidEmail(this);
+});
+//Cette constante recoit de la fonction, soit true/false
+const isValidEmail = function(inputEmail){
+	//Creation expression reguliere
+	var RegExp_Email = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+	var tagMsg = document.getElementById('messageCourriel');
+	if(inputEmail.value.match(RegExp_Email) )
+	{		
+		formLogin.classList.add("valid");
+		formLogin.classList.remove("invalid");
+		tagMsg.innerHTML = "Email valide!";
+		tagMsg.style.color = "#009933";
+		return true;
 	}else{
-		$('#messageCourriel').html("Courriel invalide!");
-		$("#messageCourriel").css("color", "red");
-	  	return false;
+		formLogin.classList.remove("valid");
+		formLogin.classList.add("invalid");
+		tagMsg.innerHTML = "Email invalide!";
+		tagMsg.style.color = "#ff0000";	
+		return false;	
 	}
+};
 
+ //  VALIDATION PASSWORD   
 
-}//End function
-  
+//Ecoute l'evenement du password
+formLogin.MDP_membre.addEventListener("change", function() {
 
-// var courriel = $("#courriel").val();
+	isValidPassword(this);
+});
+const isValidPassword = function(inputPassword){
+
+	var RegExp_PassWord = /^[A-Za-z\d]{4}$/;
+	var tagMsg = document.getElementById('messagePassword');
+	if(inputPassword.value.match(RegExp_PassWord) )
+	{		
+		formLogin.classList.add("valid");
+		formLogin.classList.remove("invalid");
+		tagMsg.innerHTML = "Mot de passe valide!";
+		tagMsg.style.color = "#009933";
+		return true;
+	}else{
+		formLogin.classList.remove("valid");
+		formLogin.classList.add("invalid");
+		tagMsg.innerHTML = "Mot de passe invalide!";
+		tagMsg.style.color = "#ff0000";	
+		return false;	
+	}
+};
+
 
 // ============================ GESTION FILM ========================
 
@@ -84,26 +124,28 @@ function listerCategorie(categorie)
 	});
 }
 
-
 // ============================ GESTION MEMBRE ========================
 
 //Enregistrer un nouveau membre
-function envoyerEnreg(leForm){
-	alert(leForm);
-	$.ajax({
-	   type: "POST",
-	   url:"../../controller/membreController.php",
-	   data:$(leForm).serialize(),
-	   // dataType:'text',
-	   success:function(reponse)
-	   {
-		  //alert(reponse); //test le type de retour de donnée
-		  //document.getElementById("SucessCompte").innerHTML=reponse;
-		  //Vide la msg apres 5 sec.
-		  //setInterval(function(){ document.getElementById("emsg").innerHTML=""; }, 5000);
-		},
-	   error:function(err){
-		 //Votre msgErrorEmail
-	   },
-	});
-}
+//function envoyerLogin(leForm){
+// $('#btnLogin').click(function(){
+
+// 		//alert("callback");
+// 		//alert($(leForm).serialize());
+// 		var leForm = document.getElementById('formLogin');
+// 		$.ajax({
+
+// 		   method: "POST",
+// 		   url:"../../controller/loginController.php",
+// 		   data:$(leForm).serialize(),
+
+// 		});
+// });	
+
+
+  // if(reponse=="false"){		  	
+  // document.getElementById("messageError").innerHTML="Courriel ou mot de passse invalide!";
+  // }
+ //$("#contenu").html(reponse);
+  //Vide la msg apres 5 sec.
+  //setInterval(function(){ document.getElementById("emsg").innerHTML=""; }, 5000);v

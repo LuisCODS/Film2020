@@ -7,18 +7,23 @@ include_once '../dao/MembreDAO.php';
 extract($_POST);
 $membreDAO = new MembreDAO();
 
-//CAS LOGIN
-if ( isset($_POST["action"])  &&  $_POST["action"] == "login"){
+//print_r($courriel);
 
-	 $membreDAO->login($courriel,$MDP_membre);
+//var_dump($form);
+if ( isset($_POST["action"])  &&  $_POST["action"] == "login")
+{
+
+	if($membreDAO->validerLogin($courriel,$MDP_membre) != "true"){
+			// echo '<script type="text/javascript">alert("Mot de passe ou courriel invalide");</script>';
+			header("location: ../view/home/index.php");
+		// echo  $inerHtml = "<div style='text-align:center' class='alert 	alert-info' role='alert'>
+			  // <h2>Courriel ou mot de passe invalides!</h2>
+			  // </div>";
+	}else{		
+		//echo "Valide!";
+		$membreDAO->login($courriel,$MDP_membre);
+	}
 }
-else{ 
-	header("location: ../view/home/index.php");
-	//echo "$('#divFormLogin').show();";
-	//echo "$('#divFormLogin').html();";
-
-}
-
-
 ?>
+
 
