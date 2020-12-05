@@ -12,13 +12,17 @@ $membreDAO = new MembreDAO();
 //var_dump($form);
 if ( isset($_POST["action"])  &&  $_POST["action"] == "login")
 {
-	//echo $membreDAO->login($courriel,$MDP_membre);
-	//echo $membreDAO->validerLogin($courriel,$MDP_membre);
-	// if($membreDAO->validerInputs($courriel,$MDP_membre) == false){
-	// 	echo "Courriel ou mot de passse invalide!";
-	// }else{		
-	// 	echo "Valide!";
-	// }
+
+	if($membreDAO->validerLogin($courriel,$MDP_membre) != "true"){
+			// echo '<script type="text/javascript">alert("Mot de passe ou courriel invalide");</script>';
+			header("location: ../view/home/index.php");
+		// echo  $inerHtml = "<div style='text-align:center' class='alert 	alert-info' role='alert'>
+			  // <h2>Courriel ou mot de passe invalides!</h2>
+			  // </div>";
+	}else{		
+		//echo "Valide!";
+		$membreDAO->login($courriel,$MDP_membre);
+	}
 }
 ?>
 

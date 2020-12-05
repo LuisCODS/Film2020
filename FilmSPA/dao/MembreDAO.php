@@ -118,6 +118,10 @@ Class MembreDAO
 		}
 	}
 
+	/*
+	 Verifie dans la bd si un courriel et password existent.
+	 Retourn true ou false.
+	*/
 	function validerLogin($courriel,$MDP_membre)
 	{
 		global $cn;
@@ -128,31 +132,14 @@ Class MembreDAO
 				$stmt  = $this->cn->prepare($sql);
 			   	$stmt->execute(array($courriel)); 
 				$rs = $stmt->fetchAll(PDO::FETCH_ASSOC);//return false si pas d'objet
-				//$rs = $stmt->fetchAll();//return false si pas d'objet
-				//var_dump($rs);
 
 				//SI COURRIEL ET PASSWORD VALIDES
 				if( count($rs) == 1 && password_verify($MDP_membre, $rs[0]["MDP_membre"]) == 1 )
 				{
-				    //Create an objet with the result and add it to a session
-				    $membre = new Membre(
-			    					     $rs[0]["PK_ID_Membre"],
-			    					     $rs[0]["nom"],
-			    					     $rs[0]["prenom"],
-			    					     $rs[0]["profil"],
-			    					     $rs[0]["courriel"],
-			    					     $rs[0]["MDP_membre"],
-			    					     $rs[0]["tel_membre"] );
-					 //Create a session
-				 	$_SESSION["membre"] = serialize($membre);
-				 	
-					//Gestion d'interface
-					if ($rs[0]["profil"] == "admin")
-						header("location: ../view/admin/index.php");
-					else
-						header("location: ../view/membre/index.php");							 			
+					return "true";							 			
 				}else{
-					header("location: ../view/home/index.php");		
+					//header("location: ../view/home/index.php");	
+					return "false";	
 				}
 		} catch (Exception $e) {
 			echo 'Erro: '. $e;
@@ -204,51 +191,52 @@ Class MembreDAO
 		Si ok, redirectionne le membre à sa page d'accueil avec 
 		une session. Si pas ok,  reste dans la page login.
 	*/
-	// function login($courriel,$MDP_membre)
-	// {
-	// 	global $cn;
+	function login($courriel,$MDP_membre)
+	{
+		global $cn;
 
-	// 	try {
+		try {
 				
-	// 			$sql="SELECT * FROM membre WHERE courriel=? ";
-	// 			$stmt = $this->cn->prepare($sql);
-	// 			$stmt->execute(array($courriel));
-	// 			$rs = $stmt->fetch(PDO::FETCH_OBJ); 
+				$sql="SELECT * FROM membre WHERE courriel=? ";
+				$stmt = $this->cn->prepare($sql);
+				$stmt->execute(array($courriel));
+				$rs = $stmt->fetch(PDO::FETCH_OBJ); 
 
-	// 			//return TRUE if password and hash are equals, FALSE otherwise.
-	// 			 if(password_verify($MDP_membre, $rs->MDP_membre)) 
-	// 			 {    				
-	// 			    //Create an objet with the result and add it to a session
-	// 			    $membre = new Membre($rs->PK_ID_Membre,
-	// 									 $rs->nom,
-	// 									 $rs->prenom,
-	// 									 $rs->profil,
-	// 									 $rs->courriel,
-	// 									 $rs->MDP_membre,
-	// 									 $rs->tel_membre );	
+				//return TRUE if password and hash are equals, FALSE otherwise.
+				 if(password_verify($MDP_membre, $rs->MDP_membre)) 
+				 {    				
+				    //Create an objet with the result and add it to a session
+				    $membre = new Membre($rs->PK_ID_Membre,
+										 $rs->nom,
+										 $rs->prenom,
+										 $rs->profil,
+										 $rs->courriel,
+										 $rs->MDP_membre,
+										 $rs->tel_membre );	
 
-	// 				 //Create a session
-	// 			 	$_SESSION["membre"] = serialize($membre);
+					 //Create a session
+				 	$_SESSION["membre"] = serialize($membre);
 
-	// 				//Gestion d'interface
-	// 				if ($rs->profil == "admin"){
-	// 					header("location: ../view/admin/index.php");
-	// 				}else{
-	// 					header("location: ../view/membre/index.php");
-	// 				}	
-	// 			}else{
-	// 				return "Mot de passe invalide!";
-	// 			}	
+					//Gestion d'interface
+					if ($rs->profil == "admin"){
+						header("location: ../view/admin/index.php");
+					}else{
+						header("location: ../view/membre/index.php");
+					}	
+				}else{
+					//return "Mot de passe invalide!";
+					header("location: ../view/home/index.php");
+				}	
 
-	// 	} catch (Exception $e) {
-	// 		echo 'Erro: '. $e;
+		} catch (Exception $e) {
+			echo 'Erro: '. $e;
 
-	// 	}finally{
-	// 		unset($cn);//close  connexion
-	// 		unset($stmt);//clean memoire
-	// 	}
+		}finally{
+			unset($cn);//close  connexion
+			unset($stmt);//clean memoire
+		}
 
-	// }
+	}
 
 	
 	

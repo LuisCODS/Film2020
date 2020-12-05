@@ -127,7 +127,7 @@
 
 <div class="container text-center" id="divFormLogin">
 
-    <form id="formLogin" method="POST" novalidate > 
+    <form id="formLogin" method="POST" novalidate action="../../controller/loginController.php" > 
           <div class="icone"><i class="fas fa-film"></i></div> 
           <h1 class="mb-4">Page connection</h1> 
 
@@ -165,11 +165,11 @@
           <div class="form-group">
             <!--  onClick="envoyerLogin(formLogin)" -->
             <button type="submit" 
-                    name="btnLogin"                   
+                    name="btnLogin"  
                     id="btnLogin"                      
                     class="form-control btn btn-primary">Connexion</button>             
          </div>
-         <small id="messageError"></small>
+         <p id="messageError" name="messageError"></p>
     </form> 
 </div> 
 
