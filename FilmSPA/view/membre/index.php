@@ -62,8 +62,8 @@ include_once '../../model/Membre.php';
       </div> 
       <div class="row">
       </div>
-        <!--action="../../controller/membreController.php" method="POST" -->  
-       <form id="formEditer" method="POST" >
+      <!-- onSubmit="return validerFormEditer()" -->
+       <form id="formEditer" method="POST">
             <div id="msgEditeSucess" 
                   style="text-align:center" 
                   class="alert alert-info" 
@@ -153,8 +153,8 @@ include_once '../../model/Membre.php';
                            required>
                      <p id="erreurPasswordConfirm" style='color:red'></p>
               </div>  -->
-              <!-- onClick="return validerForm(formEditer )" -->
-              <button type="submit" onClick="editerMembre(formEditer)" class="btn btn-primary btn-block">Editer</button>
+              <!-- onClick=" editerMembre(formEditer )" -->
+              <button type="submit"  onClick=" editerMembre(formEditer )" class="btn btn-primary btn-block">Editer</button>
 
           </form> 
 

@@ -1,7 +1,7 @@
 
 // ========================= VALIDATION TELEPHONE =========================
 // onClick="validerTelephone();"
-// function validerTelephone()
+// function validerFormEditer()
 // {
 // 	//let tel_lRegExp = new RegExp('^\d{3}-\d{3}-\d{4}$', 'gm');
 // 	//let tel_lRegExp = new RegExp('[0-9]{3}[-][0-9]{3}[-][0-9]{4}', 'gm');
@@ -10,7 +10,6 @@
 // 	let errorMsgTel = document.getElementById("isValidetTelephone");
 // 	let tel_membre = document.getElementById("tel_membre");
 
-// 	//Si quelque chose
 // 	if (tel_membre.value.length != "") {
 
 // 		//Error
@@ -19,13 +18,17 @@
 // 			errorMsgTel.innerHTML="Telephone non valide!";
 // 			errorMsgTel.classList.remove('text-success');
 // 			errorMsgTel.classList.add('text-danger');
+// 			return false;
 // 		}	
 // 		//ok
 // 		else{
 // 			errorMsgTel.innerHTML="Telephone valide";
 // 			errorMsgTel.classList.remove('text-danger');	
-// 			errorMsgTel.classList.add('text-success');	
+// 			errorMsgTel.classList.add('text-success');
+// 			return true;	
 // 		}		
+// 	}else{
+// 		return false;
 // 	}
 // }
 
@@ -35,25 +38,24 @@
 function editerMembre(leForm)
 {
 	//var formImputs = new FormData(document.getElementById('formEditer'));
-	//alert($(leForm).serialize());
-	$.ajax({
-	   type: "POST",
-	   url:"../../controller/membreController.php",
-	   data:$(leForm).serialize(),
-	   // dataType:'text',
-	   success:function(reponse)
-	   {
-		  //alert(reponse); //test le type de retour de donnée
-		  $("#msgEditeSucess").show();
-		  //document.getElementById("msgEditeSucess").innerHTML= "<b>Sucess!</b> Donnes mis à jour!reponse";
-		  //Vide la msg apres 5 sec.
-		  //setInterval(function(){ document.getElementById("emsg").innerHTML=""; }, 5000);
-		},
-	   error:function(err){
-		 //Votre msgErrorEmail
-	   },
-	});
-}
+		$.ajax({
+		   type: "POST",
+		   url:"../../controller/membreController.php",
+		   data:$(leForm).serialize(),
+		   // dataType:'text',
+		   success:function(reponse)
+		   {
+			  //alert(reponse); //test le type de retour de donnée
+			  $("#msgEditeSucess").show();
+			  //document.getElementById("msgEditeSucess").innerHTML= "<b>Sucess!</b> Donnes mis à jour!reponse";
+			  //Vide la msg apres 5 sec.
+			  //setInterval(function(){ document.getElementById("emsg").innerHTML=""; }, 5000);
+			},
+		   error:function(err){
+			 //Votre msgErrorEmail
+		   },
+		});		
+	}
 // ============================ GESTION FILM ========================
 
 function listerFilmsCards()

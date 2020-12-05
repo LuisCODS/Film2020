@@ -43,23 +43,34 @@
                 <!-- NOM -->
                 <div class="form-group">
                       <label for="nom">Nom</label>
-                      <input autofocus type="text" class="form-control" 
-                      name="nom" id="nom" required>
+                      <input autofocus 
+                            type="text" 
+                            class="form-control" 
+                            name="nom" 
+                            id="nom" 
+                            placeholder="Max 40 caracteres"
+                            pattern="[a-zA-z0-9]{2,40}"
+                            required>
                       <p id="erreurNom" style='color:red'></p>
                 </div>
 
                 <!-- PRENOM -->
                 <div class="form-group">
                       <label for="prenom">Prenom</label>
-                      <input  type="text" class="form-control" 
-                      name="prenom" required>
+                      <input  type="text" 
+                              class="form-control" 
+                              name="prenom" 
+                              placeholder="Max 40 caracteres"
+                              pattern="[a-zA-z0-9]{2,40}"
+                              required>
                       <p id="erreurIsVide" style='color:red'></p>
                 </div>
 
                 <!-- COURRIEL -->
                 <div class="form-group">
                       <label for="courriel">Courriel</label>
-                      <input  id="courriel" type="email" 
+                      <input  id="courriel" 
+                              type="email" 
                               class="form-control" 
                               name="courriel" 
                               pattern="^[^ ]+@[^ ]+\.[a-z]{2,3}$"
@@ -111,50 +122,54 @@
       </div>
 </div> 
 
-<!-- action="../../controller/loginController.php" onSubmit="return valideForm(this)" -->
+<!-- action="../../controller/loginController.php" novalidate onSubmit="return valideForm(this)" -->
  <!-- __________________________ LOGIN ______________________________ --> 
 
 <div class="container text-center" id="divFormLogin">
 
-    <form id="formLogin" method="POST"  action="../../controller/loginController.php"> 
+    <form id="formLogin" method="POST" novalidate > 
           <div class="icone"><i class="fas fa-film"></i></div> 
           <h1 class="mb-4">Page connection</h1> 
+
           <!-- ============= CONTROLLER ACTION ============= -->
           <input type="hidden" readonly="true" 
                 id="action" name="action" value="login"> 
+
           <!-- ============= COURRIEL ============= -->
           <div class="form-group">   
-              <input type="text" 
+              <input type="email"
+                      autofocus 
                       placeholder="Courriel" 
                       name="courriel" 
                       id="courriel" 
                       required
                       class="form-control mb-4">               
-          <span id="messageCourriel" style="font-weight: bold"></span>
+               <p id="messageCourriel" 
+                      style="font-weight: bold"></p>
           </div>
-          <!-- ============= MOT DE PASS ============= -->
+
+          <!-- ============= MOT DE PASSE ============= -->
           <div class="form-group">
               <input type="password"  
-                    placeholder="Mot de passe 4 caracteres" 
+                    placeholder="Mot de passe" 
                     class="form-control mb-4" 
                     name="MDP_membre" 
                     required
                     pattern="[a-zA-Z0-9]{4}"
                     id="MDP_membre"                     
                     autocomplete>
-          <p id="msgErrorPassword" style="font-weight: bold"></p>
+               <p id="messagePassword" 
+                      style="font-weight: bold"></p>
           </div>
-           <p style='color:red'>
-             <?php if (isset ($_SESSION["invalidImput"])){ echo $_SESSION["invalidImput"]; }  ?>
-           </p>  
-          <!--  onClick="login()" -->
-          <button type="submit" 
-                  name="btnLogin" 
-                  onClick="return valideForm()"
-                  id="btnLogin"                      
-                  class="form-control btn btn-primary">Login</button>            
-          <hr>
-          <span id="message"></span>
+
+          <div class="form-group">
+            <!--  onClick="envoyerLogin(formLogin)" -->
+            <button type="submit" 
+                    name="btnLogin"                   
+                    id="btnLogin"                      
+                    class="form-control btn btn-primary">Connexion</button>             
+         </div>
+         <small id="messageError"></small>
     </form> 
 </div> 
 
