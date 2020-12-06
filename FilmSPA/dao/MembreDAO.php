@@ -238,7 +238,7 @@ Class MembreDAO
 
 	}
 
-		/*
+	/*
 	 Verifie dans la bd si un courriel existe deja.
 	 Retourn true ou false.
 	*/

@@ -124,5 +124,27 @@ function listerCategorie(categorie)
 	});
 }
 
-// ============================ GESTION MEMBRE ========================
+// ============================ GESTION MODAL ========================
+function displayModal(parm){
 
+	//alert(parm);
+	var src = '../../apercus/Intouchables.mp4';
+	$('.modalVideo').modal('show');
+	$("#TituloModalCentralizado").html(parm);
+	$('.modal-body  source').attr('src', src);
+
+}
+
+// $('.card-img-top').click(function () {
+//     var src = 'http://www.youtube.com/v/FSi2fJALDyQ&amp;autoplay=1';
+//     $('#myModal').modal('show');
+//     $('#myModal iframe').attr('src', src);
+// });
+
+// $('#myModal button').click(function () {
+//     $('#myModal iframe').removeAttr('src');
+// });
+
+// $('#tagA').click(()=>{
+	
+// });
