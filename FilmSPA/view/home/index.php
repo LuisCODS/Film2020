@@ -4,6 +4,7 @@
 
 <!doctype html>
 <html lang="en" style="height: 100%">
+
 <head>
     <?php
     include_once '../../includes/head.php'; 

@@ -60,7 +60,8 @@
             <input type="file" class="form-control" id="pochette" name="pochette" value="<?php echo $film[0]->pochette;?>">
         </div>
         <div class="form-group">
-          <input type="hidden" class="form-control" readonly="true" id="url" name="url" value="<?php echo $film[0]->url;?>">
+        <label for="pochette">Url</label>
+          <input type="url" class="form-control"  id="url" name="url" value="<?php echo $film[0]->url;?>">
         </div>
         <button id="btnEnregistrer" type="button" onClick="editerFilm();" value="Envoyer" class="btn btn-primary">Enregistrer</button>
 </form> 

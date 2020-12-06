@@ -128,23 +128,15 @@ function listerCategorie(categorie)
 function displayModal(parm){
 
 	//alert(parm);
-	var src = '../../apercus/Intouchables.mp4';
+	//var src = '../../apercus/Intouchables.mp4';
+	var  src = "https://www.youtube.com/embed/-RNI9o06vqo";
+	//var  src = parm;
 	$('.modalVideo').modal('show');
 	$("#TituloModalCentralizado").html(parm);
-	$('.modal-body  source').attr('src', src);
+	$('.modalVideo iframe').attr('src', src);
 
 }
 
-// $('.card-img-top').click(function () {
-//     var src = 'http://www.youtube.com/v/FSi2fJALDyQ&amp;autoplay=1';
-//     $('#myModal').modal('show');
-//     $('#myModal iframe').attr('src', src);
-// });
-
-// $('#myModal button').click(function () {
-//     $('#myModal iframe').removeAttr('src');
-// });
-
-// $('#tagA').click(()=>{
-	
+// $('#closeModal').click(function () {
+//     $('#modalVideo iframe').removeAttr('src');
 // });
