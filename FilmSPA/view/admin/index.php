@@ -35,7 +35,7 @@
 <!--  ==================== FORM CREATE FILM ====================   -->
 <!-- onSubmit="return validerInputs();" -->
 <div class="container" id="divFormFilm">    
-	<form id="formEnreg" name="formEnreg" >
+	<form id="formEnreg" name="formEnreg">
     <h2>Nouveau Film</h2>
     <!-- FORNECE O TIPO DE ACAO AO CONTROLLER -->
     <div class="form-group">
@@ -80,11 +80,12 @@
                 id="url" 
                 placeholder="http://www.nomdusite.com"
                 pattern="^((http[s]?|ftp):\/)?\/?([^:\/\s]+)((\/\w+)*\/)([\w\-\.]+[^#?\s]+)(.*)?(#[\w\-]+)?$"
-                name="url" 
-                required>
+                name="url">
     </div>     
-    <!-- onClick="return validerForm();" -->
-    <button id="btnEnregistrer" type="submit"  onClick="return enregistrerFilm();" class="btn btn-primary">Enregistrer</button>
+    <!-- onClick="return enregistrerFilm();" -->
+    <button id="btnEnregistrer" type="submit"
+            onClick="enregistrerFilm();"   
+            class="btn btn-primary">Enregistrer</button>
   </form> 
 </div> 
 

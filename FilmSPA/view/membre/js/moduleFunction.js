@@ -98,3 +98,15 @@ function listerCategorie(categorie)
 		})
 	});
 }
+
+// ============================ GESTION PANIER ========================
+
+function displayPanier()
+{
+	$.ajax({
+		method: "POST", 
+		url:"../membre/template/panier.php"
+	}).done((template)=>{	
+		$("#contenu").html(template);
+	});
+}

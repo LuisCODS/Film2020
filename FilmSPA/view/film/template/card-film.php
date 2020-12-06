@@ -12,19 +12,18 @@ foreach( json_decode($chaine) as $film)
 {
 ?>          
     <!-- TEMPLATE CARD FILM -->
-     <div  style="display: inline-block" >
+     <div  style="display: inline-block;">
         <div class="card" style="width: 20rem;">            
         <a> 
             <img class="card-img-top" 
                 onClick="displayModal('<?php echo $film->url; ?>');" 
                 src="../../img/<?php echo $film->pochette; ?>"width="200" height="300">           
         </a> 
-         <div class="card-body">
-            <h5 class="card-title" style="text-align: center;"><?php echo $film->titre; ?></h5>
-             <p class="card-text" style="text-align: center;">Realisateur: <?php echo $film->realisateur; ?></p>
-             <p class="card-text"style="text-align: center;">Prix: <?php echo $film->prix; ?>$</p>
-             <p class="card-text"style="text-align: center;">Categorie: <?php echo $film->categorie; ?></p>
-             <a id="addPanier" href="#" class="btn btn-primary">Ajouter Panier</a>
+            <h5 class="card-title " style="text-align: center;"><?php echo $film->titre; ?></h5>
+             <p class="card-text"  style="text-align: center;">Realisateur: <?php echo $film->realisateur; ?></p>
+             <p class="card-text"  style="text-align: center;">Prix: <?php echo $film->prix; ?>$</p>
+             <p class="card-text"  style="text-align: center;">Categorie: <?php echo $film->categorie; ?></p>
+             <a id="addPanier"   class="btn btn-success ">Ajouter au <i class="fas fa-shopping-cart"></i></a>
         </div>
         </div>
     </div>
