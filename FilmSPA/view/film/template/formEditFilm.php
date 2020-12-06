@@ -22,19 +22,23 @@
         <h2>Editer film</h2>
         <!-- GIVES TYPE OF ACTION TO CONTROLLER -->
         <div class="form-group">
-              <input type="hidden" class="form-control" readonly="true" id="action" name="action" value="update">
+              <input type="hidden" class="form-control" 
+              readonly="true" id="action" name="action" value="update">
         </div>
         <div class="form-group">
             <label for="PK_ID_Film"></label>
-            <input type="hidden" class="form-control" id="PK_ID_Film" name="PK_ID_Film" value="<?php echo $film[0]->PK_ID_Film;?>"> 
+            <input type="hidden" class="form-control" 
+            id="PK_ID_Film" name="PK_ID_Film" value="<?php echo $film[0]->PK_ID_Film;?>"> 
         </div>
         <div class="form-group">
             <label for="titre">Titre</label>
-            <input type="text" class="form-control" id="titre" name="titre" value="<?php echo $film[0]->titre;?>" size="40">
+            <input type="text" class="form-control" 
+            id="titre" name="titre" value="<?php echo $film[0]->titre;?>" size="40">
         </div>
         <div class="form-group">
             <label for="prix">Prix</label>
-            <input  type="text" class="form-control" id="prix" name="prix" size="40" value="<?php echo $film[0]->prix;?>">
+            <input  type="text" class="form-control" id="prix"
+             name="prix" size="40" value="<?php echo $film[0]->prix;?>">
         </div>
         <div class="form-group">
             <label for="categorie">Categorie</label>
@@ -49,19 +53,24 @@
         </div>
         <div class="form-group">
             <label for="realisateur">Realisateur</label>
-            <input type="text" class="form-control" id="realisateur" name="realisateur" value="<?php echo $film[0]->realisateur;?>">
+            <input type="text" class="form-control" id="realisateur" 
+            name="realisateur" value="<?php echo $film[0]->realisateur;?>">
         </div>
         <div class="form-group">
             <label for="description">Description</label>
-            <textarea type="textarea" class="form-control" id="description" name="description" value="<?php echo $film[0]->description;?>"></textarea>
+            <textarea type="textarea" class="form-control" 
+            id="description" name="description" 
+            value="<?php echo $film[0]->description;?>"></textarea>
         </div>
         <div class="form-group" >                        
             <label for="pochette">Pochette</label>
-            <input type="file" class="form-control" id="pochette" name="pochette" value="<?php echo $film[0]->pochette;?>">
+            <input type="file" class="form-control" id="pochette" 
+            name="pochette" value="<?php echo $film[0]->pochette;?>">
         </div>
         <div class="form-group">
         <label for="pochette">Url</label>
-          <input type="url" class="form-control"  id="url" name="url" value="<?php echo $film[0]->url;?>">
+          <input type="url" class="form-control"  id="url" 
+          name="url" value="<?php echo $film[0]->url;?>">
         </div>
         <button id="btnEnregistrer" type="button" onClick="editerFilm();" value="Envoyer" class="btn btn-primary">Enregistrer</button>
 </form> 

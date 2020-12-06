@@ -7,28 +7,38 @@ function rendreInvisible(elem){
 }
 
 // ===========================  GESTION VALIDATION ===========================
-function validerForm()
-{
 
-	var inputs = getElementsByClassName("form-control");
-	for(var i = 0; i < inputs.length; i++)
-	{
-		  if($inputs[i].value == "")
-		  {
-				$('#msgErreur').html(
-			      "<div class='alert alert-danger text-center' id='danger-alert'><strong>Erreur ! </strong>Champs requis</div>"
-				);
-				// cacher l'erreur apres 2 secondes
-				$("#danger-alert").fadeTo(2000, 500).slideUp(500, function() {
-				 	 $("#danger-alert").slideUp(500);
-				});
-				return false;
-		   } 
-	}  
+var formEnreg = document.getElementById('formEnreg');
+
+formEnreg.addEventListener("submit", function(e) {
+	  e.preventDefault();
+	  
+	   if(validerInputs()) 
+	      formEnreg.submit(); 
+});
+
+
+function validerInputs()
+{
+	  if(document.getElementById('titre').value == "")
+			return false;
+	  if(document.getElementById('prix').value == "")
+			return false;
+   	  if(document.getElementById('categorie').value == "")
+			return false;
+	  if(document.getElementById('realisateur').value == "")
+			return false;
+	  if(document.getElementById('description').value == "")
+			return false;
 }
 
-
-
+		// $('#msgErreur').html(
+	 //      "<div class='alert alert-danger text-center' id='danger-alert'><strong>Erreur ! </strong>Champs requis</div>"
+		// );
+		// // cacher l'erreur apres 2 secondes
+		// $("#danger-alert").fadeTo(2000, 500).slideUp(500, function() {
+		//  	 $("#danger-alert").slideUp(500);
+		// });
 // ===========================  GESTION MEMBRE ===========================
 
 function literMembres()
