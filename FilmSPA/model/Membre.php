@@ -10,7 +10,7 @@
 		private $courriel;
 		private $MDP_membre;
 		private $tel_membre;
-		public static $nbObje = 0;
+		public $panier;
 
 		function __Construct($PK_ID_Membre,$nom,$prenom,
 							 $profil,$courriel,$MDP_membre,$tel_membre)
@@ -22,10 +22,13 @@
 			$this->courriel	  = $courriel;
 			$this->MDP_membre = $MDP_membre;
 			$this->tel_membre = $tel_membre;
-			self:: $nbObje++;
 		}
 
 		
+		public function addPanier( $film)
+		{
+			$this->panier[] = $film;
+		}
 
 		function getMembreID(){
 			return $this->PK_ID_Membre;

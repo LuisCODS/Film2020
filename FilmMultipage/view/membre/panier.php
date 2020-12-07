@@ -103,7 +103,7 @@ include_once '../../model/Film_Location.class.php';
              global  $subtotal;
              $arrayFilms = array();
              //Cree location
-             $location = new Film_Location(null,$membre->getMembreID());
+             //$location = new Film_Location(null,$membre->getMembreID());
 
              foreach ( $_SESSION['panier'] as $idFilm => $quantite) 
              {

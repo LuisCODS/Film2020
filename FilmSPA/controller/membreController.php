@@ -28,8 +28,8 @@ switch ($action)
 	case 'select':
 			echo $membreDAO->selectMembres();//Si ok return 1
 		break;
-	case 'afficherPanier':
-			echo "Test";
+	// case 'ajouterAuPanier':
+	// 		echo "";
 		break;			
 	default:
 		echo "Aucun action trouvée";

@@ -103,10 +103,35 @@ function listerCategorie(categorie)
 
 function displayPanier()
 {
+	$("#divFormEditer").hide();
+	$('#contenu').show();
+
 	$.ajax({
 		method: "POST", 
 		url:"../membre/template/panier.php"
 	}).done((template)=>{	
 		$("#contenu").html(template);
+	});
+}
+
+
+//Saisie l'ID du film au moment du click du bouton ajouter au panier
+function ajouterAuPanier(id)
+{
+	//var formImputs = new FormData(document.getElementById('formBtnPanier'));	
+	//var action = "action=addPanier";
+
+	//alert($(form).serialize());
+
+	$.ajax({
+		method: "POST", 
+		url:"../membre/template/panier.php",
+		data:{
+			action: "addPanier", 
+			idFilm: id,
+		}
+	}).done((template)=>{	
+		$("#contenu").html(template);
+		//alert(template);
 	});
 }

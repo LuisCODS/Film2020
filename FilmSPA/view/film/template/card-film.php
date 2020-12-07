@@ -1,5 +1,21 @@
-
 <?php
+session_start();
+ include_once '../../../model/Membre.php';
+/* =================== SESSION MEMBRE ===================*/
+ $membre = new Membre(null,null,null,null,null, null,null ); 
+
+  if ( isset ($_SESSION["membre"]) ) {
+
+       $membre = unserialize($_SESSION["membre"]);
+       var_dump($membre);
+   }
+  else {
+    header("location: ../home/index.php");
+    exit();
+   }
+/* =================== SESSION MEMBRE ===================*/
+
+   
 extract($_POST);
 $total = json_decode($chaine,true);
     
@@ -11,22 +27,36 @@ echo  $inerHtml = "<div id='totalCat' style='text-align:center' class='alert ale
 foreach( json_decode($chaine) as $film)  
 {
 ?>          
-    <!-- TEMPLATE CARD FILM -->
-     <div  style="display: inline-block;">
-        <div class="card" style="width: 20rem;">            
-        <a> 
-            <img class="card-img-top" 
-                onClick="displayModal('<?php echo $film->url; ?>');" 
-                src="../../img/<?php echo $film->pochette; ?>"width="200" height="300">           
-        </a> 
-            <h5 class="card-title " style="text-align: center;"><?php echo $film->titre; ?></h5>
-             <p class="card-text"  style="text-align: center;">Realisateur: <?php echo $film->realisateur; ?></p>
-             <p class="card-text"  style="text-align: center;">Prix: <?php echo $film->prix; ?>$</p>
-             <p class="card-text"  style="text-align: center;">Categorie: <?php echo $film->categorie; ?></p>
-             <a id="addPanier"   class="btn btn-success ">Ajouter au <i class="fas fa-shopping-cart"></i></a>
-        </div>
-        </div>
-    </div>
+<!-- CARD FILM -->
+<div  style="display: inline-block;">
+  <div class="card" style="width: 20rem;">            
+  <a> 
+      <img class="card-img-top" 
+          onClick="displayModal('<?php echo $film->url; ?>');" 
+          src="../../img/<?php echo $film->pochette; ?>"width="200" height="300">           
+  </a> 
+      <h5 class="card-title" style="text-align: center;"><?php echo $film->titre; ?></h5>
+       <p class="card-text"  style="text-align: center;">Realisateur: <?php echo $film->realisateur; ?></p>
+       <p class="card-text"  style="text-align: center;">Prix: <?php echo $film->prix; ?>$</p>
+       <p class="card-text"  style="text-align: center;">Categorie: <?php echo $film->categorie; ?></p>
+
+        <!-- BUTTON AJOUTER PANIER -->         
+<!--         <form method='post' id="formPanier">
+            <input type='hidden' name='action'   value="addPanier" />
+            <input type='hidden' name='id_film'   value="<?php echo $film->PK_ID_Film; ?>" />
+            <input type='hidden' name='idMembre'  value='<?php  echo $membre->getMembreID();?>'/>
+            <button type='submit' 
+                    onClick="ajouterAuPanier(formPanier)"
+                    class=' btn-success'>Panier <i class="far fa-heart"></i></button>
+        </form> -->
+      <a id="addPanier" onClick="ajouterAuPanier('<?php echo $film->PK_ID_Film;?>');" class="btn btn-success ">Ajouter au <i class="fas fa-shopping-cart"></i></a> 
+
+<!--       <a id="addPanier" href="index.php?add=panier&idFilm=<?php echo $film->PK_ID_Film;?>" 
+        class="btn btn-success ">Ajouter au <i class="fas fa-shopping-cart"></i></a>  -->
+ 
+  </div>
+  </div>
+</div>
     <!--  FIN TEMPLATE CARD FILM -->
 <?php  } ?>    
 
@@ -41,15 +71,7 @@ foreach( json_decode($chaine) as $film)
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body" >
-
-<!--         <iframe width="310"
-                height="300"                 
-                frameborder="0"
-                allow="autoplay;" 
-                allowfullscreen>
-        </iframe> -->
-
+      <div class="modal-body">
           <!-- VIDEO -->
         <video  id="preview"   
                  width="300" 

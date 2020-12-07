@@ -24,6 +24,17 @@ if ( isset($_POST["action"])  &&  $_POST["action"] == "login")
 		$membreDAO->login($courriel,$MDP_membre);
 	}
 }
+
+// if ( isset($_POST["action"])  &&  $_POST["action"] == "logout")
+// {
+// 	//$membreDAO->validerLogin($courriel,$MDP_membre) ;
+// 	//echo "logout";
+// 	//session_start();
+// 	session_destroy();
+// 	//header("Refresh:0");
+// 	header("location: ../view/home/index.php");
+// }
+
 ?>
 
 

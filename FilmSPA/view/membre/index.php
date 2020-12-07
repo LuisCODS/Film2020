@@ -12,7 +12,7 @@ include_once '../../model/Membre.php';
          //var_dump($membre);
      }
     else {
-      header("location: ../login/login.php");
+      header("location: ../../home/index.php");
       exit();
      }
  /* ==============================================*/
