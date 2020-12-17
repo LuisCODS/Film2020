@@ -14,16 +14,23 @@ if ( isset($_POST["action"])  &&  $_POST["action"] == "login")
 {
 
 	if($membreDAO->validerLogin($courriel,$MDP_membre) != "true"){
-			// echo '<script type="text/javascript">alert("Mot de passe ou courriel invalide");</script>';
 			header("location: ../view/home/index.php");
-		// echo  $inerHtml = "<div style='text-align:center' class='alert 	alert-info' role='alert'>
-			  // <h2>Courriel ou mot de passe invalides!</h2>
-			  // </div>";
+
 	}else{		
 		//echo "Valide!";
 		$membreDAO->login($courriel,$MDP_membre);
 	}
 }
+
+if ( isset($_POST["action"])  &&  $_POST["action"] == "logout")
+{
+	session_unset(); //Décharge de la memoire
+	session_destroy(); //Supprime la session
+	//header("location: ../view/home/index.php");
+	//exit();
+	echo "logout done!";
+}
+
 ?>
 
 

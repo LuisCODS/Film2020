@@ -1,7 +1,6 @@
 <?php
 include '../model/Film.php';
 include '../dao/FilmDAO.php';
-
 //GLOBAL 
 extract($_POST);
 $filmDAO = new FilmDAO();
@@ -34,6 +33,11 @@ switch ($action)
 		   echo $filmDAO->getByCategorie($cat);
 		   unset($filmDAO);//clean memoire
 		break;
+	case 'ajouterAuPanier':
+		   echo $filmDAO->getOne($idFilm);//Return un film selon l'id demandée
+		   unset($filmDAO);//clean memoire	
+			//echo "";
+		break;	
 	default:
 		echo "Aucun action trouvée";
 		break;

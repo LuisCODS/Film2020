@@ -92,7 +92,6 @@ Class FilmDAO
 			$stmt->execute();
 			$rs = $stmt->fetchAll(PDO::FETCH_ASSOC); 
 			return json_encode($rs);		
-			//echo json_encode($rs);		
 
 		} catch (Exception $e) {
 			echo 'Erro: '. $e;
@@ -235,8 +234,6 @@ Class FilmDAO
 		}
 	}
 
-
-
 	/*Enregistre une image dans le serveur
 	  Parms:
 	  $dossier: chemin où se trouvent les images au serveur;
@@ -266,6 +263,24 @@ Class FilmDAO
 		return $pochette;
 	}
 
+	//Retourne un film au format json
+	function getOne($id)
+	{
+		try {
+				$sql = 'select * from Film where PK_ID_Film = ? ';
+				$stmt = $this->cn->prepare($sql);
+				$stmt->bindValue(1, $id);					
+				$stmt->execute();// true/False
+			    $rs = $stmt->fetchAll(PDO::FETCH_ASSOC); 
+			    return json_encode($rs);
+		} catch (PDOException $e) {
+			echo "Erro: ". $e;
+
+		}finally{
+			unset($cn);//close  connexion
+			unset($stmt);//clean memoire
+		}
+	}
 
 
 }//FIN CLASS

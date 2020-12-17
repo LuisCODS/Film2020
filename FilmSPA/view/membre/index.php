@@ -2,6 +2,7 @@
 session_start();
 include_once '../../model/Membre.php';
 
+//echo "Session ID: ".session_id();
  /* =================== SESSION ===================*/
 
    $membre = new Membre(null,null,null,null,null, null,null ); 
@@ -9,15 +10,14 @@ include_once '../../model/Membre.php';
     if ( isset ($_SESSION["membre"]) ) {
 
          $membre = unserialize($_SESSION["membre"]);
-         //var_dump($membre);
+        // var_dump($membre);
      }
     else {
-      header("location: ../login/login.php");
+      header("location: ../../home/index.php");
       exit();
      }
  /* ==============================================*/
  ?>
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -27,14 +27,11 @@ include_once '../../model/Membre.php';
      ?>
 </head>
 <body>
-
-
   <!-- __________________________ TEMPLATE __________________________ --> 
-
   <div class="container" id="contenu">
         <div class="row">
             <div class="col-sm col-md col-lg col-xl">
-                  <div class="jumbotron jumbotron-fluid">
+                  <div class="jumbotron jumbotron-fluid" id="jumbotron">
                       <div class="container-fluid">
                             <h2 class="display-4" >
                                 <?php echo $membre->getCourriel();  ?>
@@ -46,9 +43,7 @@ include_once '../../model/Membre.php';
             </div>
         </div>
   </div>
-
   <!-- __________________________ DIV FORM EDIT ____________________ --> 
-
   <div class="container-fluid" id="divFormEditer">
       <!--  LIGNE 1 -->
       <div class="row mb-3">

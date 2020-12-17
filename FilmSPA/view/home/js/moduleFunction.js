@@ -90,11 +90,13 @@ function listerFilmsCards()
 		url:"../../controller/filmController.php",
 		data: action	
 	}).done((jsonString)=>{
+		//alert(jsonString);
 		$.ajax({
 			method: "POST", 
 			url:"../film/template/card-film.php",
 			data: "chaine="+jsonString
 		}).done((template)=>{
+			//alert(template);
 			$("#contenu").html(template);
 		})
 	});
@@ -124,28 +126,19 @@ function listerCategorie(categorie)
 	});
 }
 
-// ============================ GESTION MEMBRE ========================
+// ============================ GESTION MODAL ========================
+function displayModal(parm){
 
-//Enregistrer un nouveau membre
-//function envoyerLogin(leForm){
-// $('#btnLogin').click(function(){
+	//alert(parm);
+	//var src = '../../apercus/Intouchables.mp4';
+	var  src = "https://www.youtube.com/embed/-RNI9o06vqo";
+	//var  src = parm;
+	$('.modalVideo').modal('show');
+	$("#TituloModalCentralizado").html(parm);
+	$('.modalVideo iframe').attr('src', src);
 
-// 		//alert("callback");
-// 		//alert($(leForm).serialize());
-// 		var leForm = document.getElementById('formLogin');
-// 		$.ajax({
+}
 
-// 		   method: "POST",
-// 		   url:"../../controller/loginController.php",
-// 		   data:$(leForm).serialize(),
-
-// 		});
-// });	
-
-
-  // if(reponse=="false"){		  	
-  // document.getElementById("messageError").innerHTML="Courriel ou mot de passse invalide!";
-  // }
- //$("#contenu").html(reponse);
-  //Vide la msg apres 5 sec.
-  //setInterval(function(){ document.getElementById("emsg").innerHTML=""; }, 5000);v
+// $('#closeModal').click(function () {
+//     $('#modalVideo iframe').removeAttr('src');
+// });

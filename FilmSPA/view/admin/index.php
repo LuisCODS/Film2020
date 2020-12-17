@@ -33,8 +33,9 @@
 </div>
 
 <!--  ==================== FORM CREATE FILM ====================   -->
+<!-- onSubmit="return validerInputs();" -->
 <div class="container" id="divFormFilm">    
-	<form id="formEnreg" name="formEnreg" onSubmit="return validerForm();">
+	<form id="formEnreg" name="formEnreg">
     <h2>Nouveau Film</h2>
     <!-- FORNECE O TIPO DE ACAO AO CONTROLLER -->
     <div class="form-group">
@@ -42,7 +43,8 @@
     </div>
     <div class="form-group">
         <label for="titre">Titre</label>
-        <input type="text" class="form-control" id="titre" name="titre" required size="40" maxlength="40">
+        <input type="text" class="form-control" id="titre" 
+        name="titre" required size="40" maxlength="40">
       <p id="msgErreur" style='color:red'></p>
     </div>
     <div class="form-group">
@@ -78,17 +80,14 @@
                 id="url" 
                 placeholder="http://www.nomdusite.com"
                 pattern="^((http[s]?|ftp):\/)?\/?([^:\/\s]+)((\/\w+)*\/)([\w\-\.]+[^#?\s]+)(.*)?(#[\w\-]+)?$"
-                name="url" 
-                required>
+                name="url">
     </div>     
-    <!-- onClick="return validerForm();" -->
-    <button id="btnEnregistrer" type="submit"  onClick="return enregistrerFilm();" class="btn btn-primary">Enregistrer</button>
+    <!-- onClick="return enregistrerFilm();" -->
+    <button id="btnEnregistrer" type="submit"
+            onClick="enregistrerFilm();"   
+            class="btn btn-primary">Enregistrer</button>
   </form> 
 </div> 
-
-
-
-
 
  <?php include_once("../../includes/footer.php");?>
 </body>

@@ -66,6 +66,7 @@ function listerFilmsCards()
 		url:"../../controller/filmController.php",
 		data: action	
 	}).done((jsonString)=>{
+		//alert(jsonString);
 		$.ajax({
 			method: "POST", 
 			url:"../film/template/card-film.php",
@@ -97,4 +98,69 @@ function listerCategorie(categorie)
 			//setInterval(function(){document.getElementById("totalCat").style.display='none';}, 5000 );
 		})
 	});
+}
+
+// ============================ GESTION PANIER ========================
+
+function displayPanier()
+{
+	// $.ajax({
+	// 	method: "POST", 
+	// 	url:"../../controller/filmController.php",
+	// 	data:{
+	// 		action: "listerCards", 
+	// 	},
+	// 	// contentType: false,
+	// 	// processData:false,
+	// 	// dataType:'json',
+	// }).done((filmJson)=>{	
+		
+	// 	//alert(filmJson);
+	// 	$.ajax({
+	// 		method: "POST", 
+	// 		url:"../membre/template/panier.php",
+	// 		data: "dataJson="+filmJson
+	// 	}).done((template)=>{
+	// 		$('#contenu').html(template);
+	// 	})
+
+	// });
+}
+
+
+//Saisie l'ID du film au moment du click du bouton "ajouter au panier"
+function ajouterAuPanier(id)
+{
+	//var formImputs = new FormData(document.getElementById('formBtnPanier'));	
+	//var action = "action=ajouterAuPanier";
+
+	//alert($(form).serialize());
+
+	$.ajax({
+		method: "POST", 
+		url:"../../controller/filmController.php",
+		data:{
+			action: "ajouterAuPanier", 
+			idFilm: id,
+		},
+		// contentType: false,
+		// processData:false,
+		dataType:'text'
+	}).done((filmJson)=>{	
+		
+		alert(filmJson);
+		$.ajax({
+			method: "POST", 
+			url:"../membre/template/panier.php",
+			data: "dataJson="+filmJson
+		});
+
+	});
+}
+
+// ============================ GESTION LOGIN ========================
+//Ca marche pas 
+function logout()
+{
+	 window.location = "../login/logout.php";
 }

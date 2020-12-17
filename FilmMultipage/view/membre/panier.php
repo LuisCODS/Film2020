@@ -101,9 +101,7 @@ include_once '../../model/Film_Location.class.php';
 
               ///PARCOUR LA SESSION DU PANIER
              global  $subtotal;
-             $arrayFilms = array();
              //Cree location
-             $location = new Film_Location(null,$membre->getMembreID());
 
              foreach ( $_SESSION['panier'] as $idFilm => $quantite) 
              {
