@@ -25,7 +25,7 @@
 		}
 
 		
-		public function addPanier( $film)
+		public function addPanier($film)
 		{
 			$this->panier[] = $film;
 		}

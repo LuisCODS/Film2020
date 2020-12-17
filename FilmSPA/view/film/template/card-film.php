@@ -7,10 +7,10 @@ session_start();
   if ( isset ($_SESSION["membre"]) ) {
 
        $membre = unserialize($_SESSION["membre"]);
-       var_dump($membre);
+      // var_dump($membre);
    }
   else {
-    header("location: ../home/index.php");
+    //header("location: ../../../home/index.php");
     exit();
    }
 /* =================== SESSION MEMBRE ===================*/
@@ -42,8 +42,8 @@ foreach( json_decode($chaine) as $film)
 
         <!-- BUTTON AJOUTER PANIER -->         
 <!--         <form method='post' id="formPanier">
-            <input type='hidden' name='action'   value="addPanier" />
-            <input type='hidden' name='id_film'   value="<?php echo $film->PK_ID_Film; ?>" />
+            <input type='hidden' name='action'    value="ajouterAuPanier" />
+            <input type='hidden' name='idFilm'   value="<?php echo $film->PK_ID_Film; ?>" />
             <input type='hidden' name='idMembre'  value='<?php  echo $membre->getMembreID();?>'/>
             <button type='submit' 
                     onClick="ajouterAuPanier(formPanier)"

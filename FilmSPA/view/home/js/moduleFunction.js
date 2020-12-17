@@ -90,11 +90,13 @@ function listerFilmsCards()
 		url:"../../controller/filmController.php",
 		data: action	
 	}).done((jsonString)=>{
+		//alert(jsonString);
 		$.ajax({
 			method: "POST", 
 			url:"../film/template/card-film.php",
 			data: "chaine="+jsonString
 		}).done((template)=>{
+			//alert(template);
 			$("#contenu").html(template);
 		})
 	});

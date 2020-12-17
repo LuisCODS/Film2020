@@ -36,7 +36,7 @@
 				<a class="nav-link" onClick="displayPanier();">Panier  <i class="fas fa-shopping-cart"></i></a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="../../view/login/logout.php">Quitter <i class="fas fa-sign-in-alt"></i></a>
+				<a class="nav-link" onClick="logout()">Quitter <i class="fas fa-sign-in-alt"></i></a>
 			</li>
 			<li class="nav-item" style="padding-left: 400px;">
 				<a class="nav-link" href="#"><?php if (isset ($_SESSION["membre"])){ echo $membre->getCourriel();  }  ?></a>

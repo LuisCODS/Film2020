@@ -27,10 +27,7 @@ switch ($action)
 		break;
 	case 'select':
 			echo $membreDAO->selectMembres();//Si ok return 1
-		break;
-	// case 'ajouterAuPanier':
-	// 		echo "";
-		break;			
+		break;		
 	default:
 		echo "Aucun action trouvée";
 		break;

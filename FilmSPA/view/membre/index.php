@@ -2,6 +2,7 @@
 session_start();
 include_once '../../model/Membre.php';
 
+//echo "Session ID: ".session_id();
  /* =================== SESSION ===================*/
 
    $membre = new Membre(null,null,null,null,null, null,null ); 
@@ -9,7 +10,7 @@ include_once '../../model/Membre.php';
     if ( isset ($_SESSION["membre"]) ) {
 
          $membre = unserialize($_SESSION["membre"]);
-         //var_dump($membre);
+        // var_dump($membre);
      }
     else {
       header("location: ../../home/index.php");
