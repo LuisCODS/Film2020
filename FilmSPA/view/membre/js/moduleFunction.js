@@ -104,27 +104,28 @@ function listerCategorie(categorie)
 
 function displayPanier()
 {
-	// $.ajax({
-	// 	method: "POST", 
-	// 	url:"../../controller/filmController.php",
-	// 	data:{
-	// 		action: "listerCards", 
-	// 	},
-	// 	// contentType: false,
-	// 	// processData:false,
-	// 	// dataType:'json',
-	// }).done((filmJson)=>{	
+	$.ajax({
+		method: "POST", 
+		url:"../../controller/filmController.php",
+		data:{
+			action: "select", 
+		},
+		 // contentType: false,
+		 // processData:false,
+		 // dataType:'text',
+	}).done((mesFilms)=>{	
 		
-	// 	//alert(filmJson);
-	// 	$.ajax({
-	// 		method: "POST", 
-	// 		url:"../membre/template/panier.php",
-	// 		data: "dataJson="+filmJson
-	// 	}).done((template)=>{
-	// 		$('#contenu').html(template);
-	// 	})
+		//alert(mesFilms);
 
-	// });
+		$.ajax({
+			method: "POST", 
+			url:"../membre/template/dashbordPanier.php",
+			data:"dataJson="+mesFilms
+		}).done((template)=>{
+			$('#contenu').html(template);
+		})
+
+	});
 }
 
 
@@ -145,10 +146,10 @@ function ajouterAuPanier(id)
 		},
 		// contentType: false,
 		// processData:false,
-		dataType:'text'
+		// dataType:'json'
 	}).done((filmJson)=>{	
 		
-		alert(filmJson);
+		//alert(filmJson);
 		$.ajax({
 			method: "POST", 
 			url:"../membre/template/panier.php",

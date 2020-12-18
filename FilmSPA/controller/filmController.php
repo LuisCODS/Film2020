@@ -1,9 +1,11 @@
 <?php
 include '../model/Film.php';
 include '../dao/FilmDAO.php';
+
 //GLOBAL 
 extract($_POST);
 $filmDAO = new FilmDAO();
+
 // =================== CONTROLLEUR - film ===================
 
 switch ($action) 
