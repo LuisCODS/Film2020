@@ -1,6 +1,8 @@
 <?php
 session_start();
 ?>
+
+<!-- =========================== HTML ZONE =========================== -->
   <!-- ROW 1 -->
   <div class="row mb-3">    
       <!--  COL 1 -->
@@ -15,7 +17,7 @@ session_start();
       <div class="col-md-6">
       </div> 
       <!--  COL 3 -->
-      <div class="col-md-3">
+      <div class="col-md-3" id="divTotalPanier">
            <a class="btn btn-outline-danger" onClick="" role="button">Vider panier</a>
       </div> 
   </div> 
@@ -35,26 +37,13 @@ session_start();
                 </tr>
             </thead>
             <tbody>  
+<!-- =========================== HTML ZONE =========================== -->
+
 <?php
 extract($_POST);
 $data = json_decode($dataJson,true);
 
-  
-
-// echo "<pre>";
-// print_r($_SESSION['panier']);
-// echo "<pre>";
-if(isset ($_SESSION['panier']))
-{ 
-  if(count($_SESSION['panier']) == 0 ){
-
-    echo  $inerHtml = "<div id='totalCat' style='text-align:center' class='alert alert-info' role='alert'>
-                       <h2>Total de films: (".count($_SESSION['panier']).")</h2>
-                       </div>";
-  }
-}      
-
-if (isset ($_SESSION['panier']) )
+if (isset ($_SESSION['panier']) && count($_SESSION['panier']) != 0  )
 { 
 
         $connection = new PDO('mysql:host=localhost;dbname=bdfilms_SPA','root','');
@@ -80,8 +69,20 @@ if (isset ($_SESSION['panier']) )
         </td>                  
     </tr>  
 <?php 
-       } 
-} 
+     
+       }  // foreach
+
+} //if
+else{
+   echo  $inerHtml = "<div id='panierVide' style='text-align:center' class='alert alert-info' role='alert'>
+                      <h2>Votre panier est vide!</h2>
+                      </div>";
+    echo"<script language='javascript'>
+            document.getElementById('divTotalPanier').style.display='none';
+            setInterval(function(){document.getElementById('panierVide').style.display='none';}, 4000 ); 
+       </script>
+    ";
+}
 ?>
            </tbody>
           </table>
