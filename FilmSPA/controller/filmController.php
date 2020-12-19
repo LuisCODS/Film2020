@@ -7,8 +7,8 @@ include '../dao/FilmDAO.php';
 extract($_POST);
 $filmDAO = new FilmDAO();
 
-var_dump($action);
-var_dump($idFilm);
+// var_dump($action);
+// var_dump($idFilm);
 
 // =================== CONTROLLEUR - film ===================
 
