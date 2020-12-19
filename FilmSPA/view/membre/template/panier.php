@@ -11,6 +11,8 @@ include_once '../../../model/Membre.php';
     header("location: ../../home/index.php");
     exit();
    }
+
+
   /* =============== SESSION  PANIER =============== */
 
   //Si pas encore de session
@@ -22,7 +24,7 @@ include_once '../../../model/Membre.php';
 
 extract($_POST);
 $filmChoisie = json_decode($dataJson); //recebe o filme escolhido
-$idFilm = $filmChoisie[0]->PK_ID_Film;
+$idFilm = $filmChoisie[0]->PK_ID_Film;//Get film id
 
 
  /* ===================== ADD TO PANIER=========================*/
@@ -37,28 +39,5 @@ if (!isset ($_SESSION['panier'][$idFilm]) )
    $_SESSION['panier'][$idFilm] += 1;
 } 
 
-// for($i=0; $i < count($filmChoisie); $i++){
-
-//    //echo $filmChoisie[$i]->PK_ID_Film."</br>";
-// }
-
-// foreach ($filmChoisie as $idFilm => $value) {
-//   # code...
-// }
-echo "<pre>";
-print_r($_SESSION['panier']);
-echo "<pre>";
-
-echo "<pre>";
-print_r($filmChoisie);   //Imprime json_decode
-echo "<pre>";
- print_r($filmChoisie[0]);   //Imprime obj
-// echo "<pre>";
-// print_r($filmChoisie[0]->PK_ID_Film);  //Imprime sua ID
-// echo "<pre>";
-// print_r($_SESSION['panier'][$idFilm]); // quantite
-// echo "<pre>";
-// print_r(count($_SESSION['panier'])); // Size
-// echo "<pre>";
 
 

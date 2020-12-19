@@ -1,9 +1,15 @@
 <?php
+session_start();
 include '../model/Film.php';
 include '../dao/FilmDAO.php';
+
 //GLOBAL 
 extract($_POST);
 $filmDAO = new FilmDAO();
+
+// var_dump($action);
+// var_dump($idFilm);
+
 // =================== CONTROLLEUR - film ===================
 
 switch ($action) 
@@ -11,36 +17,45 @@ switch ($action)
 	case 'insert':		
 		    enregistrer();
 		break;
+
 	case 'showForm':
 			echo $filmDAO->showFormEditer($idFilm);
 			unset($filmDAO);//clean memoire
 		 break;
+
 	case 'update':
 			echo EditerFilm($PK_ID_Film);
 		 break;
+
 	case 'delete':
 		    sendToDelete($idFilm);
 		break;
+
 	case 'select':
 		  echo $filmDAO->selectFilms();
 		  unset($filmDAO);//clean memoire
 		break;
+
 	case 'listerCards':
 		  echo $filmDAO->selectFilms();
 		  unset($filmDAO);//clean memoire
 		break;
+
 	case 'listerByCategorie':
 		   echo $filmDAO->getByCategorie($cat);
 		   unset($filmDAO);//clean memoire
 		break;
+
 	case 'ajouterAuPanier':
 		   echo $filmDAO->getOne($idFilm);//Return un film selon l'id demandée
 		   unset($filmDAO);//clean memoire	
 			//echo "";
 		break;	
+
 	default:
 		echo "Aucun action trouvée";
 		break;
+
 }//fin switch
 
 
@@ -104,3 +119,11 @@ function EditerFilm($idFilm)
 	$filmDAO->update(trim($titre),trim($prix),trim($realisateur),trim($categorie),trim($pochette),trim($description),trim($url),$PK_ID_Film);	
 	unset($filmDAO);//clean memoire
 }
+
+// function deleteFromPanier($idToDelete)
+// {
+// 	if (isset ($_SESSION['panier']) )
+// 	{ 
+// 		$_SESSION['panier'][$idToDelete] =="";
+// 	}
+// }
