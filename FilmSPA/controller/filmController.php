@@ -7,8 +7,6 @@ include '../dao/FilmDAO.php';
 extract($_POST);
 $filmDAO = new FilmDAO();
 
-// var_dump($action);
-// var_dump($idFilm);
 
 // =================== CONTROLLEUR - film ===================
 
@@ -33,23 +31,22 @@ switch ($action)
 
 	case 'select':
 		  echo $filmDAO->selectFilms();
-		  unset($filmDAO);//clean memoire
+		  unset($filmDAO);
 		break;
 
 	case 'listerCards':
 		  echo $filmDAO->selectFilms();
-		  unset($filmDAO);//clean memoire
+		  unset($filmDAO);
 		break;
 
 	case 'listerByCategorie':
 		   echo $filmDAO->getByCategorie($cat);
-		   unset($filmDAO);//clean memoire
+		   unset($filmDAO);
 		break;
 
 	case 'ajouterAuPanier':
 		   echo $filmDAO->getOne($idFilm);//Return un film selon l'id demandée
-		   unset($filmDAO);//clean memoire	
-			//echo "";
+		   unset($filmDAO);	
 		break;	
 
 	default:
@@ -120,10 +117,3 @@ function EditerFilm($idFilm)
 	unset($filmDAO);//clean memoire
 }
 
-// function deleteFromPanier($idToDelete)
-// {
-// 	if (isset ($_SESSION['panier']) )
-// 	{ 
-// 		$_SESSION['panier'][$idToDelete] =="";
-// 	}
-// }

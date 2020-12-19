@@ -85,10 +85,12 @@ const isValidPassword = function(inputPassword){
 function listerFilmsCards()
 {
 	var action = 'action=listerCards';	
+
 	$.ajax({
 		method: "POST", 
 		url:"../../controller/filmController.php",
 		data: action	
+
 	}).done((jsonString)=>{
 		//alert(jsonString);
 		$.ajax({

@@ -6,23 +6,23 @@ session_start();
   <!-- ROW 1 -->
   <div class="row mb-3">    
       <!--  COL 1 -->
-      <div class="col-md-3">
+      <div class="col-md-4">
           <h3>
             <i class="fas fa-cart-arrow-down"></i>   
-            Total Panier( <?php   
+            Total itens panier( <?php   
             if(isset ($_SESSION['panier'])){echo count($_SESSION['panier']); } ?>)
          </h3> 
       </div>  
       <!--  COL 2 -->
-      <div class="col-md-6">
-      </div> 
+      <div class="col-md-5"></div> 
       <!--  COL 3 -->
-      <div class="col-md-3" id="divTotalPanier">
+      <div class="col-md-2" id="divTotalPanier">
            <a class="btn btn-outline-danger" onClick="" role="button">Vider panier</a>
       </div> 
   </div> 
+
 <!-- ROW 2 -->
-<div class="row">
+<div class="row" id="divTablePanier">
     <!--COL 1-->
     <div class="col-md-12">
         <!-- TABLE -->
@@ -42,7 +42,7 @@ session_start();
 
 <?php
 extract($_POST);
-$data = json_decode($dataJson,true);
+// $data = json_decode($dataJson,true);
 
   $total = 0;
   $grandTotal = 0;
@@ -80,12 +80,13 @@ if (isset ($_SESSION['panier']) && count($_SESSION['panier']) != 0  )
 
 } //if
 else{
-   echo  $inerHtml = "<div id='panierVide' style='text-align:center' class='alert alert-info' role='alert'>
+   echo  $inerHtml = "<div id='msnPanierVide' style='text-align:center' class='alert alert-warning' role='alert'>
                       <h2>Votre panier est vide!</h2>
                       </div>";
     echo"<script language='javascript'>
             document.getElementById('divTotalPanier').style.display='none';
-            setInterval(function(){document.getElementById('panierVide').style.display='none';}, 4000 ); 
+            document.getElementById('recapitulatif').style.display='none';
+            setInterval(function(){document.getElementById('msnPanierVide').style.display='none';}, 4000 ); 
        </script>
     ";
 }
@@ -96,20 +97,19 @@ else{
       </div>
   </div>
 
-  <div class="row mb-4">
+<div class="row mb-4" id="recapitulatif">
   <div class="col-md-2 ml-auto">
-    <h4>Récapitulatif</h4>
-    <?php
-
-      $tvq = ($total * 9.975) / 100;
-     $tps = ($total * 5) / 100;
-      $grandTotal = $total + $tvq + $tps;
-    ?>
-    <p>
-      Sous-Total:$ <?php echo $total; ?> <br />
-      TVQ: $ <?php echo round($tvq,2); ?><br />
-      TPS: $ <?php echo round($tps,2); ?>$<br />
-      Total: $ <?php echo round($grandTotal,2); ?><br />
-    </p>
+      <h4>Récapitulatif</h4>
+      <?php
+        $tvq = ($total * 9.975) / 100;
+       $tps = ($total * 5) / 100;
+        $grandTotal = $total + $tvq + $tps;
+      ?>
+      <p>
+        Sous-Total:$ <?php echo $total; ?> <br />
+        TVQ: $ <?php echo round($tvq,2); ?><br />
+        TPS: $ <?php echo round($tps,2); ?>$<br />
+        Total: $ <?php echo round($grandTotal,2); ?><br />
+      </p>
   </div>
 </div>
