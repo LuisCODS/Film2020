@@ -1,17 +1,23 @@
 <?php
 session_start();
 ?>
+
+<!-- =========================== HTML ZONE =========================== -->
   <!-- ROW 1 -->
   <div class="row mb-3">    
       <!--  COL 1 -->
       <div class="col-md-3">
-          <h2><i class="fas fa-cart-arrow-down"></i>   Votre Panier</h2> 
+          <h3>
+            <i class="fas fa-cart-arrow-down"></i>   
+            Total Panier( <?php   
+            if(isset ($_SESSION['panier'])){echo count($_SESSION['panier']); } ?>)
+         </h3> 
       </div>  
       <!--  COL 2 -->
       <div class="col-md-6">
       </div> 
       <!--  COL 3 -->
-      <div class="col-md-3">
+      <div class="col-md-3" id="divTotalPanier">
            <a class="btn btn-outline-danger" onClick="" role="button">Vider panier</a>
       </div> 
   </div> 
@@ -25,23 +31,23 @@ session_start();
                 <tr>
                     <th>Pochette</th>
                     <th>Titre</th>
-                    <th>Prix</th>
+                    <th>Prix Unité</th>
                     <th>Quantite</th>
-                    <th></th>                                
+                    <th>Total</th>
+                    <th>ACTION</th>                                
                 </tr>
             </thead>
             <tbody>  
+<!-- =========================== HTML ZONE =========================== -->
+
 <?php
 extract($_POST);
-$data = json_decode($dataJson);
+$data = json_decode($dataJson,true);
 
+  $total = 0;
+  $grandTotal = 0;
 
-// echo "<pre>";
-// print_r($_SESSION['panier']);
-// echo "<pre>";
-
-
-if (isset ($_SESSION['panier']) )
+if (isset ($_SESSION['panier']) && count($_SESSION['panier']) != 0  )
 { 
 
         $connection = new PDO('mysql:host=localhost;dbname=bdfilms_SPA','root','');
@@ -57,7 +63,8 @@ if (isset ($_SESSION['panier']) )
         <td><img src="../../img/<?php echo($films[0]['pochette'])?>" width=80 height=80></td>
         <td><?php echo  $films[0]['titre']; ?></td>
         <td>$ <?php echo  $films[0]['prix'];?></td>
-        <td> <?php echo  $quantite;  ?></td>     
+        <td> <?php echo  $quantite;  ?></td>  
+        <td>$ <?php echo $quantite * $films[0]['prix']; ?></td>     
         <td>              
             <a 
             onClick="deleteItemPanier(<?php echo ($films[0]['PK_ID_Film']); ?>);"
@@ -66,12 +73,43 @@ if (isset ($_SESSION['panier']) )
             </a>
         </td>                  
     </tr>  
+         <?php $total =  $total + $quantite * $films[0]['prix']; ?>
 <?php 
-       } 
-} 
+     
+       }  // foreach
+
+} //if
+else{
+   echo  $inerHtml = "<div id='panierVide' style='text-align:center' class='alert alert-info' role='alert'>
+                      <h2>Votre panier est vide!</h2>
+                      </div>";
+    echo"<script language='javascript'>
+            document.getElementById('divTotalPanier').style.display='none';
+            setInterval(function(){document.getElementById('panierVide').style.display='none';}, 4000 ); 
+       </script>
+    ";
+}
 ?>
            </tbody>
           </table>
           <!-- FIN TABLE -->
       </div>
   </div>
+
+  <div class="row mb-4">
+  <div class="col-md-2 ml-auto">
+    <h4>Récapitulatif</h4>
+    <?php
+
+      $tvq = ($total * 9.975) / 100;
+     $tps = ($total * 5) / 100;
+      $grandTotal = $total + $tvq + $tps;
+    ?>
+    <p>
+      Sous-Total:$ <?php echo $total; ?> <br />
+      TVQ: $ <?php echo round($tvq,2); ?><br />
+      TPS: $ <?php echo round($tps,2); ?>$<br />
+      Total: $ <?php echo round($grandTotal,2); ?><br />
+    </p>
+  </div>
+</div>
