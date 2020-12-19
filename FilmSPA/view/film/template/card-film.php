@@ -20,9 +20,9 @@ extract($_POST);
 $total = json_decode($chaine,true);
     
 // ZONE MESSAGE
-// echo  $inerHtml = "<div id='totalCat' style='text-align:center' class='alert alert-info' role='alert'>
-//                    <h2>Total de films: (".count($total).")</h2>
-//                   </div>";
+echo  $inerHtml = "<div id='totalCat' style='text-align:center' class='alert alert-info' role='alert'>
+                   <h2>Total de films: (".count($total).")</h2>
+                  </div>";
 
 foreach( json_decode($chaine) as $film)  
 {

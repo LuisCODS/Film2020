@@ -5,7 +5,11 @@ session_start();
   <div class="row mb-3">    
       <!--  COL 1 -->
       <div class="col-md-3">
-          <h2><i class="fas fa-cart-arrow-down"></i>   Votre Panier</h2> 
+          <h3>
+            <i class="fas fa-cart-arrow-down"></i>   
+            Total Panier( <?php   
+            if(isset ($_SESSION['panier'])){echo count($_SESSION['panier']); } ?>)
+         </h3> 
       </div>  
       <!--  COL 2 -->
       <div class="col-md-6">
@@ -33,13 +37,22 @@ session_start();
             <tbody>  
 <?php
 extract($_POST);
-$data = json_decode($dataJson);
+$data = json_decode($dataJson,true);
 
+  
 
 // echo "<pre>";
 // print_r($_SESSION['panier']);
 // echo "<pre>";
+if(isset ($_SESSION['panier']))
+{ 
+  if(count($_SESSION['panier']) == 0 ){
 
+    echo  $inerHtml = "<div id='totalCat' style='text-align:center' class='alert alert-info' role='alert'>
+                       <h2>Total de films: (".count($_SESSION['panier']).")</h2>
+                       </div>";
+  }
+}      
 
 if (isset ($_SESSION['panier']) )
 { 
