@@ -100,6 +100,38 @@ function listerCategorie(categorie)
 	});
 }
 
+//Get ID from button supprimer from template/table-films.php
+// function deleteItemPanier(id)
+// {
+// 	// var action = 'action=deleteFromPanier';
+// 	// var idFilm = 'idFilm='+id;
+// 	alert(id);
+
+// 	$.ajax({
+// 		method: "POST", 
+// 		url:"../../controller/filmController.php",
+// 		data:{
+// 			action: 'select', 
+// 			idFilm: id, 
+// 		},
+// 		 // contentType: false,
+// 		 // processData:false,
+// 		 // dataType:'text',
+// 	}).done((mesFilms)=>{	
+		
+// 		//alert(mesFilms);
+
+// 		$.ajax({
+// 			method: "POST", 
+// 			url:"../membre/template/deleteItemPanier.php",
+// 			data:"dataJson="+mesFilms
+// 		}).done((template)=>{
+// 			$('#contenu').html(template);
+// 		})
+		
+// 	});
+// }
+
 // ============================ GESTION PANIER ========================
 
 function displayPanier()
@@ -124,7 +156,6 @@ function displayPanier()
 		}).done((template)=>{
 			$('#contenu').html(template);
 		})
-
 	});
 }
 
