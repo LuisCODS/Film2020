@@ -31,9 +31,10 @@ session_start();
                 <tr>
                     <th>Pochette</th>
                     <th>Titre</th>
-                    <th>Prix</th>
+                    <th>Prix Unité</th>
                     <th>Quantite</th>
-                    <th></th>                                
+                    <th>Total</th>
+                    <th>ACTION</th>                                
                 </tr>
             </thead>
             <tbody>  
@@ -42,6 +43,9 @@ session_start();
 <?php
 extract($_POST);
 $data = json_decode($dataJson,true);
+
+  $total = 0;
+  $grandTotal = 0;
 
 if (isset ($_SESSION['panier']) && count($_SESSION['panier']) != 0  )
 { 
@@ -59,7 +63,8 @@ if (isset ($_SESSION['panier']) && count($_SESSION['panier']) != 0  )
         <td><img src="../../img/<?php echo($films[0]['pochette'])?>" width=80 height=80></td>
         <td><?php echo  $films[0]['titre']; ?></td>
         <td>$ <?php echo  $films[0]['prix'];?></td>
-        <td> <?php echo  $quantite;  ?></td>     
+        <td> <?php echo  $quantite;  ?></td>  
+        <td>$ <?php echo  $quantite * $films[0]['prix']; ?></td>     
         <td>              
             <a 
             onClick="deleteItemPanier(<?php echo ($films[0]['PK_ID_Film']); ?>);"
@@ -89,3 +94,21 @@ else{
           <!-- FIN TABLE -->
       </div>
   </div>
+
+  <div class="row mb-4">
+  <div class="col-md-2 ml-auto">
+    <h4>Récapitulatif</h4>
+    <?php
+
+      $tvq = ($total * 9.975) / 100;
+     $tps = ($total * 5) / 100;
+      $grandTotal = $total + $tvq + $tps;
+    ?>
+    <p>
+      Sous-Total:$ <?php echo $total; ?> <br />
+      TVQ: $<?php echo round($tvq,2); ?><br />
+      TPS: $<?php echo round($tps,2); ?>$<br />
+      Total: $<?php echo round($grandTotal,2); ?><br />
+    </p>
+  </div>
+</div>
