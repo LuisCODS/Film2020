@@ -64,7 +64,7 @@ if (isset ($_SESSION['panier']) && count($_SESSION['panier']) != 0  )
         <td><?php echo  $films[0]['titre']; ?></td>
         <td>$ <?php echo  $films[0]['prix'];?></td>
         <td> <?php echo  $quantite;  ?></td>  
-        <td>$ <?php echo  $quantite * $films[0]['prix']; ?></td>     
+        <td>$ <?php echo $quantite * $films[0]['prix']; ?></td>     
         <td>              
             <a 
             onClick="deleteItemPanier(<?php echo ($films[0]['PK_ID_Film']); ?>);"
@@ -73,6 +73,7 @@ if (isset ($_SESSION['panier']) && count($_SESSION['panier']) != 0  )
             </a>
         </td>                  
     </tr>  
+         <?php $total =  $total + $quantite * $films[0]['prix']; ?>
 <?php 
      
        }  // foreach
@@ -106,9 +107,9 @@ else{
     ?>
     <p>
       Sous-Total:$ <?php echo $total; ?> <br />
-      TVQ: $<?php echo round($tvq,2); ?><br />
-      TPS: $<?php echo round($tps,2); ?>$<br />
-      Total: $<?php echo round($grandTotal,2); ?><br />
+      TVQ: $ <?php echo round($tvq,2); ?><br />
+      TPS: $ <?php echo round($tps,2); ?>$<br />
+      Total: $ <?php echo round($grandTotal,2); ?><br />
     </p>
   </div>
 </div>
