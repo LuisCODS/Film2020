@@ -9,8 +9,7 @@ session_start();
       <div class="col-md-4">
           <h3>
             <i class="fas fa-cart-arrow-down"></i>   
-            Total itens panier( <?php   
-            if(isset ($_SESSION['panier'])){echo count($_SESSION['panier']); } ?>)
+              Total items: <?php if (isset ($_SESSION['panier']) ){ echo count($_SESSION['panier']); } ?>
          </h3> 
       </div>  
       <!--  COL 2 -->
@@ -42,18 +41,17 @@ session_start();
 
 <?php
 extract($_POST);
-// $data = json_decode($dataJson,true);
-var_dump($_SESSION['panier']);
 
   $total = 0;
   $grandTotal = 0;
 
-if (isset ($_SESSION['panier']) && count($_SESSION['panier']) != 0  )
+
+if (isset ($_SESSION['panier']) && count($_SESSION['panier']) != null)  
 { 
         // CREATE CONNECTION
         $connection = new PDO('mysql:host=localhost;dbname=bdfilms_SPA','root','');
         
-        //Parcour le panier et affiche certains données
+        //Parcour la BD et affiche les film dont son ID est dans la panier
         foreach ($_SESSION['panier'] as $idFilm => $quantite) 
         {
             $select = $connection->prepare('select * from Film where PK_ID_Film = ? ');

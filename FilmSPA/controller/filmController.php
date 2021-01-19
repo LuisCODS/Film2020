@@ -44,8 +44,8 @@ switch ($action)
 		   unset($filmDAO);
 		break;
 
-	case 'ajouterAuPanier':
-		   echo $filmDAO->getOne($idFilm);//Return un film selon l'id demandée
+	case 'getFilmById':
+		   echo $filmDAO->getFilmById($idFilm);//Return un film selon l'id demandée
 		   unset($filmDAO);	
 		break;	
 

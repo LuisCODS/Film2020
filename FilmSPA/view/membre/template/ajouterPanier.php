@@ -27,7 +27,7 @@ $filmChoisie = json_decode($dataJson); //recebe o filme escolhido
 $idFilm = $filmChoisie[0]->PK_ID_Film;//Get film id
 
 
- /* ===================== ADD TO PANIER=========================*/
+ /* ===================== ADD ID FILM INTO PANIER =========================*/
 
 //Si le films n'est pas dans le panier
 if (!isset ($_SESSION['panier'][$idFilm]) )

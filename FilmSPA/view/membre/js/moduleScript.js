@@ -112,7 +112,7 @@ function displayPanier()
 		//alert(jasonFilms);
 		$.ajax({
 			method: "POST", 
-			url:"../membre/template/dashbordPanier.php",
+			url:"../membre/template/displayPanier.php",
 			//data:"dataJson="+jasonFilms
 		}).done((template)=>{
 			$('#contenu').html(template);
@@ -127,6 +127,22 @@ function viderPanier()
 	// if (node.parentNode) {
 	//   node.parentNode.removeChild(node);
 	// }
+	$.ajax({
+		method: "POST", 
+		url:"../membre/template/viderPanier.php",
+	}).done(()=>{	
+		$.ajax({
+			method: "POST", 
+			url:"../membre/template/displayPanier.php",
+			//data:"dataJson="+jasonFilms
+		}).done((template)=>{
+			$('#contenu').html(template);
+		});
+	});
+
+	// $.post( "../membre/template/viderPanier.php", function(  ) {
+	//   	displayPanier();
+	// });
 }
 
 //Saisie l'ID du film au moment du click du bouton "ajouter au panier"
@@ -141,7 +157,7 @@ function ajouterAuPanier(id)
 		method: "POST", 
 		url:"../../controller/filmController.php",
 		data:{
-			action: "ajouterAuPanier", 
+			action: "getFilmById", 
 			idFilm: id,
 		},
 		// contentType: false,
@@ -152,7 +168,7 @@ function ajouterAuPanier(id)
 		//alert(filmJson);
 		$.ajax({
 			method: "POST", 
-			url:"../membre/template/panier.php",
+			url:"../membre/template/ajouterPanier.php",
 			data: "dataJson="+filmJson
 		});
 

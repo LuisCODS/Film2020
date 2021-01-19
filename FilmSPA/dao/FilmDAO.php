@@ -262,7 +262,7 @@ Class FilmDAO
 	}
 
 	//Retourne un film au format json
-	function getOne($id)
+	function getFilmById($id)
 	{
 		try {
 				$sql = 'select * from Film where PK_ID_Film = ? ';
