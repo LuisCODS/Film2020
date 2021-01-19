@@ -17,7 +17,7 @@ session_start();
       <div class="col-md-5"></div> 
       <!--  COL 3 -->
       <div class="col-md-2" id="divTotalPanier">
-           <a class="btn btn-outline-danger" onClick="" role="button">Vider panier</a>
+           <a class="btn btn-outline-danger" onClick="viderPanier()" role="button">Vider panier</a>
       </div> 
   </div> 
 
@@ -25,7 +25,7 @@ session_start();
 <div class="row" id="divTablePanier">
     <!--COL 1-->
     <div class="col-md-12">
-        <!-- TABLE -->
+        <!-- /////////////// TABLE /////////////// -->
         <table class="table table-hover ">
             <thead class="thead-dark">
                 <tr>
@@ -43,15 +43,17 @@ session_start();
 <?php
 extract($_POST);
 // $data = json_decode($dataJson,true);
+var_dump($_SESSION['panier']);
 
   $total = 0;
   $grandTotal = 0;
 
 if (isset ($_SESSION['panier']) && count($_SESSION['panier']) != 0  )
 { 
-
+        // CREATE CONNECTION
         $connection = new PDO('mysql:host=localhost;dbname=bdfilms_SPA','root','');
-
+        
+        //Parcour le panier et affiche certains données
         foreach ($_SESSION['panier'] as $idFilm => $quantite) 
         {
             $select = $connection->prepare('select * from Film where PK_ID_Film = ? ');
@@ -61,8 +63,8 @@ if (isset ($_SESSION['panier']) && count($_SESSION['panier']) != 0  )
 ?>
     <tr>
         <td><img src="../../img/<?php echo($films[0]['pochette'])?>" width=80 height=80></td>
-        <td><?php echo  $films[0]['titre']; ?></td>
-        <td>$ <?php echo  $films[0]['prix'];?></td>
+        <td><?php echo               $films[0]['titre']; ?></td>
+        <td>$ <?php echo             $films[0]['prix'];?></td>
         <td> <?php echo  $quantite;  ?></td>  
         <td>$ <?php echo $quantite * $films[0]['prix']; ?></td>     
         <td>              
@@ -78,7 +80,7 @@ if (isset ($_SESSION['panier']) && count($_SESSION['panier']) != 0  )
      
        }  // foreach
 
-} //if
+} 
 else{
    echo  $inerHtml = "<div id='msnPanierVide' style='text-align:center' class='alert alert-warning' role='alert'>
                       <h2>Votre panier est vide!</h2>

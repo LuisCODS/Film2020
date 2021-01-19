@@ -84,14 +84,12 @@ Class FilmDAO
 	//Return a select of films as json string
 	function selectFilms()
 	{
-		
 		try {
-
-			$sql = 'select * FROM film';
-			$stmt = $this->cn->prepare($sql);
-			$stmt->execute();
-			$rs = $stmt->fetchAll(PDO::FETCH_ASSOC); 
-			return json_encode($rs);		
+				$sql = 'select * FROM film';
+				$stmt = $this->cn->prepare($sql);
+				$stmt->execute();
+				$rs = $stmt->fetchAll(PDO::FETCH_ASSOC); 
+				return json_encode($rs);		
 
 		} catch (Exception $e) {
 			echo 'Erro: '. $e;
